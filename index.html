@@ -1,7 +1,328 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppCrafters Inc. - We Build Your Vision</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            scroll-behavior: smooth; /* For smooth scrolling on anchor links */
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            min-height: 70px;
+            border-bottom: #0779e4 3px solid;
+            position: sticky; /* Make header sticky */
+            top: 0;
+            z-index: 1000; /* Ensure header is above other content */
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            float: right;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding a { /* Styles for the link wrapping logo and company name */
+            display: flex;
+            align-items: center;
+            text-transform: none; /* Override uppercase from general header a */
+        }
+        header #branding img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        header #branding .company-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff; /* Explicitly set color */
+        }
+        .hero {
+            min-height: 400px;
+            background: url('assets/hero-background.jpg') no-repeat center center/cover; /* Optional: Add a background image */
+            background-color: #0779e4; /* Fallback color */
+            color: #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin-top: 0; /* Remove any top margin if header is not sticky or fixed height */
+        }
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Add text shadow for better readability on image */
+        }
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Add text shadow */
+        }
+        .cta-button {
+            display: inline-block;
+            background: #ff6f61; /* A contrasting call-to-action color */
+            color: #fff;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #e65a50;
+        }
+        section {
+            padding: 50px 0;
+            border-bottom: 1px #ddd solid;
+        }
+        section:nth-child(even) { /* Alternate section background */
+            background-color: #fff;
+        }
+        section:last-of-type { /* Use last-of-type to target the actual last section */
+            border-bottom: none;
+        }
+        section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #333;
+        }
+        .showcase-item {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #fff; /* Give showcase item a card look if section bg is different */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .showcase-item img {
+            max-width: 100%;
+            height: auto;
+            max-height: 350px; /* Adjust as needed */
+            display: block;
+            margin: 0 auto 20px auto;
+            border: 1px solid #eee;
+            border-radius: 5px;
+        }
+        .showcase-item h3 {
+            font-size: 26px;
+            color: #0779e4;
+            margin-bottom: 10px;
+        }
+        .showcase-item p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+        .service-item {
+            background: #fff; /* Ensure consistent background if section bg changes */
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        .service-item h4 {
+            font-size: 20px;
+            color: #0779e4;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .service-item p {
+            font-size: 15px;
+            color: #555;
+        }
+        #contact p {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        #contact a {
+            color: #0779e4;
+            text-decoration: none;
+        }
+        #contact a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 0; /* Remove margin if sections go all the way down */
+        }
+
+        /* Responsive Design */
+        @media(max-width: 768px){
+            .container {
+                width: 90%;
+            }
+            header {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                position: static; /* Remove sticky header on mobile if it causes issues */
+            }
+            header #branding,
+            header nav {
+                float: none;
+                text-align: center;
+                width: 100%;
+            }
+            header #branding {
+                margin-bottom: 15px;
+            }
+            header #branding a { /* Ensure logo and name are centered */
+                justify-content: center;
+            }
+            header nav ul {
+                margin-top: 10px;
+            }
+            header nav li {
+                display: block;
+                padding: 10px 0;
+            }
+            .hero {
+                min-height: 300px;
+                padding-top: 60px; /* Adjust if header is static */
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero p {
+                font-size: 18px;
+            }
+            section h2 {
+                font-size: 28px;
+            }
+            .services-grid {
+                grid-template-columns: 1fr; /* Stack service items */
+            }
+            .showcase-item img {
+                max-height: 250px;
+            }
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <a href="#hero">
+                    <img src="assets/logo.svg" alt="AppCrafters Inc. Logo">
+                    <span class="company-name">AppCrafters Inc.</span>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#showcase">Showcase</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="container">
+            <h1>Innovative Apps, Tailored For You</h1>
+            <p>We specialize in creating intuitive and powerful applications that bring your ideas to life.</p>
+            <a href="#contact" class="cta-button">Get a Quote</a>
+        </div>
+    </section>
+
+    <section id="showcase">
+        <div class="container">
+            <h2>App Showcase</h2>
+            <div class="showcase-item">
+                <!-- 
+                    IMPORTANT: Replace 'assets/gro-app-placeholder.png' 
+                    with the actual image path for your Gro app.
+                    You will need to create this image and place it in the 'assets' folder.
+                -->
+                <img src="assets/gro-app-placeholder.png" alt="Gro App Screenshot">
+                <h3>Gro App</h3>
+                <p>Gro is a revolutionary app designed to help users manage their personal growth and daily tasks efficiently. With a sleek interface and powerful features, Gro makes productivity seamless and enjoyable.</p>
+                <p><strong>Key Features:</strong> Task management, habit tracking, progress visualization, motivational quotes, and cross-platform availability.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h4>Custom App Development</h4>
+                    <p>We build bespoke mobile (iOS & Android) and web applications tailored to your specific business needs and user requirements.</p>
+                </div>
+                <div class="service-item">
+                    <h4>UI/UX Design</h4>
+                    <p>Our design team focuses on creating user-friendly and engaging interfaces that provide an exceptional user experience.</p>
+                </div>
+                <div class="service-item">
+                    <h4>App Modernization & Support</h4>
+                    <p>We help you update and improve your existing applications with the latest technologies, and provide ongoing support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>Ready to start your next project or have a question? We'd love to hear from you!</p>
+            <p>Email us at: <a href="mailto:contact@appcrafters.com">contact@appcrafters.com</a></p>
+            <p>Or call us: (555) 123-4567</p>
+            <!-- You can expand this with a contact form later if needed -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 AppCrafters Inc. All Rights Reserved.</p>
+            <!-- You can add social media links or other footer content here -->
+        </div>
+    </footer>
+
 </body>
 </html>
