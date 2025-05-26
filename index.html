@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gro - Your Personal Finance Companion</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
     <style>
         /* CSS Variables for Theming */
         :root {
@@ -65,7 +65,6 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .header-shadow { box-shadow: 0 2px 4px var(--color-shadow); }
         .hero-gradient { background: var(--flutter-gradient); } /* Use the full flutter gradient for hero */
 
         .section-padding {
@@ -332,22 +331,101 @@
             background-color: var(--color-main); /* Active dot color */
             transform: scale(1.1);
         }
+
+        /* Screenshots Swiper Styles */
+        .screenshots-swiper {
+            padding: 20px 10px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .screenshots-swiper .swiper-button-next,
+        .screenshots-swiper .swiper-button-prev {
+            color: var(--color-main);
+            --swiper-navigation-size: 44px;
+            width: var(--swiper-navigation-size);
+            height: var(--swiper-navigation-size);
+            background-color: var(--color-secondary-bg);
+            border-radius: 50%;
+            box-shadow: 0 4px 6px var(--color-shadow);
+        }
+
+        .screenshots-swiper .swiper-button-prev {
+            left: -60px;
+        }
+
+        .screenshots-swiper .swiper-button-next {
+            right: -60px;
+        }
+
+        .screenshots-swiper .swiper-button-next:after,
+        .screenshots-swiper .swiper-button-prev:after {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 1400px) {
+            .screenshots-swiper .swiper-button-prev {
+                left: 10px;
+            }
+
+            .screenshots-swiper .swiper-button-next {
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .screenshots-swiper {
+                padding: 0;
+            }
+            
+            .screenshots-swiper .swiper-slide {
+                height: 500px;
+            }
+            
+            .screenshots-swiper .swiper-button-next,
+            .screenshots-swiper .swiper-button-prev {
+                display: none;
+            }
+        }
+
+        /* Swiper Navigation Styles */
+        @media (max-width: 768px) {
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: none !important;
+            }
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background-color: var(--color-primary) !important;
+            color: white !important;
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
-<body class="antialiased">
-    <header class="header-shadow py-4 px-6 md:px-12 lg:px-24 flex justify-between items-center rounded-b-xl sticky top-0 z-50 transition-colors duration-300" style="background-color: var(--color-secondary-bg);">
-        <div class="text-2xl font-bold" style="color: var(--color-main);">Gro</div>
-        <nav class="hidden md:flex space-x-6 text-lg font-medium" style="color: var(--color-text-secondary);">
-            <a href="#why-gro" class="hover:text-purple-600 transition duration-300">Why Gro?</a>
-            <a href="#app-navigation" class="hover:text-purple-600 transition duration-300">How to Use</a>
-            <a href="#faqs" class="hover:text-purple-600 transition duration-300">FAQs</a>
+<body class="antialiased">    <header class="header-shadow py-4 px-6 max-w-7xl mx-auto flex justify-between items-center rounded-b-xl sticky top-0 z-50 transition-colors duration-300">
+        <div class="text-2xl font-bold" style="color: var(--color-main);">Gro</div>        <nav class="hidden md:flex space-x-6 text-lg font-medium" style="color: var(--color-text-secondary);">
+            <a href="#features" class="hover:text-purple-600 transition duration-300 flex items-center gap-2">
+                <i class="lni lni-star-filled text-xl"></i> Features
+            </a>
+            <a href="#app-navigation" class="hover:text-purple-600 transition duration-300 flex items-center gap-2">
+                <i class="lni lni-direction text-xl"></i> How to Use
+            </a>
+            <a href="#faqs" class="hover:text-purple-600 transition duration-300 flex items-center gap-2">
+                <i class="lni lni-question-circle text-xl"></i> FAQs
+            </a>
+            <a href="#download" class="hover:text-purple-600 transition duration-300 flex items-center gap-2">
+                <i class="lni lni-download text-xl"></i> Download
+            </a>
         </nav>
         <div class="flex items-center space-x-4">
-            <button id="theme-toggle" class="p-2 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2" style="background-color: var(--color-tertiary-bg); color: var(--color-text-primary); --ring-offset-color: var(--color-secondary-bg); --ring-color: var(--color-main);" aria-label="Toggle theme">
-                <svg id="sun-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M3 12H2m15.325-4.675l-.707-.707M6.343 17.657l-.707.707M17.657 6.343l.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                <svg id="moon-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9 9 0 008.354-5.646z"></path></svg>
+            <button id="theme-toggle" class="p-2 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2" aria-label="Toggle theme">
+                <i id="sun-icon" class="lni lni-sun text-xl"></i>
+                <i id="moon-icon" class="lni lni-night text-xl hidden"></i>
             </button>
-            <button class="px-6 py-2 rounded-full text-base font-semibold shadow-md hidden md:block transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2" style="background-color: var(--color-main); color: white; --ring-offset-color: var(--color-secondary-bg); --ring-color: var(--color-dark);">Sign Up</button>
         </div>
         <button id="mobile-menu-button" class="md:hidden focus:outline-none p-2 rounded-md focus:ring-2 focus:ring-inset" style="color: var(--color-text-secondary); --ring-color: var(--color-main);" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-menu">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
@@ -358,33 +436,42 @@
         <a href="#why-gro" class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">Why Gro?</a>
         <a href="#app-navigation" class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">How to Use</a>
         <a href="#faqs" class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">FAQs</a>
-        <button class="w-full mt-4 px-6 py-3 rounded-full text-lg font-semibold shadow-md transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2" style="background-color: var(--color-main); color: white; --ring-offset-color: var(--color-secondary-bg); --ring-color: var(--color-dark);">Sign Up</button>
-    </nav>
-
-    <main>
-        <section class="hero-gradient section-padding flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8 rounded-b-xl min-h-[calc(100vh-100px)] md:min-h-0">
-            <div class="text-center md:text-left max-w-2xl">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6" style="color: var(--color-footer-top-text);">
-                    Gro: <span style="color: var(--color-footer-top-text);">Master</span> Your Money
-                </h1>
-                <p class="text-lg md:text-xl mb-8" style="color: var(--color-footer-top-text); opacity: 0.9;">
-                    Your intelligent companion for financial clarity and growth.
-                </p>
-                <button class="px-8 py-4 rounded-full text-lg font-semibold shadow-xl transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2" style="background-color: var(--color-main); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark);">
-                    Get Started Free
-                </button>
-            </div>
-            <div class="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0">
-                <img src="https://placehold.co/400x480/b600c8/0824c3?text=Gro+App+Interface" alt="Gro App on Phone" class="max-w-sm w-full h-auto rounded-xl shadow-2xl object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x480/cccccc/969696?text=App+Screenshot';">
-            </div>
-        </section>
-
-        <section id="introduction" class="section-padding">
-            <div class="max-w-4xl mx-auto text-center content-section" style="background-color: transparent; box-shadow: none; padding:0;">
-                 <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--color-text-primary); border-bottom: none;">Welcome to Gro!</h2>
-                <p class="text-lg md:text-xl" style="color: var(--color-text-secondary);">
-                    Gro is designed to empower you with a comprehensive understanding and control over your personal finances. From daily transaction tracking to long-term financial planning like achieving Financial Independence, Retire Early (FIRE), Gro provides the tools and insights you need to manage your money effectively and reach your financial goals.
-                </p>
+    </nav>    <main>        <section id="hero" class="hero-gradient section-padding flex flex-col min-h-[calc(100vh-80px)]">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8 flex-grow">
+                <div class="text-center md:text-left max-w-xl">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6" style="color: var(--color-footer-top-text);">
+                        Gro: <span style="color: var(--color-footer-top-text);">Master</span> Your Money
+                    </h1>
+                    <p class="text-lg md:text-xl mb-8" style="color: var(--color-footer-top-text); opacity: 0.9;">
+                        From daily transaction tracking to achieving FIRE (Financial Independence, Retire Early), Gro provides the tools and insights you need to manage your money effectively and reach your financial goals.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">                        <button class="px-8 py-4 rounded-full text-lg font-semibold transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 flex items-center gap-2 ring-offset-2" style="background-color: var(--flutter-slide-bg); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark); border: 1px solid rgba(255, 255, 255, 0.2);">
+                            <i class="lni lni-play-store text-xl"></i>
+                            Download the app now
+                        </button>
+                        <button class="px-8 py-4 rounded-full text-lg font-semibold transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none flex items-center gap-2 ring-2 ring-offset-2" style="background-color: var(--flutter-slide-bg); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark); border: 1px solid rgba(255, 255, 255, 0.2);">
+                            <i class="lni lni-play text-xl"></i>
+                            Watch Demo
+                        </button>
+                    </div>                    <div class="mt-12 grid grid-cols-2 gap-8">
+                        <div class="text-center flex flex-col items-center" style="color: var(--color-footer-top-text);">
+                            <i class="lni lni-users text-3xl mb-2"></i>
+                            <div class="text-2xl font-bold">100K+</div>
+                            <div class="text-sm opacity-90">Active Users</div>
+                        </div>
+                        <div class="text-center flex flex-col items-center" style="color: var(--color-footer-top-text);">
+                            <i class="lni lni-star-filled text-3xl mb-2"></i>
+                            <div class="text-2xl font-bold">4.8/5</div>
+                            <div class="text-sm opacity-90">App Rating</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0">
+                    <div class="relative">
+                        <img src="https://placehold.co/600x720/b600c8/0824c3?text=Gro+App+Interface" alt="Gro App on Phone" class="w-full h-auto rounded-xl object-cover relative z-10" onerror="this.onerror=null;this.src='https://placehold.co/600x720/cccccc/969696?text=App+Screenshot';">
+                        <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-500 blur-3xl opacity-30 -z-10 transform scale-110"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -398,28 +485,27 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
-                <!-- Item 1: Effortless Tracking -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">                <!-- Item 1: Effortless Tracking -->
                 <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300" style="background-color: var(--color-secondary-bg);">
-                    <div class="text-3xl mb-4">✍️</div>
+                    <i class="lni lni-write text-4xl mb-4" style="color: var(--color-main);"></i>
                     <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Track with Ease, Live with Clarity</h3>
                     <p style="color: var(--color-text-secondary);">Effortlessly log every transaction with our unique drag-and-drop FAB and smart categorization. Gain instant clarity on your spending and income without the hassle.</p>
                 </div>
                 <!-- Item 2: Strategic Planning & FIRE -->
                 <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300" style="background-color: var(--color-secondary-bg);">
-                    <div class="text-3xl mb-4">📈</div>
+                    <i class="lni lni-stats-up text-4xl mb-4" style="color: var(--color-main);"></i>
                     <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Plan Smarter, Achieve Faster</h3>
                     <p style="color: var(--color-text-secondary);">From daily budgets to long-term FIRE goals, Gro provides robust planning tools. Visualize your progress and make informed decisions to reach your aspirations sooner.</p>
                 </div>
                 <!-- Item 3: Actionable Insights -->
                 <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300" style="background-color: var(--color-secondary-bg);">
-                    <div class="text-3xl mb-4">💡</div>
+                    <i class="lni lni-bulb text-4xl mb-4" style="color: var(--color-main);"></i>
                     <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Insights That Inspire Action</h3>
                     <p style="color: var(--color-text-secondary);">Go beyond numbers. Gro transforms your data into actionable insights on spending habits, income trends, and net worth growth, guiding you towards financial well-being.</p>
                 </div>
                 <!-- Item 4: Personalized & Secure -->
                 <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300" style="background-color: var(--color-secondary-bg);">
-                    <div class="text-3xl mb-4">🛡️</div>
+                    <i class="lni lni-shield text-4xl mb-4" style="color: var(--color-main);"></i>
                     <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Your Finances, Your Way, Always Secure</h3>
                     <p style="color: var(--color-text-secondary);">Personalize Gro with custom categories, themes, and multi-currency support. Your data is protected with top-tier security, ensuring privacy and peace of mind.</p>
                 </div>
@@ -534,7 +620,7 @@
         </section>
 
         <section id="screenshots" class="section-padding" style="background-color: var(--color-tertiary-bg);">
-            <div class="max-w-3xl mx-auto text-center">
+            <div class="max-w-6xl mx-auto text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-8" style="color: var(--color-text-primary);">See Gro in Action</h2>
 
                 <!-- Theme Switcher Buttons -->
@@ -543,23 +629,21 @@
                     <button id="gallery-theme-dark" class="screenshot-btn">Dark Theme</button>
                 </div>
 
-                <!-- Image Gallery Display Area -->
-                <div class="relative max-w-sm mx-auto" id="gallery-area">
-                    <img id="gallery-main-image" src="" alt="Gro App Screenshot" class="rounded-xl shadow-lg w-full object-contain mb-4" style="max-height: 700px; min-height: 300px; aspect-ratio: 400 / 700;">
-                    <!-- Navigation Buttons -->
-                    <button id="gallery-prev-btn" class="gallery-nav-btn prev" aria-label="Previous image">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                    </button>
-                    <button id="gallery-next-btn" class="gallery-nav-btn next" aria-label="Next image">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </button>
+                <!-- Swiper Gallery -->
+                <div class="swiper screenshots-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Slides will be dynamically added here -->
+                    </div>
+                    
+                    <!-- Navigation -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    
+                    <!-- Pagination -->
+                    <div class="swiper-pagination"></div>
                 </div>
-                <p id="gallery-image-theme-text" class="mt-2 mb-4 text-base font-medium" style="color: var(--color-text-secondary);"></p>
 
-                <!-- Pagination Dots -->
-                <div id="gallery-pagination-dots" class="flex justify-center space-x-2 mt-4">
-                    <!-- Dots will be dynamically inserted here -->
-                </div>
+                <p id="gallery-theme-text" class="mt-6 text-base font-medium" style="color: var(--color-text-secondary);"></p>
             </div>
         </section>
 
@@ -572,30 +656,34 @@
     </main>
 
     <footer>
-        <section class="footer-download-section py-16 px-6 md:px-12 lg:px-24 flex flex-col md:flex-row items-center justify-between gap-8 rounded-t-xl">
-            <div class="text-center md:text-left max-w-2xl">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">Download Gro App Today</h2>
-                <p class="text-lg md:text-xl mb-8 opacity-90">Manage your finances more conveniently, anytime, anywhere.</p>
-                <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-                    <a href="#" target="_blank" class="flex items-center bg-white text-gray-800 px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 hover:scale-105 transform"><img src="https://placehold.co/32x32/000000/FFFFFF?text=▶" alt="Google Play Icon" class="w-7 h-7 mr-3" onerror="this.onerror=null;this.src='https://placehold.co/32x32/cccccc/969696?text=G';"><div><div class="text-xs">GET IT ON</div><div class="text-lg font-semibold -mt-1">Google Play</div></div></a>
-                    <a href="#" target="_blank" class="flex items-center bg-white text-gray-800 px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 hover:scale-105 transform"><img src="https://placehold.co/32x32/000000/FFFFFF?text=" alt="App Store Icon" class="w-7 h-7 mr-3" onerror="this.onerror=null;this.src='https://placehold.co/32x32/cccccc/969696?text=A';"><div><div class="text-xs">Download on the</div><div class="text-lg font-semibold -mt-1">App Store</div></div></a>
+        <section class="footer-download-section py-16 px-6 rounded-t-xl">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="text-center md:text-left max-w-2xl">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">Download Gro App Today</h2>
+                    <p class="text-lg md:text-xl mb-8 opacity-90">Manage your finances more conveniently, anytime, anywhere.</p>
+                    <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+                        <a href="#" target="_blank" class="flex items-center bg-white text-gray-800 px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 hover:scale-105 transform"><img src="https://placehold.co/32x32/000000/FFFFFF?text=▶" alt="Google Play Icon" class="w-7 h-7 mr-3" onerror="this.onerror=null;this.src='https://placehold.co/32x32/cccccc/969696?text=G';"><div><div class="text-xs">GET IT ON</div><div class="text-lg font-semibold -mt-1">Google Play</div></div></a>
+                        <a href="#" target="_blank" class="flex items-center bg-white text-gray-800 px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 hover:scale-105 transform"><img src="https://placehold.co/32x32/000000/FFFFFF?text=" alt="App Store Icon" class="w-7 h-7 mr-3" onerror="this.onerror=null;this.src='https://placehold.co/32x32/cccccc/969696?text=A';"><div><div class="text-xs">Download on the</div><div class="text-lg font-semibold -mt-1">App Store</div></div></a>
+                    </div>
                 </div>
-            </div>
-            <div class="md:w-1/3 flex justify-center md:justify-end mt-8 md:mt-0">
-                <img src="https://placehold.co/250x300/FFFFFF/120b37?text=Gro+App" alt="Phone with Gro App" class="max-w-xs w-full h-auto rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/250x300/cccccc/969696?text=App+Mockup';">
+                <div class="md:w-1/3 flex justify-center md:justify-end mt-8 md:mt-0">
+                    <img src="https://placehold.co/250x300/FFFFFF/120b37?text=Gro+App" alt="Phone with Gro App" class="max-w-xs w-full h-auto rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/250x300/cccccc/969696?text=App+Mockup';">
+                </div>
             </div>
         </section>
 
-        <section class="py-8 px-6 md:px-12 lg:px-24 flex flex-col md:flex-row justify-between items-center text-sm gap-4" style="background-color: var(--color-footer-bottom-bg); color: var(--color-footer-bottom-text);">
-            <nav class="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2">
-                <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text);">Contact Us</a>
-                <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text);">Terms of Use</a>
-                <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text);">Privacy Policy</a>
-                <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text);">Account Deletion</a>
-            </nav>
-            <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4 mt-4 md:mt-0">
-                <p class="order-2 sm:order-1">&copy; 2025 Gro Inc. All rights reserved.</p>
-                <div class="order-1 sm:order-2 text-xl font-bold" style="color: var(--color-main);">Gro</div>
+        <section class="py-8 px-6">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm gap-4" style="color: var(--color-footer-bottom-text);">
+                <nav class="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2">
+                    <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text);">Contact Us</a>
+                    <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text);">Terms of Use</a>
+                    <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text);">Privacy Policy</a>
+                    <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text);">Account Deletion</a>
+                </nav>
+                <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4 mt-4 md:mt-0">
+                    <p class="order-2 sm:order-1">&copy; 2025 Gro Inc. All rights reserved.</p>
+                    <div class="order-1 sm:order-2 text-xl font-bold" style="color: var(--color-main);">Gro</div>
+                </div>
             </div>
         </section>
     </footer>
@@ -688,124 +776,148 @@
                     `;
                     faqsContainer.appendChild(faqItem);
                 });
-            }
-
-            // Screenshot Gallery Logic
+            }            // Screenshot Gallery Logic
             const galleryImages = {
                 light: [
                     { src: "https://placehold.co/400x700/f7f7f7/1f2937?text=Gro+Light+1", alt: "Gro App Light Theme Screenshot 1" },
                     { src: "https://placehold.co/400x700/f0f0f0/2a3f54?text=Gro+Light+2", alt: "Gro App Light Theme Screenshot 2" },
-                    { src: "https://placehold.co/400x700/e9e9e9/3c5a78?text=Gro+Light+3", alt: "Gro App Light Theme Screenshot 3" }
+                    { src: "https://placehold.co/400x700/e9e9e9/3c5a78?text=Gro+Light+3", alt: "Gro App Light Theme Screenshot 3" },
+                    { src: "https://placehold.co/400x700/e0e0e0/4d6b9c?text=Gro+Light+4", alt: "Gro App Light Theme Screenshot 4" },
+                    { src: "https://placehold.co/400x700/d9d9d9/5f7a9c?text=Gro+Light+5", alt: "Gro App Light Theme Screenshot 5"},
                 ],
                 dark: [
                     { src: "https://placehold.co/400x700/1a202c/e2e8f0?text=Gro+Dark+1", alt: "Gro App Dark Theme Screenshot 1" },
                     { src: "https://placehold.co/400x700/2d3748/cbd5e0?text=Gro+Dark+2", alt: "Gro App Dark Theme Screenshot 2" },
-                    { src: "https://placehold.co/400x700/3a475a/b2bfd3?text=Gro+Dark+3", alt: "Gro App Dark Theme Screenshot 3" }
+                    { src: "https://placehold.co/400x700/3a475a/b2bfd3?text=Gro+Dark+3", alt: "Gro App Dark Theme Screenshot 3" },
+                    { src: "https://placehold.co/400x700/4a5568/a0aec0?text=Gro+Dark+4", alt: "Gro App Dark Theme Screenshot 4" },
+                    { src: "https://placehold.co/400x700/5a6678/8c9ab0?text=Gro+Dark+5", alt: "Gro App Dark Theme Screenshot 5" },
                 ]
             };
             let currentGalleryTheme = 'light';
-            let currentImageIndex = 0;
+            let screenshotsSwiper = null;
 
+            function initScreenshotsSwiper(theme) {
+                const swiperWrapper = document.querySelector('.screenshots-swiper .swiper-wrapper');
+                swiperWrapper.innerHTML = ''; // Clear existing slides
+
+                // Add slides for the current theme
+                galleryImages[theme].forEach(image => {
+                    const slide = document.createElement('div');
+                    slide.className = 'swiper-slide';
+                    slide.innerHTML = `
+                        <img src="${image.src}" 
+                             alt="${image.alt}" 
+                             class="w-full h-auto rounded-lg" 
+                             style="max-height: 700px; object-fit: contain;"
+                             loading="lazy">
+                    `;
+                    swiperWrapper.appendChild(slide);
+                });
+
+                // Initialize or update Swiper
+                if (screenshotsSwiper) {
+                    screenshotsSwiper.destroy();
+                }                screenshotsSwiper = new Swiper('.screenshots-swiper', {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    grabCursor: true,
+                    loop: true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    breakpoints: {
+                        // >= 768px
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 30,
+                        },
+                        // >= 1024px
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 40,
+                        },
+                    },
+                });
+
+                // Position navigation arrows outside and make them bigger
+                const root = document.documentElement;
+                root.style.setProperty('--swiper-navigation-size', '44px');
+                root.style.setProperty('--swiper-navigation-sides-offset', '10%');
+                
+                const swiperNav = document.querySelectorAll('.swiper-button-next, .swiper-button-prev');
+                swiperNav.forEach(nav => {
+                    nav.style.width = '44px';
+                    nav.style.height = '44px';
+                    nav.style.backgroundColor = 'var(--color-secondary-bg)';
+                    nav.style.borderRadius = '50%';
+                    nav.style.boxShadow = '0 4px 6px var(--color-shadow)';
+                });
+
+                const nextButton = document.querySelector('.swiper-button-next');
+                const prevButton = document.querySelector('.swiper-button-prev');
+                if (nextButton) nextButton.style.right = '-60px';
+                if (prevButton) prevButton.style.left = '-60px';
+            }
+
+            // Theme switcher functionality
             const galleryThemeLightBtn = document.getElementById('gallery-theme-light');
             const galleryThemeDarkBtn = document.getElementById('gallery-theme-dark');
-            const galleryMainImage = document.getElementById('gallery-main-image');
-            const galleryImageThemeText = document.getElementById('gallery-image-theme-text');
-            const galleryPrevBtn = document.getElementById('gallery-prev-btn');
-            const galleryNextBtn = document.getElementById('gallery-next-btn');
-            const galleryPaginationDotsContainer = document.getElementById('gallery-pagination-dots');
-
-            function renderPaginationDots() {
-                galleryPaginationDotsContainer.innerHTML = ''; // Clear existing dots
-                const images = galleryImages[currentGalleryTheme];
-                if (!images || images.length === 0) {
-                    galleryPaginationDotsContainer.style.display = 'none';
-                    return;
-                }
-
-                images.forEach((_, index) => {
-                    const dot = document.createElement('button');
-                    dot.classList.add('gallery-pagination-dot');
-                    dot.setAttribute('aria-label', `Go to image ${index + 1}`);
-                    if (index === currentImageIndex) {
-                        dot.classList.add('active');
-                        dot.setAttribute('aria-current', 'true');
-                    }
-                    dot.addEventListener('click', () => {
-                        currentImageIndex = index;
-                        updateGalleryDisplay();
-                    });
-                    galleryPaginationDotsContainer.appendChild(dot);
-                });
-                galleryPaginationDotsContainer.style.display = images.length <= 1 ? 'none' : 'flex';
-            }
-
-            function updateGalleryDisplay() {
-                const images = galleryImages[currentGalleryTheme];
-                if (!images || images.length === 0) {
-                    galleryMainImage.src = 'https://placehold.co/400x700/cccccc/969696?text=No+Images';
-                    galleryMainImage.alt = 'No images available for this theme';
-                    galleryImageThemeText.textContent = `${currentGalleryTheme.charAt(0).toUpperCase() + currentGalleryTheme.slice(1)} Theme View`;
-                    galleryPrevBtn.disabled = true;
-                    galleryNextBtn.disabled = true;
-                    galleryPrevBtn.style.display = 'none';
-                    galleryNextBtn.style.display = 'none';
-                    renderPaginationDots();
-                    return;
-                }
-
-                const currentImage = images[currentImageIndex];
-                galleryMainImage.src = currentImage.src;
-                galleryMainImage.alt = currentImage.alt;
-                galleryMainImage.onerror = function() {
-                    this.onerror = null;
-                    this.src = 'https://placehold.co/400x700/cccccc/969696?text=Load+Error';
-                    this.alt = 'Error loading image';
-                };
-
-                galleryImageThemeText.textContent = `${currentGalleryTheme.charAt(0).toUpperCase() + currentGalleryTheme.slice(1)} Theme View (${currentImageIndex + 1} / ${images.length})`;
-
-                galleryPrevBtn.disabled = currentImageIndex === 0;
-                galleryNextBtn.disabled = currentImageIndex === images.length - 1;
-
-                const showNavButtons = images.length > 1;
-                galleryPrevBtn.style.display = showNavButtons ? 'flex' : 'none';
-                galleryNextBtn.style.display = showNavButtons ? 'flex' : 'none';
-
-                renderPaginationDots();
-            }
 
             function switchToGalleryTheme(themeName) {
                 currentGalleryTheme = themeName;
-                currentImageIndex = 0;
-
+                
                 galleryThemeLightBtn.classList.toggle('screenshot-btn-active', themeName === 'light');
                 galleryThemeLightBtn.classList.toggle('screenshot-btn-inactive', themeName !== 'light');
                 galleryThemeDarkBtn.classList.toggle('screenshot-btn-active', themeName === 'dark');
                 galleryThemeDarkBtn.classList.toggle('screenshot-btn-inactive', themeName !== 'dark');
                 
-                updateGalleryDisplay();
+                initScreenshotsSwiper(themeName);
             }
 
-            if (galleryThemeLightBtn && galleryThemeDarkBtn && galleryMainImage && galleryImageThemeText && galleryPrevBtn && galleryNextBtn && galleryPaginationDotsContainer) {
+            // Initialize gallery with light theme by default
+            if (galleryThemeLightBtn && galleryThemeDarkBtn) {
+                galleryThemeLightBtn.classList.add('screenshot-btn-active');
+                galleryThemeDarkBtn.classList.add('screenshot-btn-inactive');
+                
                 galleryThemeLightBtn.addEventListener('click', () => switchToGalleryTheme('light'));
                 galleryThemeDarkBtn.addEventListener('click', () => switchToGalleryTheme('dark'));
-
-                galleryPrevBtn.addEventListener('click', () => {
-                    if (currentImageIndex > 0) {
-                        currentImageIndex--;
-                        updateGalleryDisplay();
-                    }
-                });
-
-                galleryNextBtn.addEventListener('click', () => {
-                    const images = galleryImages[currentGalleryTheme];
-                    if (images && currentImageIndex < images.length - 1) {
-                        currentImageIndex++;
-                        updateGalleryDisplay();
-                    }
-                });
-                switchToGalleryTheme('light'); // Initial setup
+                
+                // Initialize Swiper with default theme
+                initScreenshotsSwiper('light');
             }
+
+            // Update Swiper slides when theme changes
+            function updateSwiperSlides() {
+                const images = galleryImages[currentGalleryTheme];
+                const slidesContainer = swiper.slidesEl.querySelector('.swiper-wrapper');
+                slidesContainer.innerHTML = ''; // Clear existing slides
+                if (images && images.length > 0) {
+                    images.forEach((image, index) => {
+                        const slide = document.createElement('div');
+                        slide.classList.add('swiper-slide');
+                        slide.innerHTML = `
+                            <img src="${image.src}" alt="${image.alt}" class="w-full h-auto rounded-lg" style="max-height: 700px; object-fit: cover;" onerror="this.onerror=null;this.src='https://placehold.co/400x700/cccccc/969696?text=Load+Error';">
+                        `;
+                        slidesContainer.appendChild(slide);
+                    });
+                    swiper.update();
+                }
+            }
+
+            // Listen for theme switcher button clicks
+            galleryThemeLightBtn.addEventListener('click', () => {
+                switchToGalleryTheme('light');
+                updateSwiperSlides();
+            });
+            galleryThemeDarkBtn.addEventListener('click', () => {
+                switchToGalleryTheme('dark');
+                updateSwiperSlides();
+            });
         });
     </script>
 </body>
