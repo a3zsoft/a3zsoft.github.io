@@ -19,10 +19,9 @@
             --color-main: #6B46C1; /* Main purple for general branding */
             --color-dark: #553C9A;
             --color-light: #DDD6FE;
-            --color-border: #e5e7eb;
             --color-shadow: rgba(0, 0, 0, 0.05);
-            --color-hero-gradient-start: #C3B4F0;
-            --color-hero-gradient-end: #E0F2F1;
+            --color-hero-gradient-start: #b600c8; /* Flutter gradient start */
+            --color-hero-gradient-end: #0824c3;   /* Flutter gradient end */
             --color-footer-top-text: #ffffff;
             --color-footer-bottom-bg: #e5e7eb;
             --color-footer-bottom-text: #4b5563;
@@ -49,10 +48,9 @@
             --color-main: #7F5AD5;
             --color-dark: #6B46C1;
             --color-light: #A78BFA;
-            --color-border: #4a5568;
             --color-shadow: rgba(0, 0, 0, 0.3);
-            --color-hero-gradient-start: #4A3E7B;
-            --color-hero-gradient-end: #2d3748;
+            --color-hero-gradient-start: #4e37c3; /* Darker Flutter gradient start */
+            --color-hero-gradient-end: #120b37;   /* Darker Flutter gradient end */
             --color-footer-top-text: #e2e8f0;
             --color-footer-bottom-bg: #2d3748;
             --color-footer-bottom-text: #a0aec0;
@@ -68,7 +66,7 @@
         }
 
         .header-shadow { box-shadow: 0 2px 4px var(--color-shadow); }
-        .hero-gradient { background: linear-gradient(to bottom right, var(--color-hero-gradient-start) 0%, var(--color-hero-gradient-end) 100%); }
+        .hero-gradient { background: var(--flutter-gradient); } /* Use the full flutter gradient for hero */
 
         .section-padding {
             padding-top: 4rem;
@@ -88,6 +86,29 @@
             content: '+'; font-size: 1.5rem; transition: transform 0.3s ease; color: var(--color-main);
         }
         details[open] > .faq-summary::after { content: '-'; }
+
+        /* Styles for collapsible content sections */
+        .content-section details > summary.collapsible-h3 {
+            font-size: 1.5rem; /* 24px */
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            list-style: none; /* Remove default marker */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 0.5rem; /* Optional: space before content */
+        }
+        .content-section details > summary.collapsible-h3::-webkit-details-marker { display: none; }
+        .content-section details > summary.collapsible-h3::after {
+            content: '+'; font-size: 1.8rem; font-weight: 600; color: var(--color-main);
+            transition: transform 0.3s ease; padding-left: 1rem;
+        }
+        .content-section details[open] > summary.collapsible-h3::after { content: '-'; }
+        .content-section details > .collapsible-content { padding-left: 0.5rem; margin-top: 0.5rem; }
+
 
         /* Styles for the "Discover Gro's Power" Carousel (Flutter Inspired) */
         .discover-power-section {
@@ -238,9 +259,7 @@
     <header class="header-shadow py-4 px-6 md:px-12 lg:px-24 flex justify-between items-center rounded-b-xl sticky top-0 z-50 transition-colors duration-300" style="background-color: var(--color-secondary-bg);">
         <div class="text-2xl font-bold" style="color: var(--color-main);">Gro</div>
         <nav class="hidden md:flex space-x-6 text-lg font-medium" style="color: var(--color-text-secondary);">
-            <a href="#features-overview" class="hover:text-purple-600 transition duration-300">Features</a>
-            <a href="#discover-power" class="hover:text-purple-600 transition duration-300">App Highlights</a>
-            <a href="#core-principles" class="hover:text-purple-600 transition duration-300">Principles</a>
+            <a href="#why-gro" class="hover:text-purple-600 transition duration-300">Why Gro?</a>
             <a href="#app-navigation" class="hover:text-purple-600 transition duration-300">How to Use</a>
             <a href="#faqs" class="hover:text-purple-600 transition duration-300">FAQs</a>
         </nav>
@@ -257,9 +276,7 @@
     </header>
 
     <nav id="mobile-menu" class="md:hidden fixed inset-x-0 top-0 pt-20 p-6 space-y-4 shadow-xl z-40" style="background-color: var(--color-secondary-bg); color: var(--color-text-secondary);">
-        <a href="#features-overview" class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">Features</a>
-        <a href="#discover-power" class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">App Highlights</a>
-        <a href="#core-principles" class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">Principles</a>
+        <a href="#why-gro" class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">Why Gro?</a>
         <a href="#app-navigation" class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">How to Use</a>
         <a href="#faqs" class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">FAQs</a>
         <button class="w-full mt-4 px-6 py-3 rounded-full text-lg font-semibold shadow-md transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2" style="background-color: var(--color-main); color: white; --ring-offset-color: var(--color-secondary-bg); --ring-color: var(--color-dark);">Sign Up</button>
@@ -268,10 +285,10 @@
     <main>
         <section class="hero-gradient section-padding flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8 rounded-b-xl min-h-[calc(100vh-100px)] md:min-h-0">
             <div class="text-center md:text-left max-w-2xl">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6" style="color: var(--color-text-primary);">
-                    Gro: <span style="color: var(--color-main);">Master</span> Your Money
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6" style="color: var(--color-footer-top-text);">
+                    Gro: <span style="color: var(--color-footer-top-text);">Master</span> Your Money
                 </h1>
-                <p class="text-lg md:text-xl mb-8" style="color: var(--color-text-secondary);">
+                <p class="text-lg md:text-xl mb-8" style="color: var(--color-footer-top-text); opacity: 0.9;">
                     Your intelligent companion for financial clarity and growth.
                 </p>
                 <button class="px-8 py-4 rounded-full text-lg font-semibold shadow-xl transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2" style="background-color: var(--color-main); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark);">
@@ -279,7 +296,7 @@
                 </button>
             </div>
             <div class="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0">
-                <img src="https://placehold.co/400x480/C3B4F0/6B46C1?text=Gro+App+Interface" alt="Gro App on Phone" class="max-w-sm w-full h-auto rounded-xl shadow-2xl object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x480/cccccc/969696?text=App+Screenshot';">
+                <img src="https://placehold.co/400x480/b600c8/0824c3?text=Gro+App+Interface" alt="Gro App on Phone" class="max-w-sm w-full h-auto rounded-xl shadow-2xl object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x480/cccccc/969696?text=App+Screenshot';">
             </div>
         </section>
 
@@ -292,248 +309,171 @@
             </div>
         </section>
 
-        <section id="features-overview" class="section-padding text-center" style="background-color: var(--color-tertiary-bg);">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12" style="color: var(--color-text-primary);">Key Capabilities at a Glance</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <section id="why-gro" class="section-padding" style="background-color: var(--color-tertiary-bg);">
+            <div class="text-center max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--color-text-primary);">
+                    Unlock Your Financial Potential with Gro
+                </h2>
+                <p class="text-lg md:text-xl mb-12" style="color: var(--color-text-secondary);">
+                    Gro empowers you with intuitive tools and clear insights to confidently manage your money and achieve your financial goals. Discover the Gro difference:
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+                <!-- Item 1: Effortless Tracking -->
                 <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300" style="background-color: var(--color-secondary-bg);">
-                    <svg class="w-12 h-12 mb-4 text-purple-600" style="color:var(--color-main);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Effortless Tracking</h3>
-                    <p style="color: var(--color-text-secondary);">Seamlessly log expenses & income with intuitive tools, including a unique drag-and-drop FAB.</p>
+                    <div class="text-3xl mb-4">✍️</div>
+                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Track with Ease, Live with Clarity</h3>
+                    <p style="color: var(--color-text-secondary);">Effortlessly log every transaction with our unique drag-and-drop FAB and smart categorization. Gain instant clarity on your spending and income without the hassle.</p>
                 </div>
+                <!-- Item 2: Strategic Planning & FIRE -->
                 <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300" style="background-color: var(--color-secondary-bg);">
-                     <svg class="w-12 h-12 mb-4 text-purple-600" style="color:var(--color-main);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Strategic Planning</h3>
-                    <p style="color: var(--color-text-secondary);">Set budgets, track assets & debts, and plan for Financial Independence (FIRE).</p>
+                    <div class="text-3xl mb-4">📈</div>
+                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Plan Smarter, Achieve Faster</h3>
+                    <p style="color: var(--color-text-secondary);">From daily budgets to long-term FIRE goals, Gro provides robust planning tools. Visualize your progress and make informed decisions to reach your aspirations sooner.</p>
                 </div>
+                <!-- Item 3: Actionable Insights -->
                 <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300" style="background-color: var(--color-secondary-bg);">
-                    <svg class="w-12 h-12 mb-4 text-purple-600" style="color:var(--color-main);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Actionable Insights</h3>
-                    <p style="color: var(--color-text-secondary);">Understand spending habits, income sources, and savings progress with clear visuals.</p>
+                    <div class="text-3xl mb-4">💡</div>
+                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Insights That Inspire Action</h3>
+                    <p style="color: var(--color-text-secondary);">Go beyond numbers. Gro transforms your data into actionable insights on spending habits, income trends, and net worth growth, guiding you towards financial well-being.</p>
                 </div>
+                <!-- Item 4: Personalized & Secure -->
                 <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300" style="background-color: var(--color-secondary-bg);">
-                     <svg class="w-12 h-12 mb-4 text-purple-600" style="color:var(--color-main);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Holistic Account View</h3>
-                    <p style="color: var(--color-text-secondary);">Consolidate all financial accounts for a complete picture of your net worth and balances.</p>
-                </div>
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300" style="background-color: var(--color-secondary-bg);">
-                    <svg class="w-12 h-12 mb-4 text-purple-600" style="color:var(--color-main);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Personalized Experience</h3>
-                    <p style="color: var(--color-text-secondary);">Tailor Gro with custom categories, multi-currency support, and adaptable themes.</p>
-                </div>
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300" style="background-color: var(--color-secondary-bg);">
-                    <svg class="w-12 h-12 mb-4 text-purple-600" style="color:var(--color-main);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Security & Privacy</h3>
-                    <p style="color: var(--color-text-secondary);">Your financial data is handled securely with encryption by default, ensuring peace of mind.</p>
+                    <div class="text-3xl mb-4">🛡️</div>
+                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Your Finances, Your Way, Always Secure</h3>
+                    <p style="color: var(--color-text-secondary);">Personalize Gro with custom categories, themes, and multi-currency support. Your data is protected with top-tier security, ensuring privacy and peace of mind.</p>
                 </div>
             </div>
-        </section>
-
-        <section id="discover-power" class="section-padding text-center discover-power-section rounded-xl my-8 md:my-12">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Discover Gro's Power</h2>
-            <p class="text-lg md:text-xl mb-12 opacity-90 max-w-3xl mx-auto" style="color: var(--flutter-slide-text-secondary);">
-                Explore the key features that make Gro your ultimate personal finance companion.
-            </p>
-            <div class="swiper-container discover-power-carousel max-w-6xl mx-auto">
-                <div class="swiper-wrapper">
-                    </div>
-                <div class="swiper-pagination mt-8 relative"></div> <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-            </div>
-        </section>
-
-        <section id="core-principles" class="section-padding text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12" style="color: var(--color-text-primary);">Our Core Principles</h2>
-            <div class="core-principles-grid max-w-6xl mx-auto">
-                </div>
         </section>
 
         <section id="app-navigation" class="section-padding">
             <div class="content-section max-w-5xl mx-auto">
-                <h2>App Navigation & Key Areas</h2>
-                <p>Gro is organized into several main sections (Index Tabs) and key management areas to help you easily find what you need:</p>
+                <h2>Explore Gro</h2>
+                <p>Gro is intuitively organized into main tabs and key management areas, ensuring you can easily find what you need. When you first open the app, you might be greeted by a tutorial or a Quick Start Guide, especially in the "Money" section. Follow these prompts for a smooth start.</p>
 
-                <h3>1. Money Tab</h3>
-                <p>This is your daily financial hub for tracking transactions, managing accounts, and viewing immediate insights.</p>
-                <h4>Insights Overview:</h4>
-                <ul>
-                    <li><strong>Savings View:</strong> See your net savings (Income - Expenses) for the selected period, with a clear indication of whether you're in a positive, negative, or break-even state. Includes quick links to analyze savings further.</li>
-                    <li><strong>Expenses View:</strong> Get a breakdown of your expenses by category. See total expenses and compare against category budgets (if set for the month). Includes quick links to analyze expenses and need vs. want spending.</li>
-                    <li><strong>Income View:</strong> Understand your income sources, broken down by category. Track total income and compare against income targets (if set for the month). Includes quick links to analyze income and active vs. passive income.</li>
-                    <li><strong>Transfers View:</strong> Review your transfer history between accounts for the selected period. Easily initiate new transfers.</li>
-                </ul>
-                <h4>Transactions List:</h4>
-                <ul>
-                    <li>View a detailed list of all your transactions.</li>
-                    <li><strong>Filter & Sort:</strong> Filter by account(s), period (day, week, month, year, custom range), type (all, expenses, income), or specific category. Sort by date or amount.</li>
-                    <li><strong>Search:</strong> Quickly find transactions by comment, amount, date, category name, or account name.</li>
-                    <li><strong>Add/Edit Transactions:</strong> Use the innovative draggable Floating Action Button (FAB): drag left for expense, drag right for income. Tap the FAB for a standard transaction entry form. Tap any transaction in the list to edit or delete it.</li>
-                </ul>
-                <h4>Account Management (via Account Selector & Grid Menu):</h4>
-                <ul>
-                    <li>Select single or multiple accounts to focus your view using the Account Selector in the app bar. A "Total" view aggregates all accounts.</li>
-                    <li>Add, edit, and manage details for all your financial accounts (bank, cash, credit cards, etc.).</li>
-                </ul>
-                <h4>Grid Menu Options (accessible from the Money Tab):</h4>
-                <ul>
-                    <li><strong>Categories:</strong> Access and manage your transaction categories.</li>
-                    <li><strong>Transfers:</strong> Initiate and view inter-account transfers.</li>
-                    <li><strong>Repeat Transactions:</strong> Set up and manage recurring transactions.</li>
-                    <li><strong>Import Transactions:</strong> Import transaction data from external files.</li>
-                    <li><strong>Quick Start Guide & Tutorial:</strong> A helpful guide for new users to get acquainted with the Money tab's features, along with an interactive tutorial for key functionalities.</li>
-                </ul>
+                <details>
+                    <summary class="collapsible-h3">Setup Guide: Your Onboarding Companion</summary>
+                    <div class="collapsible-content">
+                        <p>Gro features a comprehensive Setup Guide, often accessible as a prominent header on the Money Tab. Tapping it opens a dedicated page to walk you through key app functionalities, organized into sections like "Getting Started," "Ready to Plan Your Finances?," and "What Do Your Finances Say?". Each item is interactive, guiding you to relevant app areas.</p>
+                        <h4>Key Setup Steps Covered:</h4>
+                        <ul>
+                            <li>Setting up accounts and customizing categories.</li>
+                            <li>Importing or adding your first transactions and making transfers.</li>
+                            <li>Creating budgets, tracking assets/debts, and setting up repeat transactions.</li>
+                            <li>Exploring FIRE planning and introductory analytics.</li>
+                        </ul>
+                    </div>
+                </details>
 
-                <h3>2. Plans Tab</h3>
-                <p>This section is dedicated to your long-term financial planning and strategy. It helps you organize and track your progress towards significant financial milestones.</p>
-                <ul>
-                    <li><strong>Budget & Targets:</strong> Your financial command center for setting spending limits (Expense budgets) or income goals (Income targets). Define them monthly or yearly, link transaction categories, and track progress.</li>
-                    <li><strong>Assets & Net Worth:</strong> Understand what you own and its value. Track real estate, vehicles, investments, collectibles, and other assets. Your 'All Bank Accounts' asset is auto-calculated. This section is crucial for understanding your Net Worth (Assets - Liabilities).</li>
-                    <li><strong>Debts & Liabilities:</strong> Get a clear picture of everything you owe. Manage loans (car, student, mortgage), installment plans, and informal IOUs. Track progress, remaining balances, and view amortization schedules.</li>
-                    <li><strong>Financial Independence (FIRE):</strong> Plan for early retirement or financial freedom. Calculate your 'FIRE Number' (amount needed to live off investments) and project when you might reach it based on your financial inputs.</li>
-                </ul>
-                <p>Each section within the Plans tab provides detailed "How to Use" and "Terminology Explained" guides accessible directly within the app via the Plan Info Dialog.</p>
+                <details>
+                    <summary class="collapsible-h3">Money: Your Daily Financial Hub</summary>
+                    <div class="collapsible-content">
+                        <p>This is your primary interface for daily transaction tracking, account overview, and immediate insights. Key components include:</p>
+                        <h4>Account Selector</h4>
+                        <p>Located typically in the app bar, this allows you to filter the Money tab's view for specific accounts or see a total of all accounts.</p>
+                        <h4>Insights Overview</h4>
+                        <p>Quickly grasp your financial standing with views for:</p>
+                        <ul>
+                            <li><strong>Savings:</strong> Net savings (Income - Expenses) for the selected period.</li>
+                            <li><strong>Expenses:</strong> Breakdown by category, compared against budgets.</li>
+                            <li><strong>Income:</strong> Sources by category, compared against targets.</li>
+                            <li><strong>Transfers:</strong> History of inter-account transfers.</li>
+                        </ul>
+                        <h4>Transactions List</h4>
+                        <p>View, filter (by account, period, type, category), sort (by date, amount), and search your transactions. The innovative draggable Floating Action Button (FAB) is your main tool for adding new entries.</p>
+                    </div>
+                </details>
 
-                <h3>3. Analytics Tab</h3>
-                <p>Dive deeper into your financial data with advanced analytics and visualizations. This section helps you identify trends, understand complex patterns, and gain more profound insights into your financial behavior.</p>
-                <ul>
-                    <li><strong>Expense Analysis:</strong> Detailed breakdown of expenses, including analysis of "Need vs. Want" spending.</li>
-                    <li><strong>Income Analysis:</strong> In-depth look at your income streams, including analysis of "Active vs. Passive" income.</li>
-                    <li><strong>Savings & Investments Analysis:</strong> Track your savings rate, investment growth, and progress towards financial goals.</li>
-                </ul>
-                <h3>General App Features:</h3>
-                 <ul>
-                    <li><strong>Theme Support:</strong> Gro supports both Light and Dark themes, adapting to your system settings or allowing manual selection for comfortable viewing in any environment.</li>
-                    <li><strong>Multi-Currency Support:</strong> Manage and track your finances across different currencies, with options to set a primary currency and view converted values.</li>
-                </ul>
+                <details>
+                    <summary class="collapsible-h3">Accounts: Centralized Account Management</summary>
+                    <div class="collapsible-content">
+                        <p>Manage all your financial accounts here. To get started, navigate to account management (often via the Account Selector in the "Money" tab's app bar or a dedicated "Accounts" area) to add your bank accounts (checking, savings, cash), credit cards, etc. This is crucial for accurate tracking.</p>
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li><strong>Add & Manage:</strong> Create and edit various account types.</li>
+                            <li><strong>View Balances:</strong> See a list of accounts with current balances.</li>
+                            <li><strong>Edit Details:</strong> Modify names, types, starting balances, colors, and icons.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary class="collapsible-h3">Plans: Strategic Financial Planning</summary>
+                    <div class="collapsible-content">
+                        <p>This section is dedicated to your long-term financial strategy and goals. Each module within the Plans tab often has its own detailed information dialog (look for an info icon 'i' or '?') explaining its purpose and how to use it.</p>
+                        <ul>
+                            <li><strong>Budget & Targets:</strong> Set spending limits (Expense budgets) or income goals (Income targets). Define them monthly or yearly and link transaction categories.</li>
+                            <li><strong>Assets & Net Worth:</strong> Track what you own (real estate, vehicles, investments). Your 'All Bank Accounts' asset is auto-calculated. This helps understand your Net Worth (Assets - Liabilities).</li>
+                            <li><strong>Debts & Liabilities:</strong> Manage loans and other IOUs. Track balances and view amortization schedules.</li>
+                            <li><strong>Financial Independence (FIRE):</strong> Plan for early retirement. Calculate your 'FIRE Number' and project timelines.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary class="collapsible-h3">Analytics: Deep Dive into Your Data</summary>
+                    <div class="collapsible-content">
+                        <p>Explore advanced analytics and visualizations to identify trends and gain profound insights. This area is typically organized with sub-tabs for focused analysis:</p>
+                        <ul>
+                            <li><strong>Overview Dashboard:</strong> A high-level snapshot of your financial health (net worth, savings rate, income vs. expenses).</li>
+                            <li><strong>Expense Deep Dive:</strong> Detailed breakdown of spending habits (by category, trends, Need vs. Want).</li>
+                            <li><strong>Income Insights:</strong> Thorough examination of income sources (by category, Active vs. Passive, trends).</li>
+                            <li><strong>Savings & Net Worth Trends:</strong> Progress in wealth accumulation and savings goals.</li>
+                            <li><strong>Reports & Comparisons:</strong> Customized reporting like cash flow statements and period-over-period comparisons.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary class="collapsible-h3">Grid Menu Options</summary>
+                    <div class="collapsible-content">
+                        <p>A common feature, often a grid icon on the Money tab, provides quick access to:</p>
+                        <ul>
+                            <li><strong>Categories:</strong> Access and manage your transaction categories. Customize names, icons, and colors to fit your needs.</li>
+                            <li><strong>Transfers:</strong> Initiate and view inter-account transfers.</li>
+                            <li><strong>Repeat Transactions:</strong> Set up and manage recurring transactions to automate logging for regular bills or income.</li>
+                            <li><strong>Import Transactions:</strong> Import transaction data from external files (e.g., CSV).</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary class="collapsible-h3">General App Settings & Features</summary>
+                    <div class="collapsible-content">
+                        <p>Accessible usually via a settings icon (⚙️), here you can configure:</p>
+                        <ul>
+                            <li><strong>Theme Support:</strong> Choose between Light and Dark themes.</li>
+                            <li><strong>Multi-Currency Support:</strong> Set a primary currency and manage finances across different currencies.</li>
+                            <li><strong>Multi-Language Support:</strong> Use Gro in your preferred language.</li>
+                            <li><strong>Backup & Restore:</strong> Secure and restore your financial data.</li>
+                            <li><strong>Data Management:</strong> Options like "Delete and Start Fresh" for a clean slate (use with caution).</li>
+                        </ul>
+                    </div>
+                </details>
             </div>
         </section>
 
-        <section id="detailed-features" class="section-padding" style="background-color: var(--color-tertiary-bg);">
-            <div class="content-section max-w-5xl mx-auto">
-                <h2>Detailed Core Features Explanation</h2>
-                <h3>Transaction Tracking (Expense/Income)</h3>
-                <p>At the heart of Gro is its robust transaction tracking. You can effortlessly log every expense and income entry.</p>
-                <ul>
-                    <li><strong>Input Methods:</strong> Use the intuitive draggable Floating Action Button (FAB) on the Money tab – drag left for expenses, right for income – for super-fast entries. Alternatively, tap the FAB for a detailed dialog.</li>
-                    <li><strong>Details:</strong> Record amount, date, select a relevant category, assign it to an account, and add descriptive comments or tags.</li>
-                    <li><strong>Editing:</strong> Easily modify or delete any past transaction directly from the transaction list.</li>
-                </ul>
-
-                <h3>Account Management</h3>
-                <p>Gro allows you to consolidate all your financial accounts in one place for a complete overview.</p>
-                <ul>
-                    <li><strong>Creation & Types:</strong> Add various types of accounts, such as bank accounts (checking, savings), credit cards, cash, investment accounts, and more.</li>
-                    <li><strong>Balance Tracking:</strong> Account balances are automatically updated as you log transactions linked to them. The 'All Bank Accounts' asset in the Plans tab auto-calculates the sum of your bank-type accounts.</li>
-                    <li><strong>Customization:</strong> Assign names, starting balances, icons, and colors to your accounts for easy identification.</li>
-                    <li><strong>Filtering:</strong> Use the account selector in the Money tab to view transactions and insights for specific accounts or a combined total.</li>
-                </ul>
-
-                <h3>Category Management</h3>
-                <p>Organize your financial life with a flexible category system.</p>
-                <ul>
-                    <li><strong>Default & Custom:</strong> Gro comes with a set of default income and expense categories, but you have full control to customize them.</li>
-                    <li><strong>Operations:</strong> Add new categories, edit existing ones (name, icon, color), or delete those you don't need. This is typically managed via the "Categories" option in the Money tab's grid menu.</li>
-                    <li><strong>Budget Linking:</strong> Categories can be directly linked to your budgets and targets in the Plans tab, and you can even set specific monthly budget amounts per category.</li>
-                </ul>
-
-                <h3>Budgeting & Goal Setting</h3>
-                <p>Take control of your spending and work towards your financial goals with Gro's planning tools.</p>
-                <ul>
-                    <li><strong>Budgets (Expenses):</strong> In the "Plans" tab, create budgets for various expense categories (e.g., Groceries, Entertainment). Set monthly or yearly limits.</li>
-                    <li><strong>Targets (Income):</strong> Similarly, set income targets to motivate and track your earnings.</li>
-                    <li><strong>Progress Tracking:</strong> Gro visually shows your progress against these budgets/targets, highlighting how much you've spent/earned and what's remaining.</li>
-                </ul>
-
-                <h3>Asset & Debt Tracking</h3>
-                <p>Understand your complete financial picture by tracking what you own (assets) and what you owe (liabilities).</p>
-                <ul>
-                    <li><strong>Assets:</strong> In the "Plans" tab, list and monitor the value of your assets like real estate, vehicles, investments, and other valuables. The 'All Bank Accounts' asset is automatically updated.</li>
-                    <li><strong>Debts:</strong> Manage loans (mortgages, student loans, car loans) and other liabilities. Track original amounts, interest rates (APR), terms, and payment progress. View amortization schedules to see how payments are allocated.</li>
-                </ul>
-
-                <h3>Net Worth Conceptualization</h3>
-                <p>Gro helps you understand and build towards a positive net worth.</p>
-                <ul>
-                    <li><strong>Calculation:</strong> While a dedicated "Net Worth" page might consolidate this, the "Assets & Net Worth" and "Debts & Liabilities" sections in the "Plans" tab provide the core components (Assets - Liabilities = Net Worth).</li>
-                    <li><strong>Tracking:</strong> By keeping your assets and debts updated, you can monitor how your net worth changes over time.</li>
-                </ul>
-
-                <h3>FIRE (Financial Independence, Retire Early) Planning</h3>
-                <p>For those aiming for early financial freedom, Gro offers a dedicated FIRE planning tool in the "Plans" tab.</p>
-                <ul>
-                    <li><strong>FIRE Number Calculation:</strong> Input your financial details (or use app-calculated averages for expenses/income), expected inflation, savings rate, withdrawal rate, and anticipated income growth. Gro calculates your target "FIRE Number."</li>
-                    <li><strong>Projections:</strong> View estimated timelines to reach your FIRE goal and projections for both accumulation and withdrawal phases.</li>
-                </ul>
-
-                <h3>Financial Insights & Reporting</h3>
-                <p>Gro transforms raw data into meaningful information.</p>
-                <ul>
-                    <li><strong>Money Tab Insights:</strong> Get quick daily/weekly/monthly summaries of your savings, expenses (by category), and income (by source).</li>
-                    <li><strong>Analytics Tab:</strong> Dive deeper with more comprehensive reports and visualizations. Analyze spending trends (e.g., "Need vs. Want"), income patterns (e.g., "Active vs. Passive"), and savings performance over time.</li>
-                </ul>
-
-                <h3>Data Filtering & Searching</h3>
-                <p>Easily find the information you need within your transaction history.</p>
-                <ul>
-                    <li><strong>Filtering:</strong> In the "Money" tab, filter transactions by date period (day, week, month, year, custom range), by specific account(s), by transaction type (expense, income), or by tapping on a category in the insights view.</li>
-                    <li><strong>Sorting:</strong> Sort your transaction list by date (ascending/descending) or amount (ascending/descending).</li>
-                    <li><strong>Searching:</strong> Use the search bar to quickly locate transactions based on keywords in comments, amounts, dates, category names, or account names.</li>
-                </ul>
-
-                <h3>Tutorials & Guides</h3>
-                <p>Gro is designed to be user-friendly, with help available when you need it.</p>
-                <ul>
-                    <li><strong>Quick Start Guide:</strong> The "Money" tab often includes a Quick Start Guide to help new users get familiar with its main features.</li>
-                    <li><strong>Interactive Tutorials:</strong> Contextual tutorials (like the one for the Money tab) guide you through key functionalities using highlighted overlays.</li>
-                    <li><strong>Plan Info Dialogs:</strong> Each module within the "Plans" tab (Budget, Assets, Debts, FIRE) has its own detailed information dialog, explaining its purpose, how to use it, and relevant terminology.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="how-to-use" class="section-padding">
-            <div class="content-section max-w-5xl mx-auto">
-                <h2>How to Use Gro</h2>
-                <p>Getting started and using Gro effectively is straightforward. Here’s a general guide:</p>
-                <h3>Getting Started:</h3>
-                <h4>Initial Setup:</h4>
-                <ul>
-                    <li>When you first open the app, you might be greeted by a tutorial or a Quick Start Guide, especially in the "Money" section. Follow these prompts.</li>
-                    <li><strong>Add Your Accounts:</strong> Navigate to account management (often via the Account Selector in the "Money" tab's app bar or a dedicated section in settings/grid menu). Add your bank accounts, credit cards, cash, etc. This is crucial for tracking.</li>
-                    <li><strong>Customize Categories:</strong> Access "Categories" (usually from the "Money" tab's grid menu). Review the default expense and income categories. Add, edit, or delete them to fit your spending and earning patterns. Assign custom icons and colors.</li>
-                </ul>
-                <h4>Set Preferences:</h4>
-                <ul>
-                    <li>Explore the app settings (often via a settings icon) to choose your preferred theme (Light/Dark) and set your primary currency.</li>
-                </ul>
-                <h3>Daily & Regular Use (Money Tab):</h3>
-                <ul>
-                    <li><strong>Log Transactions:</strong> Use the Floating ActionButton (FAB) at the bottom of the "Money" tab. Drag Left for expense, Drag Right for income. Tap for the full dialog. Be consistent with logging for accurate records.</li>
-                    <li><strong>Review Insights:</strong> Regularly check the "Savings," "Expenses," and "Income" views. Use the period filter. Tap on categories or total cards in insights to filter the transaction list.</li>
-                    <li><strong>Manage Transfers:</strong> Use the "Transfers" feature (from the grid menu or insights view) to record money movements between your accounts.</li>
-                    <li><strong>Manage Repeating Transactions:</strong> If you have regular bills or income, set them up as "Repeat Transactions" (via the grid menu) to automate logging.</li>
-                </ul>
-                <h3>Financial Planning (Plans Tab):</h3>
-                <ul>
-                    <li><strong>Set Budgets & Targets:</strong> Go to "Budget & Targets," tap '+', define details, and link categories.</li>
-                    <li><strong>Track Assets & Net Worth:</strong> Go to "Assets & Net Worth," tap '+' to add assets. Update values periodically.</li>
-                    <li><strong>Manage Debts & Liabilities:</strong> Go to "Debts & Liabilities," tap '+' to add loans. Review schedules.</li>
-                    <li><strong>Explore FIRE:</strong> Go to "Financial Independence (FIRE)," tap edit (✏️) to input details, and view projections.</li>
-                </ul>
-                <h3>Utilizing App Features:</h3>
-                <ul>
-                    <li><strong>Account Selector:</strong> Filter views for specific accounts in the "Money" tab.</li>
-                    <li><strong>Grid Menu (Money Tab):</strong> Access Categories, Transfers, Repeat Transactions, Import Transactions.</li>
-                    <li><strong>Import Data:</strong> Use "Import Transactions" if you have data from other sources.</li>
-                    <li><strong>Settings Menu:</strong> Configure app preferences like theme, currency, and tutorial visibility.</li>
-                    <li><strong>Plan Info Dialogs:</strong> For detailed help within each "Plans" tab module, look for an info icon (i or ?).</li>
-                </ul>
+        <section id="screenshots" class="section-padding" style="background-color: var(--color-tertiary-bg);">
+            <div class="max-w-6xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12" style="color: var(--color-text-primary);">See Gro in Action</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="flex flex-col items-center">
+                        <img src="https://placehold.co/400x700/f7f7f7/1f2937?text=Gro+Light+Theme+Screenshot" alt="Gro App Light Theme Screenshot" class="rounded-xl shadow-lg w-full max-w-sm object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x700/cccccc/969696?text=Light+Screenshot';">
+                        <p class="mt-4 text-lg font-medium" style="color: var(--color-text-secondary);">Light Theme</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <img src="https://placehold.co/400x700/1a202c/e2e8f0?text=Gro+Dark+Theme+Screenshot" alt="Gro App Dark Theme Screenshot" class="rounded-xl shadow-lg w-full max-w-sm object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x700/4a5568/a0aec0?text=Dark+Screenshot';">
+                        <p class="mt-4 text-lg font-medium" style="color: var(--color-text-secondary);">Dark Theme</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="faqs" class="section-padding" style="background-color: var(--color-tertiary-bg);">
             <div class="max-w-3xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center" style="color: var(--color-text-primary);">Frequently Asked Questions</h2>
-                <div class="space-y-4 text-left">
-                    </div>
+                <div class="space-y-4 text-left"></div>
             </div>
         </section>
     </main>
@@ -555,10 +495,10 @@
 
         <section class="py-8 px-6 md:px-12 lg:px-24 flex flex-col md:flex-row justify-between items-center text-sm gap-4" style="background-color: var(--color-footer-bottom-bg); color: var(--color-footer-bottom-text);">
             <nav class="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2">
-                <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text); hover:color: var(--color-footer-link-hover);">Contact Us</a>
-                <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text); hover:color: var(--color-footer-link-hover);">Terms of Use</a>
-                <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text); hover:color: var(--color-footer-link-hover);">Privacy Policy</a>
-                <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text); hover:color: var(--color-footer-link-hover);">Account Deletion</a>
+                <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text);">Contact Us</a>
+                <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text);">Terms of Use</a>
+                <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text);">Privacy Policy</a>
+                <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text);">Account Deletion</a>
             </nav>
             <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4 mt-4 md:mt-0">
                 <p class="order-2 sm:order-1">&copy; 2025 Gro Inc. All rights reserved.</p>
@@ -622,68 +562,6 @@
                     }
                 });
             });
-
-            // Data for "Discover Gro's Power" Carousel
-            const discoverPowerData = [
-                { title: 'Effortless Tracking', description: 'Log expenses and income seamlessly with our intuitive interface, including a unique drag-and-drop FAB for quick entries.', emoji: '✍️' },
-                { title: 'Plan Your Future', description: 'Set budgets, track assets & debts, and plan for Financial Independence (FIRE) with dedicated tools.', emoji: '📈' },
-                { title: 'Actionable Insights', description: 'Understand your spending habits, income sources, and savings progress with clear visuals and analytics.', emoji: '💡' },
-                { title: 'Holistic View', description: 'Get a complete picture of your financial health, including your net worth and detailed account balances.', emoji: '📊' },
-                { title: 'Personalized Experience', description: 'Tailor Gro to your needs with customizable categories, multi-currency support, and adaptable light/dark themes.', emoji: '🎨' }
-            ];
-
-            const discoverSwiperWrapper = document.querySelector('.discover-power-carousel .swiper-wrapper');
-            if (discoverSwiperWrapper) {
-                discoverPowerData.forEach(feature => {
-                    const slide = document.createElement('div');
-                    slide.classList.add('swiper-slide', 'discover-power-slide');
-                    slide.innerHTML = `
-                        <div class="emoji">${feature.emoji}</div>
-                        <h3>${feature.title}</h3>
-                        <p>${feature.description}</p>
-                    `;
-                    discoverSwiperWrapper.appendChild(slide);
-                });
-
-                new Swiper('.discover-power-carousel', {
-                    loop: true,
-                    slidesPerView: 1.2,
-                    spaceBetween: 16,
-                    centeredSlides: true,
-                    autoplay: { delay: 4500, disableOnInteraction: false },
-                    pagination: { el: '.discover-power-carousel .swiper-pagination', clickable: true },
-                    navigation: { nextEl: '.discover-power-carousel .swiper-button-next', prevEl: '.discover-power-carousel .swiper-button-prev' },
-                    breakpoints: {
-                        768: { slidesPerView: 2.2, spaceBetween: 24 },
-                        1024: { slidesPerView: 3, spaceBetween: 30 }
-                    }
-                });
-            }
-
-            // Data for "Our Core Principles"
-            const corePrinciplesData = [
-                { title: 'Financial Clarity', text: 'Providing a clear, comprehensive overview of your finances – from daily transactions to your overall net worth.', icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>' },
-                { title: 'Goal-Oriented Planning', text: 'Empowering you to set, track, and achieve your financial goals, whether it\'s managing a monthly budget or planning for early retirement.', icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19h18M9 22l3-3m0 0l3 3m-3-3v-2m0 0V5.93A2 2 0 0012.11 4.3l-1.06-1.061a2 2 0 00-2.828 0L7.06 4.3A2 2 0 006.07 5.93V17v3z"></path></svg>' },
-                { title: 'Actionable Insights', text: 'Transforming your financial data into understandable insights about your spending, income, and savings patterns, helping you make informed decisions.', icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>' },
-                { title: 'Ease of Use', text: 'Offering an intuitive user experience with features like the draggable FAB for quick transaction entry, helpful tutorials, and a Quick Start Guide.', icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>' },
-                { title: 'Comprehensive Tracking', text: 'Covering all critical aspects of personal finance, including transactions, accounts, categories, assets, debts, and investments.', icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>' },
-                { title: 'Security & Privacy', text: 'Ensuring your financial data is handled securely (e.g., transactions are encrypted by default).', icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>' },
-                { title: 'Customization', text: 'Allowing you to adapt the app to your preferences with features like theme selection and multi-currency management.', icon: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 16v-2m8-8h-2M4 12H2m15.364 6.364l-1.414-1.414M6.343 6.343l-1.414-1.414m12.728 0l-1.414 1.414M6.343 17.657l-1.414 1.414M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>'}
-            ];
-
-            const principlesGrid = document.querySelector('.core-principles-grid');
-            if (principlesGrid) {
-                corePrinciplesData.forEach(principle => {
-                    const card = document.createElement('div');
-                    card.classList.add('principle-card');
-                    card.innerHTML = `
-                        ${principle.icon}
-                        <h3>${principle.title}</h3>
-                        <p>${principle.text}</p>
-                    `;
-                    principlesGrid.appendChild(card);
-                });
-            }
 
             // Data for FAQs
             const faqsData = [
