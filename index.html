@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gro Money Saver and Expense Tracker</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&display=swap"
@@ -13,10 +14,10 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <style>
         /* CSS Variables for Theming */
-        :root {
-            /* Light Theme Defaults */
+        :root {        /* Light Theme Defaults */
             --color-primary-bg: #f7f7f7;
             --color-secondary-bg: #ffffff;
+            --logo-filter-invert: 0; /* Logo color for light theme */
             --color-tertiary-bg: #f3f4f6;
             --color-text-primary: #1f2937;
             --color-text-secondary: #4b5563;
@@ -45,10 +46,10 @@
             --flutter-indicator-inactive: rgba(255, 255, 255, 0.3);
         }
 
-        /* Dark Theme Overrides */
-        html[data-theme='dark'] {
+        /* Dark Theme Overrides */        html[data-theme='dark'] {
             --color-primary-bg: #1a202c;
             --color-secondary-bg: #2d3748;
+            --logo-filter-invert: 1; /* Logo color for dark theme */
             --color-tertiary-bg: #222b3a;
             --color-text-primary: #e2e8f0;
             --color-text-secondary: #a0aec0;
@@ -537,8 +538,11 @@
 
 <body class="antialiased">
     <header
-        class="header-shadow py-4 px-6 max-w-7xl mx-auto flex justify-between items-center rounded-b-xl sticky top-0 z-50 transition-colors duration-300">
-        <div class="text-2xl font-bold" style="color: var(--color-main);">Gro</div>
+        class="header-shadow py-4 px-6 max-w-7xl mx-auto flex justify-between items-center rounded-b-xl sticky top-0 z-50 transition-colors duration-300">        <div class="text-2xl font-bold" style="color: var(--color-main);">
+            <a href="#hero" class="flex items-center gap-2">
+                <img src="assets/gro_logo.svg" alt="Gro Money Saver and Expense Tracker" class="h-8 w-24 object-contain logo-img" style="filter: brightness(0) saturate(100%) invert(var(--logo-filter-invert, 0));">
+            </a>
+        </div>
         <nav class="hidden md:flex space-x-6 text-lg font-medium" style="color: var(--color-text-secondary);"> <a
                 href="#features" class="hover:text-purple-600 transition duration-300 flex items-center gap-2">
                 <ion-icon name="star-outline" class="text-xl"></ion-icon> Features
@@ -961,7 +965,7 @@
                 </nav>
                 <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4 mt-4 md:mt-0">
                     <p class="order-2 sm:order-1">&copy; <span id="current-year"></span> Gro Inc. All rights reserved.</p>
-                    <div class="order-1 sm:order-2 text-xl font-bold" style="color: var(--color-main);">Gro</div>
+                    <img src="assets/gro_logo.svg" alt="Gro Money Saver and Expense Tracker" class="order-1 sm:order-2 h-8 w-16 object-contain logo-img" style="filter: brightness(0) saturate(100%) invert(var(--logo-filter-invert, 0));">
                 </div>
             </div>
         </section>
