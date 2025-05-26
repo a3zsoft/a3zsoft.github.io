@@ -1,1313 +1,657 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en-US">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gro Money Saver and Expense Tracker</title>
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+      <!-- Primary Meta Tags -->
+    <meta name="description" content="Reimagining everyday experiences through creative and intelligent applications. Building beautiful, intuitive solutions across mobile, web, and desktop that enhance how people connect, work, and play.">
+    <meta name="keywords" content="user experience, creative apps, intuitive applications, innovative solutions, intelligent apps, mobile apps, web applications">
+    <meta name="author" content="a3zsoft">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#071326">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://a3zsoft.com" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/logo.svg">
+      <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="a3zsoft | Reimagining User Experiences">
+    <meta property="og:description" content="Creating beautiful, intelligent applications that enhance how we interact with technology. Crafting intuitive experiences across platforms that make everyday life more engaging.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://a3zsoft.com">
+    <meta property="og:image" content="https://a3zsoft.com/assets/logo.svg">
+    <meta property="og:site_name" content="a3zsoft">
+    <meta property="og:locale" content="en_US">
+      <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="a3zsoft | Creative User Experiences">
+    <meta name="twitter:description" content="Building thoughtful digital experiences that make everyday interactions more engaging and intuitive. From mobile to web, reimagining how we use technology in our daily lives.">
+    <meta name="twitter:image" content="https://a3zsoft.com/assets/logo.svg">
+    
+    <!-- Mobile Specific -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "a3zsoft",
+      "url": "https://a3zsoft.github.io",
+      "logo": "https://a3zsoft.github.io/assets/logo.svg",
+      "description": "Creating thoughtful digital experiences that reimagine how we interact with technology across mobile, web, and desktop platforms.",
+      "sameAs": [
+        "https://twitter.com/a3zsoft",
+        "https://github.com/a3zsoft"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US"
+      }
+    }
+    </script>
+    
+    <title>a3zsoft | Creative User Experiences</title>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "a3zsoft",
+      "url": "https://a3zsoft.github.io",
+      "logo": "https://a3zsoft.github.io/assets/logo.svg",
+      "description": "Award-winning app development studio crafting intelligent, dynamic mobile experiences.",
+      "sameAs": [
+        "https://twitter.com/a3zsoft",
+        "https://github.com/a3zsoft"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "a3zsoft@gmail.com"
+      }
+    }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <style>
-        /* CSS Variables for Theming */
-        :root {
-            /* Light Theme Defaults */
-            --color-primary-bg: #f7f7f7;
-            --color-secondary-bg: #ffffff;
-            --logo-filter-invert: 0;
-            /* Logo color for light theme */
-            --color-tertiary-bg: #f3f4f6;
-            --color-text-primary: #1f2937;
-            --color-text-secondary: #4b5563;
-            --color-main: #2196f3;
-            /* Main purple for general branding */
-            --color-dark: #1565c0;
-            --color-light: #bbdefb;
-            --color-shadow: rgba(0, 0, 0, 0.05);
-            --color-hero-gradient-start: #b600c8;
-            /* Flutter gradient start */
-            --color-hero-gradient-end: #0824c3;
-            /* Flutter gradient end */
-            --color-footer-top-text: #ffffff;
-            --color-footer-bottom-bg: #e5e7eb;
-            --color-footer-bottom-text: #4b5563;
-            --color-footer-link-hover: #8B5CF6;
-
-            /* Flutter Inspired Colors (for specific sections) */
-            --flutter-gradient: linear-gradient(to bottom right, #b600c8, #4e37c3, #0824c3, #120b37);
-            --flutter-slide-bg: rgba(255, 255, 255, 0.1);
-            --flutter-slide-border-color: rgba(255, 255, 255, 0.2);
-            --flutter-slide-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            --flutter-slide-text-primary: rgba(255, 255, 255, 0.9);
-            --flutter-slide-text-secondary: rgba(255, 255, 255, 0.75);
-            --flutter-indicator-active: white;
-            --flutter-indicator-inactive: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Dark Theme Overrides */
-        html[data-theme='dark'] {
-            --color-primary-bg: #1a202c;
-            --color-secondary-bg: #2d3748;
-            --logo-filter-invert: 1;
-            /* Logo color for dark theme */
-            --color-tertiary-bg: #222b3a;
-            --color-text-primary: #e2e8f0;
-            --color-text-secondary: #a0aec0;
-            --color-main: #2196f3;
-            --color-dark: #1565c0;
-            --color-light: #bbdefb;
-            --color-shadow: rgba(0, 0, 0, 0.3);
-            --color-hero-gradient-start: #4e37c3;
-            /* Darker Flutter gradient start */
-            --color-hero-gradient-end: #120b37;
-            /* Darker Flutter gradient end */
-            --color-footer-top-text: #e2e8f0;
-            --color-footer-bottom-bg: #2d3748;
-            --color-footer-bottom-text: #a0aec0;
-            --color-footer-link-hover: #A78BFA;
-        }
-
         body {
-            font-family: 'Urbanist', sans-serif;
-            line-height: 1.6;
-            background-color: var(--color-primary-bg);
-            color: var(--color-text-primary);
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .header-shadow {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-
-        .hero-gradient {
-            background: var(--flutter-gradient);
-        }
-
-        /* Use the full flutter gradient for hero */
-
-        .section-padding {
-            padding-top: 4rem;
-            padding-bottom: 4rem;
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .section-padding {
-                padding-left: 3rem;
-                padding-right: 3rem;
-                padding-top: 5rem;
-                padding-bottom: 5rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .section-padding {
-                padding-left: 6rem;
-                padding-right: 6rem;
-            }
-        }
-
-        .faq-summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .faq-summary::after {
-            content: '+';
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-            color: var(--color-main);
-        }
-
-        details[open]>.faq-summary::after {
-            content: '-';
-        }
-
-        /* Styles for collapsible content sections */
-        .content-section details>summary.collapsible-h3 {
-            font-size: 1.5rem;
-            /* 24px */
-            font-weight: 600;
-            color: var(--color-text-primary);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            cursor: pointer;
-            list-style: none;
-            /* Remove default marker */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 0.5rem;
-            /* Optional: space before content */
-        }
-
-        .content-section details>summary.collapsible-h3::-webkit-details-marker {
-            display: none;
-        }
-
-        .content-section details>summary.collapsible-h3::after {
-            content: '+';
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--color-main);
-            transition: transform 0.3s ease;
-            padding-left: 1rem;
-        }
-
-        .content-section details[open]>summary.collapsible-h3::after {
-            content: '-';
-        }
-
-        .content-section details>.collapsible-content {
-            padding-left: 0.5rem;
-            margin-top: 0.5rem;
-        }
-
-
-        /* Styles for the "Discover Gro's Power" Carousel (Flutter Inspired) */
-        .discover-power-section {
-            background: var(--flutter-gradient);
-            color: var(--flutter-slide-text-primary);
-        }
-
-        .swiper-slide.discover-power-slide {
-            background-color: var(--flutter-slide-bg);
-            border: 1px solid var(--flutter-slide-border-color);
-            box-shadow: var(--flutter-slide-shadow);
-            border-radius: 24px;
-            padding: 2rem 1.5rem;
-            /* Adjusted padding */
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 380px;
-            box-sizing: border-box;
-            color: var(--flutter-slide-text-secondary);
-        }
-
-        .discover-power-slide .emoji {
-            font-size: 3.5rem;
-            /* 56px, slightly smaller than 64px for balance */
-            line-height: 1;
-            margin-bottom: 1.25rem;
-            /* 20px */
-        }
-
-        .discover-power-slide h3 {
-            font-size: 1.375rem;
-            /* 22px, slightly smaller for balance */
-            font-weight: 700;
-            color: var(--flutter-slide-text-primary);
-            margin-bottom: 0.75rem;
-            /* 12px */
-        }
-
-        .discover-power-slide p {
-            font-size: 1rem;
-            /* 16px, for better readability in slides */
-            max-width: 95%;
-            line-height: 1.5;
-        }
-
-        .swiper-pagination-bullet {
-            background-color: var(--flutter-indicator-inactive);
-            opacity: 1;
-        }
-
-        .swiper-pagination-bullet-active {
-            background-color: var(--flutter-indicator-active);
-        }
-
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: var(--flutter-indicator-active);
-            --swiper-navigation-size: 28px;
-            /* Adjusted size */
-        }
-
-        .swiper-button-next:after,
-        .swiper-button-prev:after {
-            font-size: 18px !important;
-        }
-
-
-        /* Styles for "Our Core Principles" Section */
-        .core-principles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .principle-card {
-            background-color: var(--color-secondary-bg);
-            padding: 1.75rem;
-            border-radius: 12px;
-            box-shadow: var(--color-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .principle-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px var(--color-shadow);
-        }
-
-        .principle-card svg {
-            width: 2.5rem;
-            /* 40px */
-            height: 2.5rem;
-            /* 40px */
-            margin-bottom: 1rem;
-            color: var(--color-main);
-        }
-
-        .principle-card h3 {
-            font-size: 1.25rem;
-            /* 20px */
-            font-weight: 600;
-            color: var(--color-text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .principle-card p {
-            font-size: 0.95rem;
-            /* ~15px */
-            color: var(--color-text-secondary);
-            line-height: 1.6;
-        }
-
-
-        /* Mobile Menu Styles */
-        #mobile-menu {
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            transform: translateY(-100%);
-            opacity: 0;
-        }
-
-        #mobile-menu.open {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        /* Footer top section with Flutter gradient */
-        .footer-download-section {
-            background: var(--flutter-gradient);
-            color: var(--color-footer-top-text);
-        }
-
-        .footer-download-section h2,
-        .footer-download-section p {
-            color: var(--color-footer-top-text);
-            /* Ensure text is white */
-        }
-
-        /* Styling for long-form text sections */
-        .content-section {
-            background-color: var(--color-secondary-bg);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--color-shadow);
-        }
-
-        .content-section h2 {
-            /* For main section titles like "App Navigation" */
-            font-size: 2rem;
-            /* 32px */
-            font-weight: 700;
-            color: var(--color-text-primary);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid var(--color-main);
-        }
-
-        .content-section h3 {
-            /* For sub-sections like "Money Tab" */
-            font-size: 1.5rem;
-            /* 24px */
-            font-weight: 600;
-            color: var(--color-text-primary);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .content-section h4 {
-            /* For further sub-headings */
-            font-size: 1.2rem;
-            /* ~19px */
-            font-weight: 600;
-            color: var(--color-text-primary);
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .content-section p,
-        .content-section li {
-            font-size: 1rem;
-            /* 16px */
-            color: var(--color-text-secondary);
-            line-height: 1.7;
-            margin-bottom: 1rem;
-        }
-
-        .content-section ul {
-            list-style-type: disc;
-            padding-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .content-section strong {
-            font-weight: 600;
-            color: var(--color-text-primary);
-        }
-
-        /* Styles for Screenshot Theme Switcher Buttons */
-        .screenshot-btn {
-            padding: 0.5rem 1.5rem;
-            /* Tailwind: px-6 py-2 */
-            border-radius: 1.375rem;
-            /* Tailwind: rounded-md */
-            font-weight: 500;
-            /* Tailwind: font-medium */
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-            border-width: 2px;
-            border-style: solid;
-            cursor: pointer;
-        }
-
-        .screenshot-btn-active {
-            background-color: var(--color-main);
-            color: white;
-            border-color: var(--color-main);
-        }
-
-        .screenshot-btn-inactive {
-            background-color: var(--color-secondary-bg);
-            color: var(--color-main);
-            border-color: var(--color-main);
-        }
-
-        .screenshot-btn-inactive:hover {
-            background-color: var(--color-light);
-            border-color: var(--color-dark);
-            color: var(--color-dark);
-        }
-
-        /* Styles for Screenshot Gallery Navigation Buttons */
-        .gallery-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(45, 55, 72, 0.6);
-            /* bg-gray-700/60 */
-            color: white;
-            border: none;
-            border-radius: 9999px;
-            /* rounded-full */
-            width: 2.5rem;
-            /* w-10 */
-            height: 2.5rem;
-            /* h-10 */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease, opacity 0.3s ease;
-            z-index: 10;
-        }
-
-        .gallery-nav-btn:hover:not(:disabled) {
-            background-color: rgba(45, 55, 72, 0.9);
-            /* bg-gray-700/90 */
-        }
-
-        .gallery-nav-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
-        .gallery-nav-btn.prev {
-            left: -3.25rem;
-            /* Adjust to position outside the image container */
-        }
-
-        .gallery-nav-btn.next {
-            right: -3.25rem;
-            /* Adjust to position outside the image container */
-        }
-
-        /* Styles for Pagination Dots */
-        .gallery-pagination-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: var(--color-light);
-            /* Inactive dot color */
-            margin: 0 5px;
-            cursor: pointer;
-            border: none;
-            /* Ensure it's a button without default styling */
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
             padding: 0;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .gallery-pagination-dot:hover:not(.active) {
-            transform: scale(1.2);
-            background-color: var(--color-main);
-            opacity: 0.7;
-        }
-
-        .gallery-pagination-dot.active {
-            background-color: var(--color-main);
-            /* Active dot color */
-            transform: scale(1.1);
-        }
-
-        /* Screenshots Swiper Styles */
-        .screenshots-swiper {
-            padding: 20px 10px 50px;
-            max-width: 1200px;
-            margin: 0 auto;
+            /* Background will be controlled by the canvas script */
+            background-color: #071326;
+            /* Fallback, actual is hsla(220,60%,3%,1) */
+            color: #ccd6f6;
+            overflow: hidden;
+            /* Prevent scrolling */
+            height: 100vh;
+            width: 100vw;
             position: relative;
         }
 
-        .screenshots-swiper .swiper-button-next,
-        .screenshots-swiper .swiper-button-prev {
-            color: var(--color-main);
-            --swiper-navigation-size: 44px;
-            width: var(--swiper-navigation-size);
-            height: var(--swiper-navigation-size);
-            background-color: var(--color-secondary-bg);
-            border-radius: 50%;
-            box-shadow: 0 4px 6px var(--color-shadow);
+        /* Container for the canvas, though the canvas itself will be position:fixed */
+        .content--canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            /* Ensure it's behind overlay content */
         }
 
-        .screenshots-swiper .swiper-button-prev {
-            left: -60px;
+        .overlay-content {
+            position: relative;
+            z-index: 1;
+            /* Ensure this is above the canvas */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 2rem;
+            /* 32px */
         }
 
-        .screenshots-swiper .swiper-button-next {
-            right: -60px;
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
         }
 
-        .screenshots-swiper .swiper-button-next:after,
-        .screenshots-swiper .swiper-button-prev:after {
-            font-size: 24px;
-            font-weight: bold;
+        .logo {
+            font-size: 1.5rem;
+            /* 24px */
+            font-weight: 700;
+            color: #64ffda;
         }
 
-        @media (max-width: 1400px) {
-            .screenshots-swiper .swiper-button-prev {
-                left: 10px;
-            }
-
-            .screenshots-swiper .swiper-button-next {
-                right: 10px;
-            }
+        nav a {
+            margin-left: 1.5rem;
+            /* 24px */
+            font-size: 0.875rem;
+            /* 14px */
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #8892b0;
+            transition: color 0.3s ease;
         }
 
-        @media (max-width: 768px) {
-            .screenshots-swiper {
-                padding: 0;
-            }
-
-            .screenshots-swiper .swiper-slide {
-                height: 500px;
-            }
-
-            .screenshots-swiper .swiper-button-next,
-            .screenshots-swiper .swiper-button-prev {
-                display: none;
-            }
+        nav a:hover {
+            color: #64ffda;
         }
 
-        /* Swiper Navigation Styles */
-        @media (max-width: 768px) {
-
-            .swiper-button-next,
-            .swiper-button-prev {
-                display: none !important;
-            }
+        .main-title-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
         }
 
-        .swiper-button-next:hover,
-        .swiper-button-prev:hover {
-            background-color: var(--color-primary) !important;
-            color: white !important;
+        .main-title {
+            font-size: 5rem;
+            /* 80px */
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: #ccd6f6;
+            line-height: 1.1;
+        }
+
+        .showcase-section {
+            position: absolute;
+            bottom: 6rem;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+
+        .showcase-title {
+            font-size: 1.25rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            color: #8892b0;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .app-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .app-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            width: 280px;
+            backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(100, 255, 218, 0.2);
+        }        .app-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            filter: brightness(0.9);
+            transition: filter 0.3s ease;
+            border-radius: 12px;
+        }
+
+        .app-card:hover .app-logo {
+            filter: brightness(1);
+        }
+
+        .app-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ccd6f6;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-description {
+            font-size: 0.875rem;
+            color: #8892b0;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .app-link {
+            display: inline-block;
+            font-size: 0.875rem;
+            color: #64ffda;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .app-link:hover {
+            color: #9fffeb;
+        }
+
+        .right-sidebar {
+            position: fixed;
+            top: 50%;
+            right: 2rem;
+            /* 32px */
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            writing-mode: vertical-rl;
+            /* Vertical text */
+            text-orientation: mixed;
+        }
+
+        .right-sidebar span {
+            font-size: 0.75rem;
+            /* 12px */
+            letter-spacing: 0.1em;
+            color: #8892b0;
+            margin-bottom: 1rem;
+            /* 16px */
+        }
+
+        .right-sidebar .social-icons {
+            display: flex;
+            flex-direction: column;
+            /* Stack icons vertically in vertical text mode */
+            align-items: center;
+            gap: 1rem;
+            /* Space between icons */
+        }
+
+        .right-sidebar .social-icons svg {
+            width: 16px;
+            height: 16px;
+            fill: #8892b0;
+            transition: fill 0.3s ease;
+            transform: rotate(-90deg);
+            /* Counter-rotate icons if needed */
+        }
+
+        .right-sidebar .social-icons svg:hover {
+            fill: #64ffda;
+        }
+
+
+        .bottom-right-element {
+            position: fixed;
+            bottom: 2rem;
+            /* 32px */
+            right: 2rem;
+            /* 32px */
+            font-size: 2.5rem;
+            /* 40px */
+            font-weight: 600;
+            color: #303c55;
+            /* Darker, subtle number */
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .overlay-content {
+                padding: 1.5rem;
+            }
+
+            nav {
+                display: none;
+                /* Hide nav on small screens for simplicity, or implement hamburger */
+            }
+
+            .main-title {
+                font-size: 3rem;
+                /* Smaller title on mobile */
+            }
+
+            .sub-title {
+                font-size: 0.875rem;
+            }
+
+            .right-sidebar {
+                display: none;
+                /* Hide sidebar on small screens */
+            }
+
+            .bottom-right-element {
+                font-size: 2rem;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+
+            .showcase-section {
+                bottom: 4rem;
+                padding: 0 1rem;
+            }
+
+            .showcase-title {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .app-card {
+                width: 240px;
+                padding: 1.25rem;
+            }
+
+            .app-logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .app-name {
+                font-size: 1.25rem;
+            }
+        }
+
+        // ...existing code...
     </style>
 </head>
 
-<body class="antialiased">
-    <header
-        class="header-shadow py-4 px-6 max-w-7xl mx-auto flex justify-between items-center rounded-b-xl sticky top-0 z-50 transition-all duration-300"
-        style="background-color: var(--color-main-bg); backdrop-filter: blur(80px);">
-        <div class="text-2xl font-bold" style="color: var(--color-main);">
-            <a href="#hero" class="flex items-center gap-2">
-                <img src="assets/gro_logo.svg" alt="Gro Money Saver and Expense Tracker"
-                    class="h-8 w-24 object-contain logo-img"
-                    style="filter: brightness(0) saturate(100%) invert(var(--logo-filter-invert, 0));">
-            </a>
+<body>
+    <div class="content--canvas"></div>    <div class="overlay-content">
+        <header>
+            <div class="logo">
+                <img src="assets/logo.svg" alt="a3zsoft" class="w-16 object-contain logo-img">
+            </div>
+        </header>
+
+        <div class="main-title-container">
         </div>
-        <nav class="hidden md:flex space-x-6 text-lg font-medium" style="color: var(--color-text-secondary);"> <a
-                href="#features" class="hover:text-purple-600 transition duration-300 flex items-center gap-2">
-                <ion-icon name="star-outline" class="text-xl"></ion-icon> Features
-            </a>
-            <a href="#app-navigation" class="hover:text-purple-600 transition duration-300 flex items-center gap-2">
-                <ion-icon name="compass-outline" class="text-xl"></ion-icon> How to Use
-            </a>
-            <a href="#faqs" class="hover:text-purple-600 transition duration-300 flex items-center gap-2">
-                <ion-icon name="help-circle-outline" class="text-xl"></ion-icon> FAQs
-            </a>
-            <a href="#download" class="hover:text-purple-600 transition duration-300 flex items-center gap-2">
-                <ion-icon name="download-outline" class="text-xl"></ion-icon> Download
-            </a>
-        </nav>
-        <div class="flex items-center space-x-4">
-            <button id="theme-toggle"
-                class="p-2 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2"
-                aria-label="Toggle theme"> <ion-icon id="sun-icon" name="sunny-outline" class="text-xl"></ion-icon>
-                <ion-icon id="moon-icon" name="moon-outline" class="text-xl hidden"></ion-icon>
-            </button>
+        <h2 class="sub-title">a³zsoft</h2>
+
+        <div class="showcase-section">
+            <h3 class="showcase-title">Featured Apps</h3>
+            <div class="app-grid">
+                <a href="gro.html" class="app-card">
+                    <img src="assets/gro_icon.png" alt="Gro Money Saver and Expense Tracker" class="app-logo">
+                    <h4 class="app-name">Gro</h4>
+                    <p class="app-description">Smart money saver and expense tracker that helps you grow your wealth.</p>
+                    <span class="app-link">Learn More →</span>
+                </a>
+            </div>
         </div>
-        <button id="mobile-menu-button"
-            class="md:hidden focus:outline-none p-2 rounded-md focus:ring-2 focus:ring-inset"
-            style="color: var(--color-text-secondary); --ring-color: var(--color-main);" aria-label="Open mobile menu"
-            aria-expanded="false" aria-controls="mobile-menu">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
-        </button>
-    </header>
+    </div>
 
-    <nav id="mobile-menu" class="md:hidden fixed inset-x-0 top-0 pt-20 p-6 space-y-4 shadow-xl z-40"
-        style="background-color: var(--color-secondary-bg); color: var(--color-text-secondary);">
-        <a href="#why-gro"
-            class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">Why
-            Gro?</a>
-        <a href="#app-navigation"
-            class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">How to
-            Use</a>
-        <a href="#faqs"
-            class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">FAQs</a>
-    </nav>
-    <main>
-        <section id="hero" class="hero-gradient section-padding flex flex-col">
-            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8">
-                <div class="text-center md:text-left max-w-xl">
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6"
-                        style="color: var(--color-footer-top-text);">
-                        <span style="color: var(--color-footer-top-text);">Master</span> Your Money
-                    </h1>
-                    <p class="text-lg md:text-xl mb-8" style="color: var(--color-footer-top-text); opacity: 0.9;">
-                        From daily transaction tracking to achieving FIRE (Financial Independence, Retire Early), Gro
-                        provides the tools and insights you need to manage your money effectively and reach your
-                        financial goals.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"> <button
-                            class="px-8 py-4 rounded-full text-lg font-semibold transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 flex items-center gap-2 ring-offset-2"
-                            style="background-color: var(--flutter-slide-bg); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark); border: 1px solid rgba(255, 255, 255, 0.2);">
-                            <ion-icon name="logo-google-playstore" class="text-xl"></ion-icon>
-                            Download the app now
-                        </button>
-                        <!-- <button class="px-8 py-4 rounded-full text-lg font-semibold transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none flex items-center gap-2 ring-2 ring-offset-2" style="background-color: var(--flutter-slide-bg); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark); border: 1px solid rgba(255, 255, 255, 0.2);">                            <ion-icon name="play-circle-outline" class="text-xl"></ion-icon>
-                            Watch Demo
-                        </button> -->
-                    </div>
-                    <!-- <div class="mt-12 grid grid-cols-3 gap-6">
-                        <div class="text-center flex flex-col items-center"
-                            style="color: var(--color-footer-top-text);">
-                            <ion-icon name="download-outline" class="text-3xl mb-2"></ion-icon>
-                            <div class="text-2xl font-bold">500K+</div>
-                            <div class="text-sm opacity-90">Downloads</div>
-                        </div>
-                        <div class="text-center flex flex-col items-center"
-                            style="color: var(--color-footer-top-text);">
-                            <ion-icon name="star-half-outline" class="text-3xl mb-2"></ion-icon>
-                            <div class="text-2xl font-bold">4.8</div>
-                            <div class="text-sm opacity-90">Rating</div>
-                        </div>
-                        <div class="text-center flex flex-col items-center"
-                            style="color: var(--color-footer-top-text);">
-                            <ion-icon name="chatbubbles-outline" class="text-3xl mb-2"></ion-icon>
-                            <div class="text-2xl font-bold">25K+</div>
-                            <div class="text-sm opacity-90">Reviews</div>
-                        </div>
-                        <div class="col-span-3 text-center mt-2" style="color: var(--color-footer-top-text);">
-                            <div class="text-xs opacity-70">on Play Store as of May 2025</div>
-                        </div>
-                    </div> -->
-                </div>
-                <div class="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0">
-                    <div class="relative">
-                        <img src="https://placehold.co/600x720/b600c8/0824c3?text=Gro+App+Interface"
-                            alt="Gro App on Phone" class="w-full h-auto rounded-xl object-cover relative z-10"
-                            onerror="this.onerror=null;this.src='https://placehold.co/600x720/cccccc/969696?text=App+Screenshot';">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-500 blur-3xl opacity-30 -z-10 transform scale-110">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="right-sidebar">
+        <span>H E L L O</span>
+    </div>
 
-        <section id="features" class="section-padding" style="background-color: var(--color-tertiary-bg);">
-            <div class="text-center max-w-4xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--color-text-primary);">
-                    Unlock Your Financial Potential with Gro
-                </h2>
-                <p class="text-lg md:text-xl mb-12" style="color: var(--color-text-secondary);">
-                    Gro is designed to empower you with a comprehensive understanding and control over your personal
-                    finances. From daily transaction tracking to long-term financial planning like achieving Financial
-                    Independence, Retire Early (FIRE), Gro provides the tools and insights you need to manage your money
-                    effectively and reach your financial goals.
-                </p>
-            </div>
+    <div class="bottom-right-element">02</div>
+    </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
-
-                <!-- Security Focus -->
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="shield-checkmark-outline" class="text-4xl mb-4"
-                        style="color: var(--color-main);"></ion-icon>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Bank-Grade Security
-                    </h3>
-                    <p style="color: var(--color-text-secondary);">Your data's security is our priority. Enjoy peace of
-                        mind with end-to-end encryption, on-device password protection, PIN verification, pattern lock,
-                        fingerprint authentication, and secure cloud backups.</p>
-                </div>
-                <!-- Financial Management -->
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="wallet-outline" class="text-4xl mb-4" style="color: var(--color-main);"></ion-icon>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Financial
-                        Management</h3>
-                    <p style="color: var(--color-text-secondary);">Manage accounts, transactions, and transfers in one
-                        place. Track multiple account types, categorize income and expenses, and easily move money
-                        between accounts with our intuitive transfer system.</p>
-                </div>
-                <!-- FIRE Planning -->
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="flame-outline" class="text-4xl mb-4" style="color: var(--color-main);"></ion-icon>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Financial
-                        Independence, Retire Early (FIRE)</h3>
-                    <p style="color: var(--color-text-secondary);">Plan for early retirement with our dedicated FIRE
-                        section. Calculate your 'FIRE Number' and use the timeline projector to map your journey to
-                        Financial Independence.</p>
-                </div>
-                <!-- Advanced Analytics -->
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="analytics-outline" class="text-4xl mb-4"
-                        style="color: var(--color-main);"></ion-icon>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Analytics & Reports
-                    </h3>
-                    <p style="color: var(--color-text-secondary);">Explore your financial data with detailed income
-                        insights, expense deep-dives, savings progress, investment trends, and compare active vs passive
-                        income.</p>
-                </div>
-                <!-- Budget Management -->
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="wallet-outline" class="text-4xl mb-4" style="color: var(--color-main);"></ion-icon>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Budget & Targets
-                    </h3>
-                    <p style="color: var(--color-text-secondary);">Set spending limits with expense budgets and income
-                        targets. Define them monthly or yearly and link them to your transaction categories.</p>
-                </div>
-                <!-- Asset Tracking -->
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="trending-up-outline" class="text-4xl mb-4"
-                        style="color: var(--color-main);"></ion-icon>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Assets & Net Worth
-                    </h3>
-                    <p style="color: var(--color-text-secondary);">Track your complete financial picture. Monitor bank
-                        accounts, real estate, vehicles, and investments in one place. View your up-to-date net worth
-                        and track its growth over time.</p>
-                </div>
-                <!-- Debt Management -->
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="timer-outline" class="text-4xl mb-4" style="color: var(--color-main);"></ion-icon>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Debts & Liabilities
-                    </h3>
-                    <p style="color: var(--color-text-secondary);">Manage loans and other IOUs effectively. Track
-                        balances and payment schedules, and view detailed amortization schedules for your debts.</p>
-                </div>
-                <!-- Multi-Currency & Language -->
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="globe-outline" class="text-4xl mb-4" style="color: var(--color-main);"></ion-icon>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Global
-                        Accessibility</h3>
-                    <p style="color: var(--color-text-secondary);">Select any currency as your app's primary currency
-                        for all transactions and calculations. Use Gro in your preferred language with our comprehensive
-                        localization support.</p>
-                </div>
-                <!-- Transaction Automation -->
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="repeat-outline" class="text-4xl mb-4" style="color: var(--color-main);"></ion-icon>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Repeat & Import
-                        Transactions</h3>
-                    <p style="color: var(--color-text-secondary);">Set up recurring transactions for regular bills and
-                        income. Get a head start by importing transactions from CSV to get started quickly. </p>
-                </div>
-            </div>
-        </section>
-
-        <section id="app-navigation" class="section-padding">
-            <div class="content-section max-w-5xl mx-auto">
-                <h2>Explore Gro</h2>
-                <p>Gro is intuitively organized into main tabs and key management areas, ensuring you can easily find
-                    what you need. When you first open the app, you might be greeted by a Setup
-                    Guide. Follow these prompts for a smooth start.</p>
-
-                <details>
-                    <summary class="collapsible-h3">Setup Guide: Your Onboarding Companion</summary>
-                    <div class="collapsible-content">
-                        <p>Gro features a comprehensive Setup Guide, often accessible as a prominent header on the Money
-                            Tab. Tapping it opens a dedicated page to walk you through key app functionalities,
-                            organized into sections like "Getting Started," "Ready to Plan Your Finances?," and "What Do
-                            Your Finances Say?". Each item is interactive, guiding you to relevant app areas.</p>
-                        <h4>Key Setup Steps Covered:</h4>
-                        <ul>
-                            <li>Setting up accounts and customizing categories.</li>
-                            <li>Importing or adding your first transactions and making transfers.</li>
-                            <li>Creating budgets, tracking assets/debts, and setting up repeat transactions.</li>
-                            <li>Exploring FIRE planning and introductory analytics.</li>
-                        </ul>
-                    </div>
-                </details>
-
-                <details>
-                    <summary class="collapsible-h3">Money: Your Daily Financial Hub</summary>
-                    <div class="collapsible-content">
-                        <p>This is your primary interface for daily transaction tracking, account overview, and
-                            immediate insights. Key components include:</p>
-                        <h4>Account Selector</h4>
-                        <p>Located typically in the app bar, this allows you to filter the Money tab's view for specific
-                            accounts or see a total of all accounts.</p>
-                        <h4>Insights Overview</h4>
-                        <p>Quickly grasp your financial standing with views for:</p>
-                        <ul>
-                            <li><strong>Savings:</strong> Net savings (Income - Expenses) for the selected period.</li>
-                            <li><strong>Expenses:</strong> Breakdown by category, compared against budgets.</li>
-                            <li><strong>Income:</strong> Sources by category, compared against targets.</li>
-                            <li><strong>Transfers:</strong> History of inter-account transfers.</li>
-                        </ul>
-                        <h4>Transactions List</h4>
-                        <p>View, filter (by account, period, type, category), sort (by date, amount), and search your
-                            transactions. The innovative draggable Floating Action Button (FAB) is your main tool for
-                            adding new entries.</p>
-                    </div>
-                </details>
-
-                <details>
-                    <summary class="collapsible-h3">Accounts: Centralized Account Management</summary>
-                    <div class="collapsible-content">
-                        <p>Manage all your financial accounts here. To get started, navigate to account management
-                            (often via the Account Selector in the "Money" tab's app bar or a dedicated "Accounts" area)
-                            to add your bank accounts (checking, savings, cash), credit cards, etc. This is crucial for
-                            accurate tracking.</p>
-                        <h4>Key Features:</h4>
-                        <ul>
-                            <li><strong>Add & Manage:</strong> Create and edit various account types.</li>
-                            <li><strong>View Balances:</strong> See a list of accounts with current balances.</li>
-                            <li><strong>Edit Details:</strong> Modify names, types, starting balances, colors, and
-                                icons.</li>
-                        </ul>
-                    </div>
-                </details>
-
-                <details>
-                    <summary class="collapsible-h3">Plans: Strategic Financial Planning</summary>
-                    <div class="collapsible-content">
-                        <p>This section is dedicated to your long-term financial strategy and goals. Each module within
-                            the Plans tab often has its own detailed information dialog (look for an info icon 'i' or
-                            '?') explaining its purpose and how to use it.</p>
-                        <ul>
-                            <li><strong>Budget & Targets:</strong> Set spending limits (Expense budgets) or income goals
-                                (Income targets). Define them monthly or yearly and link transaction categories.</li>
-                            <li><strong>Assets & Net Worth:</strong> Track what you own (real estate, vehicles,
-                                investments). Your 'All Bank Accounts' asset is auto-calculated. This helps understand
-                                your Net Worth (Assets - Liabilities).</li>
-                            <li><strong>Debts & Liabilities:</strong> Manage loans and other IOUs. Track balances and
-                                view amortization schedules.</li>
-                            <li><strong>Financial Independence (FIRE):</strong> Plan for early retirement. Calculate
-                                your 'FIRE Number' and project timelines.</li>
-                        </ul>
-                    </div>
-                </details>
-
-                <details>
-                    <summary class="collapsible-h3">Analytics: Deep Dive into Your Data</summary>
-                    <div class="collapsible-content">
-                        <p>Explore advanced analytics and visualizations to identify trends and gain profound insights.
-                            This area is typically organized with sub-tabs for focused analysis:</p>
-                        <ul>
-                            <li><strong>Overview Dashboard:</strong> A high-level snapshot of your financial health (net
-                                worth, savings rate, income vs. expenses).</li>
-                            <li><strong>Expense Deep Dive:</strong> Detailed breakdown of spending habits (by category,
-                                trends, Need vs. Want).</li>
-                            <li><strong>Income Insights:</strong> Thorough examination of income sources (by category,
-                                Active vs. Passive, trends).</li>
-                            <li><strong>Savings & Net Worth Trends:</strong> Progress in wealth accumulation and savings
-                                goals.</li>
-                            <li><strong>Reports & Comparisons:</strong> Customized reporting like cash flow statements
-                                and period-over-period comparisons.</li>
-                        </ul>
-                    </div>
-                </details>
-
-                <details>
-                    <summary class="collapsible-h3">Grid Menu Options</summary>
-                    <div class="collapsible-content">
-                        <p>A common feature, often a grid icon on the Money tab, provides quick access to:</p>
-                        <ul>
-                            <li><strong>Categories:</strong> Access and manage your transaction categories. Customize
-                                names, icons, and colors to fit your needs.</li>
-                            <li><strong>Transfers:</strong> Initiate and view inter-account transfers.</li>
-                            <li><strong>Repeat Transactions:</strong> Set up and manage recurring transactions to
-                                automate logging for regular bills or income.</li>
-                            <li><strong>Import Transactions:</strong> Import transaction data from external files (e.g.,
-                                CSV).</li>
-                        </ul>
-                    </div>
-                </details>
-
-                <details>
-                    <summary class="collapsible-h3">General App Settings & Features</summary>
-                    <div class="collapsible-content">
-                        <p>Accessible usually via a settings icon (⚙️), here you can configure:</p>
-                        <ul>
-                            <li><strong>Theme Support:</strong> Choose between Light and Dark themes.</li>
-                            <li><strong>Multi-Currency Support:</strong> Set a primary currency and manage finances
-                                across different currencies.</li>
-                            <li><strong>Multi-Language Support:</strong> Use Gro in your preferred language.</li>
-                            <li><strong>Backup & Restore:</strong> Secure and restore your financial data.</li>
-                            <li><strong>Data Management:</strong> Options like "Delete and Start Fresh" for a clean
-                                slate (use with caution).</li>
-                        </ul>
-                    </div>
-                </details>
-            </div>
-        </section>
-
-        <section id="screenshots" class="section-padding" style="background-color: var(--color-tertiary-bg);">
-            <div class="max-w-6xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8" style="color: var(--color-text-primary);">See Gro in
-                    Action</h2>
-
-                <!-- Theme Switcher Buttons -->
-                <div class="flex justify-center space-x-4 mb-8">
-                    <button id="gallery-theme-light" class="screenshot-btn">Light Theme</button>
-                    <button id="gallery-theme-dark" class="screenshot-btn">Dark Theme</button>
-                </div>
-
-                <!-- Swiper Gallery -->
-                <div class="swiper screenshots-swiper">
-                    <div class="swiper-wrapper">
-                        <!-- Slides will be dynamically added here -->
-                    </div>
-
-                    <!-- Navigation -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-
-                    <!-- Pagination -->
-                    <div class="swiper-pagination"></div>
-                </div>
-
-                <p id="gallery-theme-text" class="mt-6 text-base font-medium"
-                    style="color: var(--color-text-secondary);"></p>
-            </div>
-        </section>
-
-        <section id="faqs" class="section-padding" style="background-color: var(--color-tertiary-bg);">
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center" style="color: var(--color-text-primary);">
-                    Frequently Asked Questions</h2>
-                <div class="space-y-4 text-left"></div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <section id="download" class="footer-download-section py-16 px-6">
-            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-                <div class="text-center md:text-left max-w-2xl">
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">Download Gro App Today
-                    </h2>
-                    <p class="text-lg md:text-xl mb-8" style="color: var(--color-text-secondary);">
-                        Take control of your finances with Gro. 
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"> <button
-                            class="px-8 py-4 rounded-full text-lg font-semibold transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 flex items-center gap-2 ring-offset-2"
-                            style="background-color: var(--flutter-slide-bg); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark); border: 1px solid rgba(255, 255, 255, 0.2);">
-                            <ion-icon name="logo-google-playstore" class="text-xl"></ion-icon>
-                            Download the app now
-                        </button>
-                    </div>
-                </div>
-                <div class="md:w-1/3 flex justify-center md:justify-end mt-8 md:mt-0">
-                    <img src="https://placehold.co/250x300/FFFFFF/120b37?text=Gro+App" alt="Phone with Gro App"
-                        class="max-w-xs w-full h-auto rounded-lg"
-                        onerror="this.onerror=null;this.src='https://placehold.co/250x300/cccccc/969696?text=App+Mockup';">
-                </div>
-            </div>
-        </section>
-
-        <section class="py-8 px-6">
-            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm gap-4"
-                style="color: var(--color-footer-bottom-text);">
-                <nav class="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2">
-                    <a href="#" class="hover:underline transition duration-300"
-                        style="color: var(--color-footer-bottom-text);">Terms of Use</a>
-                    <a href="#" class="hover:underline transition duration-300"
-                        style="color: var(--color-footer-bottom-text);">Privacy Policy</a>
-                </nav>
-                <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4 mt-4 md:mt-0">
-                    <p class="order-2 sm:order-1">&copy; <span id="current-year"></span> Gro Inc. All rights reserved.
-                    </p>
-                </div>
-            </div>
-        </section>
-    </footer>
-
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Theme toggle logic
-            const themeToggle = document.getElementById('theme-toggle');
-            const htmlElement = document.documentElement;
-            const sunIcon = document.getElementById('sun-icon');
-            const moonIcon = document.getElementById('moon-icon');
-            const setTheme = (theme) => {
-                htmlElement.setAttribute('data-theme', theme);
-                localStorage.setItem('theme', theme);
-                sunIcon.classList.toggle('hidden', theme === 'dark');
-                moonIcon.classList.toggle('hidden', theme === 'light');
+        'use strict';
+
+        // Helper functions (as they are not standard JS)
+        function rand(range) {
+            return Math.random() * range;
+        }
+
+        function round(value) {
+            return Math.round(value);
+        }
+
+        function fadeInOut(life, ttl) {
+            // This function should return a value between 0 and 1
+            // for opacity, peaking at life = ttl / 2.
+            // Math.sin(progress * Math.PI) is a good choice.
+            const progress = life / ttl;
+            return Math.sin(progress * Math.PI);
+        }
+
+        const rayCount = 500;
+        const rayPropCount = 8;
+        const rayPropsLength = rayCount * rayPropCount;
+        const baseLength = 200;
+        const rangeLength = 200;
+        const baseSpeed = 0.05;
+        const rangeSpeed = 0.1;
+        const baseWidth = 10;
+        const rangeWidth = 20;
+        const baseHue = 120;
+        const rangeHue = 60;
+        const baseTTL = 50;
+        const rangeTTL = 100;
+        const noiseStrength = 100;
+        const xOff = 0.0015;
+        const yOff = 0.0015;
+        const zOff = 0.0015;
+        const backgroundColor = 'hsla(220,60%,3%,1)';
+
+        // Color transition settings
+        const colorSpeed = 0.1; // Speed of color change (lower = slower)
+
+        let container;
+        let canvas;
+        let ctx;
+        let center;
+        let tick;
+        let simplex; // This will be an instance of SimplexNoise
+        let rayProps;
+
+        function setup() {
+            createCanvas();
+            resize(); // Call resize after creating canvas elements
+            initRays();
+            draw();
+        } function initRays() {
+            tick = 0;
+            // Initialize SimplexNoise with the constructor from the CDN version
+            simplex = new SimplexNoise();
+            rayProps = new Float32Array(rayPropsLength);
+
+            for (let i = 0; i < rayPropsLength; i += rayPropCount) {
+                initRay(i);
+            }
+        }
+
+        function initRay(i) {
+            let length, x, y1, y2, n, life, ttl, width, speed, hue;
+
+            length = baseLength + rand(rangeLength);
+            x = rand(canvas.a.width);
+            y1 = center[1] + noiseStrength; // Start rays from below center + noise
+            y2 = center[1] + noiseStrength - length; // End rays above start point
+
+            // Apply simplex noise to y1 and y2 for wavy effect
+            // Use noise2D instead of noise3D for the CDN version of SimplexNoise
+            n = simplex.noise2D(x * xOff, tick * zOff) * noiseStrength;
+            y1 += n;
+            y2 += n;
+
+            life = 0;
+            ttl = baseTTL + rand(rangeTTL);
+            width = baseWidth + rand(rangeWidth); speed = baseSpeed + rand(rangeSpeed) * (round(rand(1)) ? 1 : -1); // Random direction
+
+            // Use the current global hue for all rays
+            hue = (baseHue + tick * colorSpeed) % 360;
+
+            rayProps.set([x, y1, y2, life, ttl, width, speed, hue], i);
+        }
+
+        function drawRays() {
+            for (let i = 0; i < rayPropsLength; i += rayPropCount) {
+                updateRay(i);
+            }
+        }
+
+        function updateRay(i) {
+            let i2 = 1 + i, i3 = 2 + i, i4 = 3 + i, i5 = 4 + i, i6 = 5 + i, i7 = 6 + i, i8 = 7 + i;
+            let x, y1, y2, life, ttl, width, speed, hue;
+
+            x = rayProps[i];
+            y1 = rayProps[i2];
+            y2 = rayProps[i3];
+            life = rayProps[i4];
+            ttl = rayProps[i5];
+            width = rayProps[i6];
+            speed = rayProps[i7];
+            hue = rayProps[i8];
+
+            drawRay(x, y1, y2, life, ttl, width, hue);
+
+            x += speed;
+            life++;
+
+            // Update y positions based on noise for continuous animation (optional, can be intensive)
+            // let n = simplex.noise2D(x * xOff, tick * zOff) * (noiseStrength / 10); // smaller continuous noise
+            // y1 += n;
+            // y2 += n;
+            // rayProps[i2] = y1;
+            // rayProps[i3] = y2;
+
+
+            rayProps[i] = x;
+            rayProps[i4] = life;
+
+            if (checkBounds(x) || life > ttl) {
+                initRay(i);
+            }
+        }
+
+        function render() {
+            if (!ctx || !ctx.b || !ctx.a) return;
+            ctx.b.save();
+            // The blur and lighter composite operation create the glowing/overlapping effect            ctx.b.filter = 'blur(12px)'; // Slightly reduced blur for more definition
+            ctx.b.globalCompositeOperation = 'screen'; // Changed to screen for softer blending
+            ctx.b.drawImage(canvas.a, 0, 0);
+            ctx.b.restore();
+
+            // Draw again with less blur for subtle definition
+            ctx.b.save();
+            ctx.b.filter = 'blur(4px)';
+            ctx.b.globalCompositeOperation = 'lighter';
+            ctx.b.globalAlpha = 0.5; // Reduced opacity for the sharp layer
+            ctx.b.drawImage(canvas.a, 0, 0);
+            ctx.b.restore();
+        }
+
+        function drawRay(x, y1, y2, life, ttl, width, hue) {
+            let gradient; gradient = ctx.a.createLinearGradient(x, y1, x, y2);
+            gradient.addColorStop(0, `hsla(${hue},90%,50%,0)`); // Darker edges
+            gradient.addColorStop(0.5, `hsla(${hue},95%,60%,${fadeInOut(life, ttl) * 0.5})`); // More transparent center
+            gradient.addColorStop(1, `hsla(${hue},90%,50%,0)`);
+
+            ctx.a.save();
+            ctx.a.beginPath();
+            ctx.a.strokeStyle = gradient;
+            ctx.a.lineWidth = width;
+            ctx.a.moveTo(x, y1);
+            ctx.a.lineTo(x, y2);
+            ctx.a.stroke();
+            ctx.a.closePath();
+            ctx.a.restore();
+        }
+
+        function checkBounds(x) {
+            return x < -rangeWidth || x > canvas.a.width + rangeWidth; // Check with width offset
+        }
+
+        function createCanvas() {
+            container = document.querySelector('.content--canvas');
+            if (!container) {
+                console.error("'.content--canvas' container not found!");
+                return;
+            }
+            canvas = {
+                a: document.createElement('canvas'), // Offscreen canvas for drawing rays
+                b: document.createElement('canvas')  // Onscreen canvas for display
             };
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (savedTheme) { setTheme(savedTheme); }
-            else if (prefersDark) { setTheme('dark'); }
-            else { setTheme('light'); }
-            themeToggle.addEventListener('click', () => {
-                const newTheme = htmlElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-                setTheme(newTheme);
-            });
+            // Style the onscreen canvas (canvas.b)
+            canvas.b.style.position = 'fixed';
+            canvas.b.style.top = '0';
+            canvas.b.style.left = '0';
+            canvas.b.style.width = '100%';
+            canvas.b.style.height = '100%';
+            canvas.b.style.zIndex = '0'; // Ensure it's behind .overlay-content
 
-            // Mobile menu logic
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileMenuLinks = mobileMenu.querySelectorAll('.mobile-menu-link');
-            mobileMenuButton.addEventListener('click', () => {
-                const isMenuOpen = mobileMenu.classList.toggle('open');
-                mobileMenuButton.setAttribute('aria-expanded', isMenuOpen.toString());
-            });
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.remove('open');
-                    mobileMenuButton.setAttribute('aria-expanded', 'false');
-                });
-            });
+            container.appendChild(canvas.b);
 
-            // Smooth scrolling
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const href = this.getAttribute('href');
-                    if (href.length > 1 && href.startsWith('#')) {
-                        const targetElement = document.querySelector(href);
-                        if (targetElement) {
-                            e.preventDefault();
-                            const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-                            const elementPosition = targetElement.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-                            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-                        }
-                    }
-                });
-            });
-
-            // get year and set it in the footer
-            const currentYear = new Date().getFullYear();
-            document.getElementById('current-year').textContent = currentYear;
-
-            // Data for FAQs
-            const faqsData = [
-                // Getting Started
-                { q: 'How do I get started with Gro?', a: 'After downloading and installing Gro, go through the Setup Guide on the Money tab. You\'ll be guided step by step to set up your accounts, customize categories, and learn the basic features. The process takes about 5-10 minutes.' },
-                { q: 'How do I add my bank accounts?', a: 'Tap the account selector in the Money tab or go to the Accounts area. Choose "Add Account", select the account type (checking, savings, etc.), and enter a name and starting balance. You can also customize the color and icon to make it easily recognizable.' },
-                { q: 'How do I add a credit card?', a: 'Similar to bank accounts, go to the Accounts area, tap "Add Account", and select "Credit Card". Enter the card name, starting balance (if any), and customize it with a color and icon. Gro will help you track your credit card spending and payments.' },
-
-                // Daily Usage
-                { q: 'How do I add transactions?', a: 'Use the Floating Action Button (FAB) in the Money tab - swipe left for expenses, right for income, or tap for more options. For regular bills or income, set up recurring transactions through the grid menu to save time.' },
-                { q: 'How can I organize my spending?', a: 'Gro uses categories to organize transactions. Find pre-set categories in the grid menu, or create your own with custom names, colors, and icons. You can also set budgets for expense categories and income targets to stay on track.' },
-                { q: 'How do I transfer money between accounts?', a: 'To transfer funds, tap the FAB in the Money tab, select "Transfer", choose the source and destination accounts, enter the amount, and add a note if needed. Gro will automatically update both account balances.' },
-                { q: 'How do I view my financial insights?', a: 'The Money tab provides quick insights like net savings, expenses by category, income sources, and transfer history. For deeper analysis, go to the Analytics section for detailed reports and trends.' },
-                { q: 'How do I set up budgets?', a: 'In the Plans section, go to "Budget & Targets". Here you can set monthly or yearly budgets for expense categories and income targets. Gro will notify you if you exceed your budgets.' },
-                { q: 'How do I manage my bills?', a: 'For regular bills, set up repeat transactions in the grid menu. You can also categorize them under a specific expense category for better tracking. Gro will automatically create transactions on specified dates. ' },
-                { q: 'How do I handle cash transactions?', a: 'For cash transactions, create a "Cash" account in the Accounts section. Add cash expenses or income just like any other transaction, and Gro will keep your cash balance updated.' },
-                { q: 'What if I forget to record transactions?', a: 'No problem! You can add transactions for any date. Use the account reconciliation feature to match your recorded balance with your actual bank balance, and Gro will help identify missing transactions.' },
-
-                // Features & Capabilities
-                { q: 'How to track my net worth?', a: 'Go to Plans > Assets & Debts to see your complete financial picture. Add your assets (property, vehicles, investments) and track their values. Combined with the Debts & Liabilities section, you\'ll see your current net worth and its growth over time.' },
-                { q: 'Can I import my existing transactions?', a: 'Yes! Access the Import feature from the grid menu. You can import transactions from CSV files - perfect for bringing in history from other apps or bank exports. Check our guide for the correct CSV format.' },
-                { q: 'What reports and insights are available?', a: 'The Analytics section offers various insights: expense breakdowns by category, income source analysis, savings rate trends, and cash flow reports. You can view data weekly, monthly, or yearly, and compare periods to track your progress.' },
-
-                // Planning & Goals
-                { q: 'Can I track my investments?', a: 'Yes! Add investments as assets in the Plans section and update their values periodically. For now, you\'ll need to manually update investment values as they change. Automatic investment tracking is planned for a future update.' },
-                { q: 'How do I set financial goals?', a: 'In the Plans section, you can set financial goals like saving for a vacation or paying off debt. Use the Budget & Targets feature to create specific savings targets and track your progress over time.' },
-                { q: 'Can I track my savings progress?', a: 'Absolutely! The Plans section allows you to set savings goals and track your progress. You can create specific savings targets, like building an emergency fund or saving for a major purchase, and monitor how close you are to achieving them.' },
-                { q: 'How do I manage my debts?', a: 'In the Plans section, go to Debts & Liabilities. Here you can add loans, credit cards, or any other debts. Track balances, payment schedules, and view detailed amortization schedules to manage your repayments effectively.' },
-                { q: 'How do I categorize my transactions?', a: 'When adding or editing a transaction, you can assign it to a category. Gro comes with pre-set categories, but you can also create custom ones in the Categories section. This helps you track spending and income sources effectively.' },
-                { q: 'How do I manage my cash flow?', a: 'The Money tab provides a quick overview of your cash flow, showing net savings (Income - Expenses) for the selected period. For detailed cash flow reports, go to the Analytics section.' },
-
-                // FIRE Planning
-                { q: 'What is FIRE planning?', a: 'FIRE (Financial Independence, Retire Early) is a financial strategy to save and invest aggressively so you can retire earlier than traditional retirement age. Gro\'s FIRE calculator helps you plan this journey by calculating how much you need to save and how long it will take.' },
-                { q: 'How do I use the FIRE calculator?', a: 'Go to Plans > FIRE Planning, then enter three key numbers: your current savings, expected annual investment returns (typically 6-8%), and desired retirement income. Gro will calculate your FIRE number (total savings needed) and show a timeline to reach it.' },
-                { q: 'What is the 4% rule in FIRE planning?', a: 'The 4% rule suggests you can withdraw 4% of your retirement savings annually without running out of money. For example, if you need $40,000/year in retirement, you\'d need to save $1 million (your FIRE number). Gro uses this rule to help calculate your savings target.' },
-                { q: 'How can I track my FIRE progress?', a: 'The FIRE Planning section shows your progress toward your FIRE number through an interactive timeline. As you update your savings and investments in Gro, you\'ll see your projected retirement date adjust automatically. You can also adjust your retirement income goals anytime to see how they affect your timeline.' },
-
-                // Investment & Passive Income tracking
-                { q: 'How do I track my investments?', a: 'Currently, Gro allows you to add investments as assets in the Plans section. You can manually update their values over time. We plan to introduce automatic investment tracking in a future update.' },
-                { q: 'Can I track passive income?', a: 'Yes! You can categorize income sources as "Passive" in the Income section. This helps you see how much of your income comes from passive sources like dividends, interest, or rental income.' },
-
-                // Analytics & Reports
-                { q: 'What kind of analytics does Gro provide?', a: 'Gro offers detailed analytics on your finances, including income and expense breakdowns by category, savings trends, net worth tracking, and cash flow reports. You can view data weekly, monthly, or yearly to identify patterns and make informed decisions.' },
-                { q: 'Can I compare different time periods?', a: 'Yes! In the Analytics section, you can compare financial data across different periods (e.g., this month vs. last month) to see how your spending and income change over time.' },
-                { q: 'Can I track my spending habits?', a: 'Yes! The Analytics section provides insights into your spending habits, including expense breakdowns by category, trends over time, and comparisons against budgets. You can also see how much you spend on needs vs. wants.' },
-                { q: 'How do I view my income sources?', a: 'In the Money tab, you can see your income sources by category. The Analytics section also provides detailed insights into your income trends, including active vs. passive income sources.' },
-                { q: 'Can I set financial targets?', a: 'Yes! In the Plans section, you can set income targets and expense budgets. Gro will notify you if you exceed your budgets or fall short of your income targets, helping you stay on track.' },
-
-                // Settings & Preferences
-                { q: 'Can I use Gro in my language and currency?', a: 'Yes! During setup or in Settings, choose your preferred language and set your primary currency. All transactions and calculations will use this currency for consistency.' },
-                { q: 'How do I change the app\'s theme?', a: 'Gro supports both light and dark themes. You can switch between them in Settings > Appearance. The app will remember your choice for future sessions.' },
-                { q: 'Can I customize the app\'s categories?', a: 'Absolutely! Go to the Categories section in the grid menu to create, edit, or delete categories. You can customize names, colors, and icons to fit your financial needs.' },
-                { q: 'Does Gro work offline?', a: 'Yes, Gro works completely offline. All your data is stored locally on your device, so you can manage your finances anywhere, anytime, without needing an internet connection.' },
-                { q: 'How do I customize the app\'s appearance?', a: 'Gro offers both light and dark themes - switch between them in Settings. You can also customize account colors, category icons, and other visual elements to make the app truly yours.' },
-
-                // Data & Security
-                { q: 'How secure is my financial data?', a: 'Very secure! Gro uses bank-grade encryption for all data, supports fingerprint/face authentication, and offers PIN/pattern locks. Your data is encrypted both on your device and in your Google Drive backups.' },
-                { q: 'How do I back up my data?', a: 'Gro automatically backs up your encrypted data to your Google Drive. You can also manually trigger a backup from Settings > Backup & Restore. Your data is protected with your account password and device authentication.' },
-                { q: 'How do I restore my data from a backup?', a: 'To restore your data, go to Settings > Backup & Restore and select "Restore from Google Drive". Make sure you have an existing backup available. The app will prompt you to confirm the restoration process.' },
-                { q: 'Can I delete my data?', a: 'Yes, you can delete all your data from Settings > Data & Security. This will remove all accounts, transactions, and settings from the app. Use this option with caution, as it cannot be undone.' },
-                { q: 'How do I reset Gro to start fresh?', a: 'If you want to reset Gro, go to Settings > Data Management and select "Delete and Start Fresh". This will remove all your data and settings, allowing you to set up the app as if it were new. Use this option with caution.' },
-
-                // Future Plans
-                { q: 'Is there a way to collaborate with family?', a: 'Currently, Gro is designed for individual use with data stored locally on your device. We\'re actively working on a family sharing feature that will allow secure data sharing between family members. Stay tuned for this update!' },
-                { q: 'Can I track business expenses separately?', a: 'While you can currently use categories to organize different types of expenses, dedicated business expense tracking is coming in a future update. This will include features like receipt scanning, tax category tagging, and business-specific reports. For now, we recommend using categories and tags to separate personal and business transactions.' },
-
-
-                // Tips & Tricks
-                { q: 'How can I make the most of the budgeting features?', a: 'Start with realistic category budgets based on your past spending (visible in Analytics). Use the "Need vs Want" tags for better insights, set up budget notifications, and regularly review your progress in the Analytics section. The app can help identify areas where you\'re consistently over or under budget.' },
-                { q: 'What are some tips for effective financial planning with Gro?', a: 'Regularly review your financial health in the Analytics section. Set clear financial goals (like saving for a vacation or paying off debt) and use the Plans section to track progress. Automate savings by setting up recurring transfers to your savings account. Finally, keep your categories organized and up-to-date for accurate tracking.' }
-            ];
-
-            const faqsContainer = document.querySelector('#faqs .space-y-4');
-            if (faqsContainer) {
-                const ITEMS_PER_PAGE = 8;
-                let visibleItems = ITEMS_PER_PAGE;
-
-                function renderFAQs() {
-                    // Clear existing content
-                    faqsContainer.innerHTML = '';
-
-                    // Render visible FAQs
-                    faqsData.slice(0, visibleItems).forEach(faq => {
-                        const faqItem = document.createElement('div');
-                        faqItem.classList.add('p-6', 'rounded-xl', 'shadow-lg', 'hover:shadow-xl', 'transition-shadow', 'duration-300');
-                        faqItem.style.backgroundColor = 'var(--color-secondary-bg)';
-                        faqItem.innerHTML = `
-                            <details class="group faq-group">
-                                <summary class="flex justify-between items-center font-semibold text-lg cursor-pointer faq-summary list-none" style="color: var(--color-text-primary);">
-                                    ${faq.q}
-                                </summary>
-                                <p class="mt-4" style="color: var(--color-text-secondary);">${faq.a}</p>
-                            </details>
-                        `;
-                        faqsContainer.appendChild(faqItem);
-                    });
-
-                    // Add or update Show More button if there are more items to show
-                    let showMoreBtn = document.querySelector('#show-more-faqs');
-                    if (visibleItems < faqsData.length) {
-                        if (!showMoreBtn) {
-                            showMoreBtn = document.createElement('button');
-                            showMoreBtn.id = 'show-more-faqs';
-                            showMoreBtn.classList.add('mt-8', 'px-6', 'py-3', 'bg-primary', 'rounded-lg', 'hover:bg-primary-dark', 'transition-colors', 'duration-300', 'mx-auto', 'block');
-                            showMoreBtn.textContent = 'Show More';
-                            faqsContainer.parentNode.insertBefore(showMoreBtn, faqsContainer.nextSibling);
-
-                            showMoreBtn.addEventListener('click', () => {
-                                visibleItems = Math.min(visibleItems + ITEMS_PER_PAGE, faqsData.length);
-                                renderFAQs();
-                            });
-                        }
-                    } else if (showMoreBtn) {
-                        showMoreBtn.remove();
-                    }
-                }
-
-                // Initial render
-                renderFAQs();
-            }
-
-            // Screenshot Gallery Logic
-            const galleryImages = {
-                light: [
-                    { src: "https://placehold.co/400x700/f7f7f7/1f2937?text=Gro+Light+1", alt: "Gro App Light Theme Screenshot 1" },
-                    { src: "https://placehold.co/400x700/f0f0f0/2a3f54?text=Gro+Light+2", alt: "Gro App Light Theme Screenshot 2" },
-                    { src: "https://placehold.co/400x700/e9e9e9/3c5a78?text=Gro+Light+3", alt: "Gro App Light Theme Screenshot 3" },
-                    { src: "https://placehold.co/400x700/e0e0e0/4d6b9c?text=Gro+Light+4", alt: "Gro App Light Theme Screenshot 4" },
-                    { src: "https://placehold.co/400x700/d9d9d9/5f7a9c?text=Gro+Light+5", alt: "Gro App Light Theme Screenshot 5" },
-                ],
-                dark: [
-                    { src: "https://placehold.co/400x700/1a202c/e2e8f0?text=Gro+Dark+1", alt: "Gro App Dark Theme Screenshot 1" },
-                    { src: "https://placehold.co/400x700/2d3748/cbd5e0?text=Gro+Dark+2", alt: "Gro App Dark Theme Screenshot 2" },
-                    { src: "https://placehold.co/400x700/3a475a/b2bfd3?text=Gro+Dark+3", alt: "Gro App Dark Theme Screenshot 3" },
-                    { src: "https://placehold.co/400x700/4a5568/a0aec0?text=Gro+Dark+4", alt: "Gro App Dark Theme Screenshot 4" },
-                    { src: "https://placehold.co/400x700/5a6678/8c9ab0?text=Gro+Dark+5", alt: "Gro App Dark Theme Screenshot 5" },
-                ]
+            ctx = {
+                a: canvas.a.getContext('2d'),
+                b: canvas.b.getContext('2d')
             };
-            let currentGalleryTheme = 'light';
-            let screenshotsSwiper = null;
+            center = []; // Will be set in resize
+        }
 
-            function initScreenshotsSwiper(theme) {
-                const swiperWrapper = document.querySelector('.screenshots-swiper .swiper-wrapper');
-                swiperWrapper.innerHTML = ''; // Clear existing slides
+        function resize() {
+            if (!canvas || !canvas.a || !canvas.b) return; // Guard against canvas not being initialized
 
-                // Add slides for the current theme
-                galleryImages[theme].forEach(image => {
-                    const slide = document.createElement('div');
-                    slide.className = 'swiper-slide';
-                    slide.innerHTML = `
-                        <img src="${image.src}" 
-                             alt="${image.alt}" 
-                             class="w-full h-auto rounded-lg" 
-                             style="max-height: 700px; object-fit: contain;"
-                             loading="lazy">
-                    `;
-                    swiperWrapper.appendChild(slide);
-                });
+            const { innerWidth, innerHeight } = window;
 
-                // Initialize or update Swiper
-                if (screenshotsSwiper) {
-                    screenshotsSwiper.destroy();
-                } screenshotsSwiper = new Swiper('.screenshots-swiper', {
-                    slidesPerView: 1,
-                    spaceBetween: 20,
-                    grabCursor: true,
-                    loop: true,
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true,
-                    },
-                    navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                    },
-                    breakpoints: {
-                        // >= 768px
-                        768: {
-                            slidesPerView: 2,
-                            spaceBetween: 30,
-                        },
-                        // >= 1024px
-                        1024: {
-                            slidesPerView: 3,
-                            spaceBetween: 40,
-                        },
-                    },
-                });
+            canvas.a.width = innerWidth;
+            canvas.a.height = innerHeight;
 
-                // Position navigation arrows outside and make them bigger
-                const root = document.documentElement;
-                root.style.setProperty('--swiper-navigation-size', '44px');
-                root.style.setProperty('--swiper-navigation-sides-offset', '10%');
-
-                const swiperNav = document.querySelectorAll('.swiper-button-next, .swiper-button-prev');
-                swiperNav.forEach(nav => {
-                    nav.style.width = '44px';
-                    nav.style.height = '44px';
-                    nav.style.backgroundColor = 'var(--color-secondary-bg)';
-                    nav.style.borderRadius = '50%';
-                    nav.style.boxShadow = '0 4px 6px var(--color-shadow)';
-                });
-
-                const nextButton = document.querySelector('.swiper-button-next');
-                const prevButton = document.querySelector('.swiper-button-prev');
-                if (nextButton) nextButton.style.right = '-60px';
-                if (prevButton) prevButton.style.left = '-60px';
+            // If canvas.b exists and has content, draw it to canvas.a before resizing canvas.b
+            // This is usually for preserving content, but here we clear and redraw, so it might not be strictly necessary.
+            // However, the original code had it, so keeping the logic.
+            if (ctx.a && ctx.b && canvas.b.width > 0 && canvas.b.height > 0) {
+                ctx.a.drawImage(canvas.b, 0, 0);
             }
 
-            // Theme switcher functionality
-            const galleryThemeLightBtn = document.getElementById('gallery-theme-light');
-            const galleryThemeDarkBtn = document.getElementById('gallery-theme-dark');
+            canvas.b.width = innerWidth;
+            canvas.b.height = innerHeight;
 
-            function switchToGalleryTheme(themeName) {
-                currentGalleryTheme = themeName;
-
-                galleryThemeLightBtn.classList.toggle('screenshot-btn-active', themeName === 'light');
-                galleryThemeLightBtn.classList.toggle('screenshot-btn-inactive', themeName !== 'light');
-                galleryThemeDarkBtn.classList.toggle('screenshot-btn-active', themeName === 'dark');
-                galleryThemeDarkBtn.classList.toggle('screenshot-btn-inactive', themeName !== 'dark');
-
-                initScreenshotsSwiper(themeName);
+            // Draw the (potentially preserved) content of canvas.a back to the resized canvas.b
+            if (ctx.b && ctx.a && canvas.a.width > 0 && canvas.a.height > 0) {
+                ctx.b.drawImage(canvas.a, 0, 0);
             }
 
-            // Initialize gallery with light theme by default
-            if (galleryThemeLightBtn && galleryThemeDarkBtn) {
-                galleryThemeLightBtn.classList.add('screenshot-btn-active');
-                galleryThemeDarkBtn.classList.add('screenshot-btn-inactive');
+            center[0] = 0.5 * canvas.a.width;
+            center[1] = 0.5 * canvas.a.height;
 
-                galleryThemeLightBtn.addEventListener('click', () => switchToGalleryTheme('light'));
-                galleryThemeDarkBtn.addEventListener('click', () => switchToGalleryTheme('dark'));
+            // Re-initialize rays if screen size changes significantly (optional, but can prevent weirdness)
+            // For simplicity, we are not re-initializing rays on resize here, but it could be added.
+            // initRays(); 
+        }
 
-                // Initialize Swiper with default theme
-                initScreenshotsSwiper('light');
+        function draw() {
+            if (!ctx || !canvas) { // Ensure context and canvas are initialized
+                window.requestAnimationFrame(draw); // Keep trying if not ready
+                return;
             }
+            tick++;
+            ctx.a.clearRect(0, 0, canvas.a.width, canvas.a.height); // Clear the offscreen canvas
 
-            // Update Swiper slides when theme changes
-            function updateSwiperSlides() {
-                const images = galleryImages[currentGalleryTheme];
-                const slidesContainer = swiper.slidesEl.querySelector('.swiper-wrapper');
-                slidesContainer.innerHTML = ''; // Clear existing slides
-                if (images && images.length > 0) {
-                    images.forEach((image, index) => {
-                        const slide = document.createElement('div');
-                        slide.classList.add('swiper-slide');
-                        slide.innerHTML = `
-                            <img src="${image.src}" alt="${image.alt}" class="w-full h-auto rounded-lg" style="max-height: 700px; object-fit: cover;" onerror="this.onerror=null;this.src='https://placehold.co/400x700/cccccc/969696?text=Load+Error';">
-                        `;
-                        slidesContainer.appendChild(slide);
-                    });
-                    swiper.update();
-                }
-            }
+            // Fill the onscreen canvas with the background color
+            ctx.b.fillStyle = backgroundColor;
+            ctx.b.fillRect(0, 0, canvas.b.width, canvas.b.height);
 
-            // Listen for theme switcher button clicks
-            galleryThemeLightBtn.addEventListener('click', () => {
-                switchToGalleryTheme('light');
-                updateSwiperSlides();
-            });
-            galleryThemeDarkBtn.addEventListener('click', () => {
-                switchToGalleryTheme('dark');
-                updateSwiperSlides();
-            });
-        });
+            drawRays(); // Draw rays onto the offscreen canvas (a)
+            render();   // Render the offscreen canvas to the onscreen one with effects
+
+            window.requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('load', setup);
+        window.addEventListener('resize', resize);
+
     </script>
 </body>
 
