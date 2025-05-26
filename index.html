@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gro - Your Personal Finance Companion</title>
-    <script src="https://cdn.tailwindcss.com"></script>    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <title>Gro Money Saver and Expense Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <style>
         /* CSS Variables for Theming */
         :root {
@@ -16,12 +20,15 @@
             --color-tertiary-bg: #f3f4f6;
             --color-text-primary: #1f2937;
             --color-text-secondary: #4b5563;
-            --color-main: #6B46C1; /* Main purple for general branding */
+            --color-main: #6B46C1;
+            /* Main purple for general branding */
             --color-dark: #553C9A;
             --color-light: #DDD6FE;
             --color-shadow: rgba(0, 0, 0, 0.05);
-            --color-hero-gradient-start: #b600c8; /* Flutter gradient start */
-            --color-hero-gradient-end: #0824c3;   /* Flutter gradient end */
+            --color-hero-gradient-start: #b600c8;
+            /* Flutter gradient start */
+            --color-hero-gradient-end: #0824c3;
+            /* Flutter gradient end */
             --color-footer-top-text: #ffffff;
             --color-footer-bottom-bg: #e5e7eb;
             --color-footer-bottom-text: #4b5563;
@@ -49,8 +56,10 @@
             --color-dark: #6B46C1;
             --color-light: #A78BFA;
             --color-shadow: rgba(0, 0, 0, 0.3);
-            --color-hero-gradient-start: #4e37c3; /* Darker Flutter gradient start */
-            --color-hero-gradient-end: #120b37;   /* Darker Flutter gradient end */
+            --color-hero-gradient-start: #4e37c3;
+            /* Darker Flutter gradient start */
+            --color-hero-gradient-end: #120b37;
+            /* Darker Flutter gradient end */
             --color-footer-top-text: #e2e8f0;
             --color-footer-bottom-bg: #2d3748;
             --color-footer-bottom-text: #a0aec0;
@@ -65,7 +74,11 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .hero-gradient { background: var(--flutter-gradient); } /* Use the full flutter gradient for hero */
+        .hero-gradient {
+            background: var(--flutter-gradient);
+        }
+
+        /* Use the full flutter gradient for hero */
 
         .section-padding {
             padding-top: 4rem;
@@ -73,40 +86,77 @@
             padding-left: 1.5rem;
             padding-right: 1.5rem;
         }
+
         @media (min-width: 768px) {
-            .section-padding { padding-left: 3rem; padding-right: 3rem; padding-top: 5rem; padding-bottom: 5rem;}
-        }
-        @media (min-width: 1024px) {
-            .section-padding { padding-left: 6rem; padding-right: 6rem; }
+            .section-padding {
+                padding-left: 3rem;
+                padding-right: 3rem;
+                padding-top: 5rem;
+                padding-bottom: 5rem;
+            }
         }
 
-        .faq-summary::-webkit-details-marker { display: none; }
-        .faq-summary::after {
-            content: '+'; font-size: 1.5rem; transition: transform 0.3s ease; color: var(--color-main);
+        @media (min-width: 1024px) {
+            .section-padding {
+                padding-left: 6rem;
+                padding-right: 6rem;
+            }
         }
-        details[open] > .faq-summary::after { content: '-'; }
+
+        .faq-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            color: var(--color-main);
+        }
+
+        details[open]>.faq-summary::after {
+            content: '-';
+        }
 
         /* Styles for collapsible content sections */
-        .content-section details > summary.collapsible-h3 {
-            font-size: 1.5rem; /* 24px */
+        .content-section details>summary.collapsible-h3 {
+            font-size: 1.5rem;
+            /* 24px */
             font-weight: 600;
             color: var(--color-text-primary);
             margin-top: 2rem;
             margin-bottom: 1rem;
             cursor: pointer;
-            list-style: none; /* Remove default marker */
+            list-style: none;
+            /* Remove default marker */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 0.5rem; /* Optional: space before content */
+            padding-bottom: 0.5rem;
+            /* Optional: space before content */
         }
-        .content-section details > summary.collapsible-h3::-webkit-details-marker { display: none; }
-        .content-section details > summary.collapsible-h3::after {
-            content: '+'; font-size: 1.8rem; font-weight: 600; color: var(--color-main);
-            transition: transform 0.3s ease; padding-left: 1rem;
+
+        .content-section details>summary.collapsible-h3::-webkit-details-marker {
+            display: none;
         }
-        .content-section details[open] > summary.collapsible-h3::after { content: '-'; }
-        .content-section details > .collapsible-content { padding-left: 0.5rem; margin-top: 0.5rem; }
+
+        .content-section details>summary.collapsible-h3::after {
+            content: '+';
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--color-main);
+            transition: transform 0.3s ease;
+            padding-left: 1rem;
+        }
+
+        .content-section details[open]>summary.collapsible-h3::after {
+            content: '-';
+        }
+
+        .content-section details>.collapsible-content {
+            padding-left: 0.5rem;
+            margin-top: 0.5rem;
+        }
 
 
         /* Styles for the "Discover Gro's Power" Carousel (Flutter Inspired) */
@@ -114,12 +164,14 @@
             background: var(--flutter-gradient);
             color: var(--flutter-slide-text-primary);
         }
+
         .swiper-slide.discover-power-slide {
             background-color: var(--flutter-slide-bg);
             border: 1px solid var(--flutter-slide-border-color);
             box-shadow: var(--flutter-slide-shadow);
             border-radius: 24px;
-            padding: 2rem 1.5rem; /* Adjusted padding */
+            padding: 2rem 1.5rem;
+            /* Adjusted padding */
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -129,29 +181,51 @@
             box-sizing: border-box;
             color: var(--flutter-slide-text-secondary);
         }
+
         .discover-power-slide .emoji {
-            font-size: 3.5rem; /* 56px, slightly smaller than 64px for balance */
+            font-size: 3.5rem;
+            /* 56px, slightly smaller than 64px for balance */
             line-height: 1;
-            margin-bottom: 1.25rem; /* 20px */
+            margin-bottom: 1.25rem;
+            /* 20px */
         }
+
         .discover-power-slide h3 {
-            font-size: 1.375rem; /* 22px, slightly smaller for balance */
+            font-size: 1.375rem;
+            /* 22px, slightly smaller for balance */
             font-weight: 700;
             color: var(--flutter-slide-text-primary);
-            margin-bottom: 0.75rem; /* 12px */
+            margin-bottom: 0.75rem;
+            /* 12px */
         }
+
         .discover-power-slide p {
-            font-size: 1rem; /* 16px, for better readability in slides */
+            font-size: 1rem;
+            /* 16px, for better readability in slides */
             max-width: 95%;
             line-height: 1.5;
         }
-        .swiper-pagination-bullet { background-color: var(--flutter-indicator-inactive); opacity: 1; }
-        .swiper-pagination-bullet-active { background-color: var(--flutter-indicator-active); }
-        .swiper-button-next, .swiper-button-prev {
-            color: var(--flutter-indicator-active);
-            --swiper-navigation-size: 28px; /* Adjusted size */
+
+        .swiper-pagination-bullet {
+            background-color: var(--flutter-indicator-inactive);
+            opacity: 1;
         }
-         .swiper-button-next:after, .swiper-button-prev:after { font-size: 18px !important; }
+
+        .swiper-pagination-bullet-active {
+            background-color: var(--flutter-indicator-active);
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--flutter-indicator-active);
+            --swiper-navigation-size: 28px;
+            /* Adjusted size */
+        }
+
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 18px !important;
+        }
 
 
         /* Styles for "Our Core Principles" Section */
@@ -160,6 +234,7 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
+
         .principle-card {
             background-color: var(--color-secondary-bg);
             padding: 1.75rem;
@@ -167,24 +242,32 @@
             box-shadow: var(--color-shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .principle-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 16px var(--color-shadow);
         }
+
         .principle-card svg {
-            width: 2.5rem; /* 40px */
-            height: 2.5rem; /* 40px */
+            width: 2.5rem;
+            /* 40px */
+            height: 2.5rem;
+            /* 40px */
             margin-bottom: 1rem;
             color: var(--color-main);
         }
+
         .principle-card h3 {
-            font-size: 1.25rem; /* 20px */
+            font-size: 1.25rem;
+            /* 20px */
             font-weight: 600;
             color: var(--color-text-primary);
             margin-bottom: 0.5rem;
         }
+
         .principle-card p {
-            font-size: 0.95rem; /* ~15px */
+            font-size: 0.95rem;
+            /* ~15px */
             color: var(--color-text-secondary);
             line-height: 1.6;
         }
@@ -193,17 +276,25 @@
         /* Mobile Menu Styles */
         #mobile-menu {
             transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            transform: translateY(-100%); opacity: 0;
+            transform: translateY(-100%);
+            opacity: 0;
         }
-        #mobile-menu.open { transform: translateY(0); opacity: 1; }
+
+        #mobile-menu.open {
+            transform: translateY(0);
+            opacity: 1;
+        }
 
         /* Footer top section with Flutter gradient */
         .footer-download-section {
             background: var(--flutter-gradient);
             color: var(--color-footer-top-text);
         }
-         .footer-download-section h2, .footer-download-section p {
-            color: var(--color-footer-top-text); /* Ensure text is white */
+
+        .footer-download-section h2,
+        .footer-download-section p {
+            color: var(--color-footer-top-text);
+            /* Ensure text is white */
         }
 
         /* Styling for long-form text sections */
@@ -214,39 +305,53 @@
             margin-bottom: 2rem;
             box-shadow: var(--color-shadow);
         }
-        .content-section h2 { /* For main section titles like "App Navigation" */
-            font-size: 2rem; /* 32px */
+
+        .content-section h2 {
+            /* For main section titles like "App Navigation" */
+            font-size: 2rem;
+            /* 32px */
             font-weight: 700;
             color: var(--color-text-primary);
             margin-bottom: 1.5rem;
             padding-bottom: 0.75rem;
             border-bottom: 2px solid var(--color-main);
         }
-        .content-section h3 { /* For sub-sections like "Money Tab" */
-            font-size: 1.5rem; /* 24px */
+
+        .content-section h3 {
+            /* For sub-sections like "Money Tab" */
+            font-size: 1.5rem;
+            /* 24px */
             font-weight: 600;
             color: var(--color-text-primary);
             margin-top: 2rem;
             margin-bottom: 1rem;
         }
-        .content-section h4 { /* For further sub-headings */
-            font-size: 1.2rem; /* ~19px */
+
+        .content-section h4 {
+            /* For further sub-headings */
+            font-size: 1.2rem;
+            /* ~19px */
             font-weight: 600;
             color: var(--color-text-primary);
             margin-top: 1.5rem;
             margin-bottom: 0.75rem;
         }
-        .content-section p, .content-section li {
-            font-size: 1rem; /* 16px */
+
+        .content-section p,
+        .content-section li {
+            font-size: 1rem;
+            /* 16px */
             color: var(--color-text-secondary);
             line-height: 1.7;
             margin-bottom: 1rem;
         }
+
         .content-section ul {
             list-style-type: disc;
             padding-left: 1.5rem;
             margin-bottom: 1rem;
         }
+
         .content-section strong {
             font-weight: 600;
             color: var(--color-text-primary);
@@ -254,24 +359,30 @@
 
         /* Styles for Screenshot Theme Switcher Buttons */
         .screenshot-btn {
-            padding: 0.5rem 1.5rem; /* Tailwind: px-6 py-2 */
-            border-radius: 0.375rem; /* Tailwind: rounded-md */
-            font-weight: 500; /* Tailwind: font-medium */
+            padding: 0.5rem 1.5rem;
+            /* Tailwind: px-6 py-2 */
+            border-radius: 0.375rem;
+            /* Tailwind: rounded-md */
+            font-weight: 500;
+            /* Tailwind: font-medium */
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
             border-width: 2px;
             border-style: solid;
             cursor: pointer;
         }
+
         .screenshot-btn-active {
             background-color: var(--color-main);
             color: white;
             border-color: var(--color-main);
         }
+
         .screenshot-btn-inactive {
             background-color: var(--color-secondary-bg);
             color: var(--color-main);
             border-color: var(--color-main);
         }
+
         .screenshot-btn-inactive:hover {
             background-color: var(--color-light);
             border-color: var(--color-dark);
@@ -283,12 +394,16 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(45, 55, 72, 0.6); /* bg-gray-700/60 */
+            background-color: rgba(45, 55, 72, 0.6);
+            /* bg-gray-700/60 */
             color: white;
             border: none;
-            border-radius: 9999px; /* rounded-full */
-            width: 2.5rem; /* w-10 */
-            height: 2.5rem; /* h-10 */
+            border-radius: 9999px;
+            /* rounded-full */
+            width: 2.5rem;
+            /* w-10 */
+            height: 2.5rem;
+            /* h-10 */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -296,18 +411,25 @@
             transition: background-color 0.3s ease, opacity 0.3s ease;
             z-index: 10;
         }
+
         .gallery-nav-btn:hover:not(:disabled) {
-            background-color: rgba(45, 55, 72, 0.9); /* bg-gray-700/90 */
+            background-color: rgba(45, 55, 72, 0.9);
+            /* bg-gray-700/90 */
         }
+
         .gallery-nav-btn:disabled {
             opacity: 0.3;
             cursor: not-allowed;
         }
+
         .gallery-nav-btn.prev {
-            left: -3.25rem; /* Adjust to position outside the image container */
+            left: -3.25rem;
+            /* Adjust to position outside the image container */
         }
+
         .gallery-nav-btn.next {
-            right: -3.25rem; /* Adjust to position outside the image container */
+            right: -3.25rem;
+            /* Adjust to position outside the image container */
         }
 
         /* Styles for Pagination Dots */
@@ -315,20 +437,25 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background-color: var(--color-light); /* Inactive dot color */
+            background-color: var(--color-light);
+            /* Inactive dot color */
             margin: 0 5px;
             cursor: pointer;
-            border: none; /* Ensure it's a button without default styling */
+            border: none;
+            /* Ensure it's a button without default styling */
             padding: 0;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
+
         .gallery-pagination-dot:hover:not(.active) {
             transform: scale(1.2);
             background-color: var(--color-main);
             opacity: 0.7;
         }
+
         .gallery-pagination-dot.active {
-            background-color: var(--color-main); /* Active dot color */
+            background-color: var(--color-main);
+            /* Active dot color */
             transform: scale(1.1);
         }
 
@@ -379,11 +506,11 @@
             .screenshots-swiper {
                 padding: 0;
             }
-            
+
             .screenshots-swiper .swiper-slide {
                 height: 500px;
             }
-            
+
             .screenshots-swiper .swiper-button-next,
             .screenshots-swiper .swiper-button-prev {
                 display: none;
@@ -392,6 +519,7 @@
 
         /* Swiper Navigation Styles */
         @media (max-width: 768px) {
+
             .swiper-button-next,
             .swiper-button-prev {
                 display: none !important;
@@ -406,108 +534,219 @@
         }
     </style>
 </head>
-<body class="antialiased">    <header class="header-shadow py-4 px-6 max-w-7xl mx-auto flex justify-between items-center rounded-b-xl sticky top-0 z-50 transition-colors duration-300">
-        <div class="text-2xl font-bold" style="color: var(--color-main);">Gro</div>        <nav class="hidden md:flex space-x-6 text-lg font-medium" style="color: var(--color-text-secondary);">
-            <a href="#features" class="hover:text-purple-600 transition duration-300 flex items-center gap-2">
-                <i class="lni lni-star-filled text-xl"></i> Features
+
+<body class="antialiased">
+    <header
+        class="header-shadow py-4 px-6 max-w-7xl mx-auto flex justify-between items-center rounded-b-xl sticky top-0 z-50 transition-colors duration-300">
+        <div class="text-2xl font-bold" style="color: var(--color-main);">Gro</div>
+        <nav class="hidden md:flex space-x-6 text-lg font-medium" style="color: var(--color-text-secondary);"> <a
+                href="#features" class="hover:text-purple-600 transition duration-300 flex items-center gap-2">
+                <ion-icon name="star-outline" class="text-xl"></ion-icon> Features
             </a>
             <a href="#app-navigation" class="hover:text-purple-600 transition duration-300 flex items-center gap-2">
-                <i class="lni lni-direction text-xl"></i> How to Use
+                <ion-icon name="compass-outline" class="text-xl"></ion-icon> How to Use
             </a>
             <a href="#faqs" class="hover:text-purple-600 transition duration-300 flex items-center gap-2">
-                <i class="lni lni-question-circle text-xl"></i> FAQs
+                <ion-icon name="help-circle-outline" class="text-xl"></ion-icon> FAQs
             </a>
             <a href="#download" class="hover:text-purple-600 transition duration-300 flex items-center gap-2">
-                <i class="lni lni-download text-xl"></i> Download
+                <ion-icon name="download-outline" class="text-xl"></ion-icon> Download
             </a>
         </nav>
         <div class="flex items-center space-x-4">
-            <button id="theme-toggle" class="p-2 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2" aria-label="Toggle theme">
-                <i id="sun-icon" class="lni lni-sun text-xl"></i>
-                <i id="moon-icon" class="lni lni-night text-xl hidden"></i>
+            <button id="theme-toggle"
+                class="p-2 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                aria-label="Toggle theme"> <ion-icon id="sun-icon" name="sunny-outline" class="text-xl"></ion-icon>
+                <ion-icon id="moon-icon" name="moon-outline" class="text-xl hidden"></ion-icon>
             </button>
         </div>
-        <button id="mobile-menu-button" class="md:hidden focus:outline-none p-2 rounded-md focus:ring-2 focus:ring-inset" style="color: var(--color-text-secondary); --ring-color: var(--color-main);" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-menu">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        <button id="mobile-menu-button"
+            class="md:hidden focus:outline-none p-2 rounded-md focus:ring-2 focus:ring-inset"
+            style="color: var(--color-text-secondary); --ring-color: var(--color-main);" aria-label="Open mobile menu"
+            aria-expanded="false" aria-controls="mobile-menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
         </button>
     </header>
 
-    <nav id="mobile-menu" class="md:hidden fixed inset-x-0 top-0 pt-20 p-6 space-y-4 shadow-xl z-40" style="background-color: var(--color-secondary-bg); color: var(--color-text-secondary);">
-        <a href="#why-gro" class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">Why Gro?</a>
-        <a href="#app-navigation" class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">How to Use</a>
-        <a href="#faqs" class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">FAQs</a>
-    </nav>    <main>        <section id="hero" class="hero-gradient section-padding flex flex-col min-h-[calc(100vh-80px)]">
-            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8 flex-grow">
+    <nav id="mobile-menu" class="md:hidden fixed inset-x-0 top-0 pt-20 p-6 space-y-4 shadow-xl z-40"
+        style="background-color: var(--color-secondary-bg); color: var(--color-text-secondary);">
+        <a href="#why-gro"
+            class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">Why
+            Gro?</a>
+        <a href="#app-navigation"
+            class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">How to
+            Use</a>
+        <a href="#faqs"
+            class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">FAQs</a>
+    </nav>
+    <main>
+        <section id="hero" class="hero-gradient section-padding flex flex-col min-h-[calc(100vh-80px)]">
+            <div
+                class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8 flex-grow">
                 <div class="text-center md:text-left max-w-xl">
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6" style="color: var(--color-footer-top-text);">
-                        Gro: <span style="color: var(--color-footer-top-text);">Master</span> Your Money
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6"
+                        style="color: var(--color-footer-top-text);">
+                        <span style="color: var(--color-footer-top-text);">Master</span> Your Money
                     </h1>
                     <p class="text-lg md:text-xl mb-8" style="color: var(--color-footer-top-text); opacity: 0.9;">
-                        From daily transaction tracking to achieving FIRE (Financial Independence, Retire Early), Gro provides the tools and insights you need to manage your money effectively and reach your financial goals.
+                        From daily transaction tracking to achieving FIRE (Financial Independence, Retire Early), Gro
+                        provides the tools and insights you need to manage your money effectively and reach your
+                        financial goals.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">                        <button class="px-8 py-4 rounded-full text-lg font-semibold transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 flex items-center gap-2 ring-offset-2" style="background-color: var(--flutter-slide-bg); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark); border: 1px solid rgba(255, 255, 255, 0.2);">
-                            <i class="lni lni-play-store text-xl"></i>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"> <button
+                            class="px-8 py-4 rounded-full text-lg font-semibold transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 flex items-center gap-2 ring-offset-2"
+                            style="background-color: var(--flutter-slide-bg); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark); border: 1px solid rgba(255, 255, 255, 0.2);">
+                            <ion-icon name="logo-google-playstore" class="text-xl"></ion-icon>
                             Download the app now
                         </button>
-                        <button class="px-8 py-4 rounded-full text-lg font-semibold transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none flex items-center gap-2 ring-2 ring-offset-2" style="background-color: var(--flutter-slide-bg); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark); border: 1px solid rgba(255, 255, 255, 0.2);">
-                            <i class="lni lni-play text-xl"></i>
+                        <!-- <button class="px-8 py-4 rounded-full text-lg font-semibold transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none flex items-center gap-2 ring-2 ring-offset-2" style="background-color: var(--flutter-slide-bg); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark); border: 1px solid rgba(255, 255, 255, 0.2);">                            <ion-icon name="play-circle-outline" class="text-xl"></ion-icon>
                             Watch Demo
-                        </button>
-                    </div>                    <div class="mt-12 grid grid-cols-2 gap-8">
-                        <div class="text-center flex flex-col items-center" style="color: var(--color-footer-top-text);">
-                            <i class="lni lni-users text-3xl mb-2"></i>
-                            <div class="text-2xl font-bold">100K+</div>
-                            <div class="text-sm opacity-90">Active Users</div>
-                        </div>
-                        <div class="text-center flex flex-col items-center" style="color: var(--color-footer-top-text);">
-                            <i class="lni lni-star-filled text-3xl mb-2"></i>
-                            <div class="text-2xl font-bold">4.8/5</div>
-                            <div class="text-sm opacity-90">App Rating</div>
-                        </div>
+                        </button> -->
                     </div>
+                    <!-- <div class="mt-12 grid grid-cols-3 gap-6">
+                        <div class="text-center flex flex-col items-center"
+                            style="color: var(--color-footer-top-text);">
+                            <ion-icon name="download-outline" class="text-3xl mb-2"></ion-icon>
+                            <div class="text-2xl font-bold">500K+</div>
+                            <div class="text-sm opacity-90">Downloads</div>
+                        </div>
+                        <div class="text-center flex flex-col items-center"
+                            style="color: var(--color-footer-top-text);">
+                            <ion-icon name="star-half-outline" class="text-3xl mb-2"></ion-icon>
+                            <div class="text-2xl font-bold">4.8</div>
+                            <div class="text-sm opacity-90">Rating</div>
+                        </div>
+                        <div class="text-center flex flex-col items-center"
+                            style="color: var(--color-footer-top-text);">
+                            <ion-icon name="chatbubbles-outline" class="text-3xl mb-2"></ion-icon>
+                            <div class="text-2xl font-bold">25K+</div>
+                            <div class="text-sm opacity-90">Reviews</div>
+                        </div>
+                        <div class="col-span-3 text-center mt-2" style="color: var(--color-footer-top-text);">
+                            <div class="text-xs opacity-70">on Play Store as of May 2025</div>
+                        </div>
+                    </div> -->
                 </div>
                 <div class="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0">
                     <div class="relative">
-                        <img src="https://placehold.co/600x720/b600c8/0824c3?text=Gro+App+Interface" alt="Gro App on Phone" class="w-full h-auto rounded-xl object-cover relative z-10" onerror="this.onerror=null;this.src='https://placehold.co/600x720/cccccc/969696?text=App+Screenshot';">
-                        <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-500 blur-3xl opacity-30 -z-10 transform scale-110"></div>
+                        <img src="https://placehold.co/600x720/b600c8/0824c3?text=Gro+App+Interface"
+                            alt="Gro App on Phone" class="w-full h-auto rounded-xl object-cover relative z-10"
+                            onerror="this.onerror=null;this.src='https://placehold.co/600x720/cccccc/969696?text=App+Screenshot';">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-500 blur-3xl opacity-30 -z-10 transform scale-110">
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="why-gro" class="section-padding" style="background-color: var(--color-tertiary-bg);">
+        <section id="features" class="section-padding" style="background-color: var(--color-tertiary-bg);">
             <div class="text-center max-w-4xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--color-text-primary);">
                     Unlock Your Financial Potential with Gro
                 </h2>
                 <p class="text-lg md:text-xl mb-12" style="color: var(--color-text-secondary);">
-                    Gro empowers you with intuitive tools and clear insights to confidently manage your money and achieve your financial goals. Discover the Gro difference:
+                    Gro is designed to empower you with a comprehensive understanding and control over your personal
+                    finances. From daily transaction tracking to long-term financial planning like achieving Financial
+                    Independence, Retire Early (FIRE), Gro provides the tools and insights you need to manage your money
+                    effectively and reach your financial goals.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">                <!-- Item 1: Effortless Tracking -->
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300" style="background-color: var(--color-secondary-bg);">
-                    <i class="lni lni-write text-4xl mb-4" style="color: var(--color-main);"></i>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Track with Ease, Live with Clarity</h3>
-                    <p style="color: var(--color-text-secondary);">Effortlessly log every transaction with our unique drag-and-drop FAB and smart categorization. Gain instant clarity on your spending and income without the hassle.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
+
+                <!-- Security Focus -->
+                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+                    style="background-color: var(--color-secondary-bg);">
+                    <ion-icon name="shield-checkmark-outline" class="text-4xl mb-4"
+                        style="color: var(--color-main);"></ion-icon>
+                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Bank-Grade Security
+                    </h3>
+                    <p style="color: var(--color-text-secondary);">Your data's security is our priority. Enjoy peace of
+                        mind with end-to-end encryption, on-device password protection, PIN verification, pattern lock,
+                        fingerprint authentication, and secure cloud backups.</p>
                 </div>
-                <!-- Item 2: Strategic Planning & FIRE -->
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300" style="background-color: var(--color-secondary-bg);">
-                    <i class="lni lni-stats-up text-4xl mb-4" style="color: var(--color-main);"></i>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Plan Smarter, Achieve Faster</h3>
-                    <p style="color: var(--color-text-secondary);">From daily budgets to long-term FIRE goals, Gro provides robust planning tools. Visualize your progress and make informed decisions to reach your aspirations sooner.</p>
+                <!-- Financial Management -->
+                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+                    style="background-color: var(--color-secondary-bg);">
+                    <ion-icon name="wallet-outline" class="text-4xl mb-4" style="color: var(--color-main);"></ion-icon>
+                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Financial
+                        Management</h3>
+                    <p style="color: var(--color-text-secondary);">Manage accounts, transactions, and transfers in one
+                        place. Track multiple account types, categorize income and expenses, and easily move money
+                        between accounts with our intuitive transfer system.</p>
                 </div>
-                <!-- Item 3: Actionable Insights -->
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300" style="background-color: var(--color-secondary-bg);">
-                    <i class="lni lni-bulb text-4xl mb-4" style="color: var(--color-main);"></i>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Insights That Inspire Action</h3>
-                    <p style="color: var(--color-text-secondary);">Go beyond numbers. Gro transforms your data into actionable insights on spending habits, income trends, and net worth growth, guiding you towards financial well-being.</p>
+                <!-- FIRE Planning -->
+                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+                    style="background-color: var(--color-secondary-bg);">
+                    <ion-icon name="flame-outline" class="text-4xl mb-4" style="color: var(--color-main);"></ion-icon>
+                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Financial
+                        Independence, Retire Early (FIRE)</h3>
+                    <p style="color: var(--color-text-secondary);">Plan for early retirement with our dedicated FIRE
+                        section. Calculate your 'FIRE Number' and use the timeline projector to map your journey to
+                        Financial Independence.</p>
                 </div>
-                <!-- Item 4: Personalized & Secure -->
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300" style="background-color: var(--color-secondary-bg);">
-                    <i class="lni lni-shield text-4xl mb-4" style="color: var(--color-main);"></i>
-                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Your Finances, Your Way, Always Secure</h3>
-                    <p style="color: var(--color-text-secondary);">Personalize Gro with custom categories, themes, and multi-currency support. Your data is protected with top-tier security, ensuring privacy and peace of mind.</p>
+                <!-- Advanced Analytics -->
+                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+                    style="background-color: var(--color-secondary-bg);">
+                    <ion-icon name="analytics-outline" class="text-4xl mb-4"
+                        style="color: var(--color-main);"></ion-icon>
+                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Analytics & Reports
+                    </h3>
+                    <p style="color: var(--color-text-secondary);">Explore your financial data with detailed income
+                        insights, expense deep-dives, savings progress, investment trends, and compare active vs passive
+                        income.</p>
+                </div>
+                <!-- Budget Management -->
+                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+                    style="background-color: var(--color-secondary-bg);">
+                    <ion-icon name="wallet-outline" class="text-4xl mb-4" style="color: var(--color-main);"></ion-icon>
+                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Budget & Targets
+                    </h3>
+                    <p style="color: var(--color-text-secondary);">Set spending limits with expense budgets and income
+                        targets. Define them monthly or yearly and link them to your transaction categories.</p>
+                </div>
+                <!-- Asset Tracking -->
+                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+                    style="background-color: var(--color-secondary-bg);">
+                    <ion-icon name="trending-up-outline" class="text-4xl mb-4"
+                        style="color: var(--color-main);"></ion-icon>
+                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Assets & Net Worth
+                    </h3>
+                    <p style="color: var(--color-text-secondary);">Track your complete financial picture. Monitor bank
+                        accounts, real estate, vehicles, and investments in one place. View your up-to-date net worth
+                        and track its growth over time.</p>
+                </div>
+                <!-- Debt Management -->
+                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+                    style="background-color: var(--color-secondary-bg);">
+                    <ion-icon name="timer-outline" class="text-4xl mb-4" style="color: var(--color-main);"></ion-icon>
+                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Debts & Liabilities
+                    </h3>
+                    <p style="color: var(--color-text-secondary);">Manage loans and other IOUs effectively. Track
+                        balances and payment schedules, and view detailed amortization schedules for your debts.</p>
+                </div>
+                <!-- Multi-Currency & Language -->
+                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+                    style="background-color: var(--color-secondary-bg);">
+                    <ion-icon name="globe-outline" class="text-4xl mb-4" style="color: var(--color-main);"></ion-icon>
+                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Global
+                        Accessibility</h3>
+                    <p style="color: var(--color-text-secondary);">Select any currency as your app's primary currency
+                        for all transactions and calculations. Use Gro in your preferred language with our comprehensive
+                        localization support.</p>
+                </div>
+                <!-- Transaction Automation -->
+                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+                    style="background-color: var(--color-secondary-bg);">
+                    <ion-icon name="repeat-outline" class="text-4xl mb-4" style="color: var(--color-main);"></ion-icon>
+                    <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Repeat & Import
+                        Transactions</h3>
+                    <p style="color: var(--color-text-secondary);">Set up recurring transactions for regular bills and
+                        income. Get a head start by importing transactions from CSV to get started quickly. </p>
                 </div>
             </div>
         </section>
@@ -515,12 +754,17 @@
         <section id="app-navigation" class="section-padding">
             <div class="content-section max-w-5xl mx-auto">
                 <h2>Explore Gro</h2>
-                <p>Gro is intuitively organized into main tabs and key management areas, ensuring you can easily find what you need. When you first open the app, you might be greeted by a tutorial or a Quick Start Guide, especially in the "Money" section. Follow these prompts for a smooth start.</p>
+                <p>Gro is intuitively organized into main tabs and key management areas, ensuring you can easily find
+                    what you need. When you first open the app, you might be greeted by a tutorial or a Quick Start
+                    Guide, especially in the "Money" section. Follow these prompts for a smooth start.</p>
 
                 <details>
                     <summary class="collapsible-h3">Setup Guide: Your Onboarding Companion</summary>
                     <div class="collapsible-content">
-                        <p>Gro features a comprehensive Setup Guide, often accessible as a prominent header on the Money Tab. Tapping it opens a dedicated page to walk you through key app functionalities, organized into sections like "Getting Started," "Ready to Plan Your Finances?," and "What Do Your Finances Say?". Each item is interactive, guiding you to relevant app areas.</p>
+                        <p>Gro features a comprehensive Setup Guide, often accessible as a prominent header on the Money
+                            Tab. Tapping it opens a dedicated page to walk you through key app functionalities,
+                            organized into sections like "Getting Started," "Ready to Plan Your Finances?," and "What Do
+                            Your Finances Say?". Each item is interactive, guiding you to relevant app areas.</p>
                         <h4>Key Setup Steps Covered:</h4>
                         <ul>
                             <li>Setting up accounts and customizing categories.</li>
@@ -534,9 +778,11 @@
                 <details>
                     <summary class="collapsible-h3">Money: Your Daily Financial Hub</summary>
                     <div class="collapsible-content">
-                        <p>This is your primary interface for daily transaction tracking, account overview, and immediate insights. Key components include:</p>
+                        <p>This is your primary interface for daily transaction tracking, account overview, and
+                            immediate insights. Key components include:</p>
                         <h4>Account Selector</h4>
-                        <p>Located typically in the app bar, this allows you to filter the Money tab's view for specific accounts or see a total of all accounts.</p>
+                        <p>Located typically in the app bar, this allows you to filter the Money tab's view for specific
+                            accounts or see a total of all accounts.</p>
                         <h4>Insights Overview</h4>
                         <p>Quickly grasp your financial standing with views for:</p>
                         <ul>
@@ -546,19 +792,25 @@
                             <li><strong>Transfers:</strong> History of inter-account transfers.</li>
                         </ul>
                         <h4>Transactions List</h4>
-                        <p>View, filter (by account, period, type, category), sort (by date, amount), and search your transactions. The innovative draggable Floating Action Button (FAB) is your main tool for adding new entries.</p>
+                        <p>View, filter (by account, period, type, category), sort (by date, amount), and search your
+                            transactions. The innovative draggable Floating Action Button (FAB) is your main tool for
+                            adding new entries.</p>
                     </div>
                 </details>
 
                 <details>
                     <summary class="collapsible-h3">Accounts: Centralized Account Management</summary>
                     <div class="collapsible-content">
-                        <p>Manage all your financial accounts here. To get started, navigate to account management (often via the Account Selector in the "Money" tab's app bar or a dedicated "Accounts" area) to add your bank accounts (checking, savings, cash), credit cards, etc. This is crucial for accurate tracking.</p>
+                        <p>Manage all your financial accounts here. To get started, navigate to account management
+                            (often via the Account Selector in the "Money" tab's app bar or a dedicated "Accounts" area)
+                            to add your bank accounts (checking, savings, cash), credit cards, etc. This is crucial for
+                            accurate tracking.</p>
                         <h4>Key Features:</h4>
                         <ul>
                             <li><strong>Add & Manage:</strong> Create and edit various account types.</li>
                             <li><strong>View Balances:</strong> See a list of accounts with current balances.</li>
-                            <li><strong>Edit Details:</strong> Modify names, types, starting balances, colors, and icons.</li>
+                            <li><strong>Edit Details:</strong> Modify names, types, starting balances, colors, and
+                                icons.</li>
                         </ul>
                     </div>
                 </details>
@@ -566,12 +818,19 @@
                 <details>
                     <summary class="collapsible-h3">Plans: Strategic Financial Planning</summary>
                     <div class="collapsible-content">
-                        <p>This section is dedicated to your long-term financial strategy and goals. Each module within the Plans tab often has its own detailed information dialog (look for an info icon 'i' or '?') explaining its purpose and how to use it.</p>
+                        <p>This section is dedicated to your long-term financial strategy and goals. Each module within
+                            the Plans tab often has its own detailed information dialog (look for an info icon 'i' or
+                            '?') explaining its purpose and how to use it.</p>
                         <ul>
-                            <li><strong>Budget & Targets:</strong> Set spending limits (Expense budgets) or income goals (Income targets). Define them monthly or yearly and link transaction categories.</li>
-                            <li><strong>Assets & Net Worth:</strong> Track what you own (real estate, vehicles, investments). Your 'All Bank Accounts' asset is auto-calculated. This helps understand your Net Worth (Assets - Liabilities).</li>
-                            <li><strong>Debts & Liabilities:</strong> Manage loans and other IOUs. Track balances and view amortization schedules.</li>
-                            <li><strong>Financial Independence (FIRE):</strong> Plan for early retirement. Calculate your 'FIRE Number' and project timelines.</li>
+                            <li><strong>Budget & Targets:</strong> Set spending limits (Expense budgets) or income goals
+                                (Income targets). Define them monthly or yearly and link transaction categories.</li>
+                            <li><strong>Assets & Net Worth:</strong> Track what you own (real estate, vehicles,
+                                investments). Your 'All Bank Accounts' asset is auto-calculated. This helps understand
+                                your Net Worth (Assets - Liabilities).</li>
+                            <li><strong>Debts & Liabilities:</strong> Manage loans and other IOUs. Track balances and
+                                view amortization schedules.</li>
+                            <li><strong>Financial Independence (FIRE):</strong> Plan for early retirement. Calculate
+                                your 'FIRE Number' and project timelines.</li>
                         </ul>
                     </div>
                 </details>
@@ -579,13 +838,19 @@
                 <details>
                     <summary class="collapsible-h3">Analytics: Deep Dive into Your Data</summary>
                     <div class="collapsible-content">
-                        <p>Explore advanced analytics and visualizations to identify trends and gain profound insights. This area is typically organized with sub-tabs for focused analysis:</p>
+                        <p>Explore advanced analytics and visualizations to identify trends and gain profound insights.
+                            This area is typically organized with sub-tabs for focused analysis:</p>
                         <ul>
-                            <li><strong>Overview Dashboard:</strong> A high-level snapshot of your financial health (net worth, savings rate, income vs. expenses).</li>
-                            <li><strong>Expense Deep Dive:</strong> Detailed breakdown of spending habits (by category, trends, Need vs. Want).</li>
-                            <li><strong>Income Insights:</strong> Thorough examination of income sources (by category, Active vs. Passive, trends).</li>
-                            <li><strong>Savings & Net Worth Trends:</strong> Progress in wealth accumulation and savings goals.</li>
-                            <li><strong>Reports & Comparisons:</strong> Customized reporting like cash flow statements and period-over-period comparisons.</li>
+                            <li><strong>Overview Dashboard:</strong> A high-level snapshot of your financial health (net
+                                worth, savings rate, income vs. expenses).</li>
+                            <li><strong>Expense Deep Dive:</strong> Detailed breakdown of spending habits (by category,
+                                trends, Need vs. Want).</li>
+                            <li><strong>Income Insights:</strong> Thorough examination of income sources (by category,
+                                Active vs. Passive, trends).</li>
+                            <li><strong>Savings & Net Worth Trends:</strong> Progress in wealth accumulation and savings
+                                goals.</li>
+                            <li><strong>Reports & Comparisons:</strong> Customized reporting like cash flow statements
+                                and period-over-period comparisons.</li>
                         </ul>
                     </div>
                 </details>
@@ -595,10 +860,13 @@
                     <div class="collapsible-content">
                         <p>A common feature, often a grid icon on the Money tab, provides quick access to:</p>
                         <ul>
-                            <li><strong>Categories:</strong> Access and manage your transaction categories. Customize names, icons, and colors to fit your needs.</li>
+                            <li><strong>Categories:</strong> Access and manage your transaction categories. Customize
+                                names, icons, and colors to fit your needs.</li>
                             <li><strong>Transfers:</strong> Initiate and view inter-account transfers.</li>
-                            <li><strong>Repeat Transactions:</strong> Set up and manage recurring transactions to automate logging for regular bills or income.</li>
-                            <li><strong>Import Transactions:</strong> Import transaction data from external files (e.g., CSV).</li>
+                            <li><strong>Repeat Transactions:</strong> Set up and manage recurring transactions to
+                                automate logging for regular bills or income.</li>
+                            <li><strong>Import Transactions:</strong> Import transaction data from external files (e.g.,
+                                CSV).</li>
                         </ul>
                     </div>
                 </details>
@@ -609,10 +877,12 @@
                         <p>Accessible usually via a settings icon (⚙️), here you can configure:</p>
                         <ul>
                             <li><strong>Theme Support:</strong> Choose between Light and Dark themes.</li>
-                            <li><strong>Multi-Currency Support:</strong> Set a primary currency and manage finances across different currencies.</li>
+                            <li><strong>Multi-Currency Support:</strong> Set a primary currency and manage finances
+                                across different currencies.</li>
                             <li><strong>Multi-Language Support:</strong> Use Gro in your preferred language.</li>
                             <li><strong>Backup & Restore:</strong> Secure and restore your financial data.</li>
-                            <li><strong>Data Management:</strong> Options like "Delete and Start Fresh" for a clean slate (use with caution).</li>
+                            <li><strong>Data Management:</strong> Options like "Delete and Start Fresh" for a clean
+                                slate (use with caution).</li>
                         </ul>
                     </div>
                 </details>
@@ -621,7 +891,8 @@
 
         <section id="screenshots" class="section-padding" style="background-color: var(--color-tertiary-bg);">
             <div class="max-w-6xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8" style="color: var(--color-text-primary);">See Gro in Action</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-8" style="color: var(--color-text-primary);">See Gro in
+                    Action</h2>
 
                 <!-- Theme Switcher Buttons -->
                 <div class="flex justify-center space-x-4 mb-8">
@@ -634,54 +905,64 @@
                     <div class="swiper-wrapper">
                         <!-- Slides will be dynamically added here -->
                     </div>
-                    
+
                     <!-- Navigation -->
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
-                    
+
                     <!-- Pagination -->
                     <div class="swiper-pagination"></div>
                 </div>
 
-                <p id="gallery-theme-text" class="mt-6 text-base font-medium" style="color: var(--color-text-secondary);"></p>
+                <p id="gallery-theme-text" class="mt-6 text-base font-medium"
+                    style="color: var(--color-text-secondary);"></p>
             </div>
         </section>
 
         <section id="faqs" class="section-padding" style="background-color: var(--color-tertiary-bg);">
             <div class="max-w-3xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center" style="color: var(--color-text-primary);">Frequently Asked Questions</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center" style="color: var(--color-text-primary);">
+                    Frequently Asked Questions</h2>
                 <div class="space-y-4 text-left"></div>
             </div>
         </section>
     </main>
 
     <footer>
-        <section class="footer-download-section py-16 px-6 rounded-t-xl">
+        <section id="download" class="footer-download-section py-16 px-6 rounded-t-xl">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
                 <div class="text-center md:text-left max-w-2xl">
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">Download Gro App Today</h2>
-                    <p class="text-lg md:text-xl mb-8 opacity-90">Manage your finances more conveniently, anytime, anywhere.</p>
-                    <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-                        <a href="#" target="_blank" class="flex items-center bg-white text-gray-800 px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 hover:scale-105 transform"><img src="https://placehold.co/32x32/000000/FFFFFF?text=▶" alt="Google Play Icon" class="w-7 h-7 mr-3" onerror="this.onerror=null;this.src='https://placehold.co/32x32/cccccc/969696?text=G';"><div><div class="text-xs">GET IT ON</div><div class="text-lg font-semibold -mt-1">Google Play</div></div></a>
-                        <a href="#" target="_blank" class="flex items-center bg-white text-gray-800 px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 hover:scale-105 transform"><img src="https://placehold.co/32x32/000000/FFFFFF?text=" alt="App Store Icon" class="w-7 h-7 mr-3" onerror="this.onerror=null;this.src='https://placehold.co/32x32/cccccc/969696?text=A';"><div><div class="text-xs">Download on the</div><div class="text-lg font-semibold -mt-1">App Store</div></div></a>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">Download Gro App Today
+                    </h2>
+                    <p class="text-lg md:text-xl mb-8 opacity-90">Manage your finances more conveniently, anytime,
+                        anywhere.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"> <button
+                            class="px-8 py-4 rounded-full text-lg font-semibold transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 flex items-center gap-2 ring-offset-2"
+                            style="background-color: var(--flutter-slide-bg); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark); border: 1px solid rgba(255, 255, 255, 0.2);">
+                            <ion-icon name="logo-google-playstore" class="text-xl"></ion-icon>
+                            Download the app now
+                        </button>
                     </div>
                 </div>
                 <div class="md:w-1/3 flex justify-center md:justify-end mt-8 md:mt-0">
-                    <img src="https://placehold.co/250x300/FFFFFF/120b37?text=Gro+App" alt="Phone with Gro App" class="max-w-xs w-full h-auto rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/250x300/cccccc/969696?text=App+Mockup';">
+                    <img src="https://placehold.co/250x300/FFFFFF/120b37?text=Gro+App" alt="Phone with Gro App"
+                        class="max-w-xs w-full h-auto rounded-lg"
+                        onerror="this.onerror=null;this.src='https://placehold.co/250x300/cccccc/969696?text=App+Mockup';">
                 </div>
             </div>
         </section>
 
         <section class="py-8 px-6">
-            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm gap-4" style="color: var(--color-footer-bottom-text);">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm gap-4"
+                style="color: var(--color-footer-bottom-text);">
                 <nav class="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2">
-                    <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text);">Contact Us</a>
-                    <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text);">Terms of Use</a>
-                    <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text);">Privacy Policy</a>
-                    <a href="#" class="hover:underline transition duration-300" style="color: var(--color-footer-bottom-text);">Account Deletion</a>
+                    <a href="#" class="hover:underline transition duration-300"
+                        style="color: var(--color-footer-bottom-text);">Terms of Use</a>
+                    <a href="#" class="hover:underline transition duration-300"
+                        style="color: var(--color-footer-bottom-text);">Privacy Policy</a>
                 </nav>
                 <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4 mt-4 md:mt-0">
-                    <p class="order-2 sm:order-1">&copy; 2025 Gro Inc. All rights reserved.</p>
+                    <p class="order-2 sm:order-1">&copy; <span id="current-year"></span> Gro Inc. All rights reserved.</p>
                     <div class="order-1 sm:order-2 text-xl font-bold" style="color: var(--color-main);">Gro</div>
                 </div>
             </div>
@@ -744,6 +1025,10 @@
                 });
             });
 
+            // get year and set it in the footer
+            const currentYear = new Date().getFullYear();
+            document.getElementById('current-year').textContent = currentYear;
+
             // Data for FAQs
             const faqsData = [
                 { q: 'How do I add a new transaction?', a: 'In the "Money" tab, use the Floating Action Button (FAB). Drag left for expense, right for income, or tap for a detailed dialog.' },
@@ -757,7 +1042,8 @@
                 { q: 'Can I use Gro with different currencies?', a: 'Yes, Gro offers multi-currency support. You can set a primary currency and manage transactions in various currencies, typically configured in the app\'s settings.' },
                 { q: 'How are my bank account balances updated in the Assets section?', a: 'The \'All Bank Accounts\' asset in the "Plans" tab automatically sums the balances of accounts you\'ve designated as \'Bank\' type. These balances update as you log transactions to those accounts. For other manually added assets (like investments), you\'ll need to update their values periodically.' },
                 { q: 'Is my data secure?', a: 'Gro takes data security seriously. For instance, transactions are typically encrypted by default when saved, adding a layer of protection to your financial information.' },
-                { q: 'What if I need more help with a specific planning section like Budgets or FIRE?', a: 'Each module within the "Plans" tab (Budget & Targets, Assets & Net Worth, Debts & Liabilities, FIRE) has its own detailed information dialog, accessible via an info icon (often \'i\' or \'?\') within that section.' }
+                { q: 'What if I need more help with a specific planning section like Budgets or FIRE?', a: 'Each module within the "Plans" tab (Budget & Targets, Assets & Net Worth, Debts & Liabilities, FIRE) has its own detailed information dialog, accessible via an info icon (often \'i\' or \'?\') within that section.' },
+                { q: 'How does currency support work in Gro?', a: 'Gro uses a primary currency system where you choose one main currency for your accounts. All transactions and calculations are performed in this currency to ensure consistent tracking and reporting. While you can\'t directly manage multiple currencies, you can set your preferred currency when setting up the app.' }
             ];
 
             const faqsContainer = document.querySelector('#faqs .space-y-4');
@@ -783,7 +1069,7 @@
                     { src: "https://placehold.co/400x700/f0f0f0/2a3f54?text=Gro+Light+2", alt: "Gro App Light Theme Screenshot 2" },
                     { src: "https://placehold.co/400x700/e9e9e9/3c5a78?text=Gro+Light+3", alt: "Gro App Light Theme Screenshot 3" },
                     { src: "https://placehold.co/400x700/e0e0e0/4d6b9c?text=Gro+Light+4", alt: "Gro App Light Theme Screenshot 4" },
-                    { src: "https://placehold.co/400x700/d9d9d9/5f7a9c?text=Gro+Light+5", alt: "Gro App Light Theme Screenshot 5"},
+                    { src: "https://placehold.co/400x700/d9d9d9/5f7a9c?text=Gro+Light+5", alt: "Gro App Light Theme Screenshot 5" },
                 ],
                 dark: [
                     { src: "https://placehold.co/400x700/1a202c/e2e8f0?text=Gro+Dark+1", alt: "Gro App Dark Theme Screenshot 1" },
@@ -817,7 +1103,7 @@
                 // Initialize or update Swiper
                 if (screenshotsSwiper) {
                     screenshotsSwiper.destroy();
-                }                screenshotsSwiper = new Swiper('.screenshots-swiper', {
+                } screenshotsSwiper = new Swiper('.screenshots-swiper', {
                     slidesPerView: 1,
                     spaceBetween: 20,
                     grabCursor: true,
@@ -848,7 +1134,7 @@
                 const root = document.documentElement;
                 root.style.setProperty('--swiper-navigation-size', '44px');
                 root.style.setProperty('--swiper-navigation-sides-offset', '10%');
-                
+
                 const swiperNav = document.querySelectorAll('.swiper-button-next, .swiper-button-prev');
                 swiperNav.forEach(nav => {
                     nav.style.width = '44px';
@@ -870,12 +1156,12 @@
 
             function switchToGalleryTheme(themeName) {
                 currentGalleryTheme = themeName;
-                
+
                 galleryThemeLightBtn.classList.toggle('screenshot-btn-active', themeName === 'light');
                 galleryThemeLightBtn.classList.toggle('screenshot-btn-inactive', themeName !== 'light');
                 galleryThemeDarkBtn.classList.toggle('screenshot-btn-active', themeName === 'dark');
                 galleryThemeDarkBtn.classList.toggle('screenshot-btn-inactive', themeName !== 'dark');
-                
+
                 initScreenshotsSwiper(themeName);
             }
 
@@ -883,10 +1169,10 @@
             if (galleryThemeLightBtn && galleryThemeDarkBtn) {
                 galleryThemeLightBtn.classList.add('screenshot-btn-active');
                 galleryThemeDarkBtn.classList.add('screenshot-btn-inactive');
-                
+
                 galleryThemeLightBtn.addEventListener('click', () => switchToGalleryTheme('light'));
                 galleryThemeDarkBtn.addEventListener('click', () => switchToGalleryTheme('dark'));
-                
+
                 // Initialize Swiper with default theme
                 initScreenshotsSwiper('light');
             }
@@ -921,4 +1207,5 @@
         });
     </script>
 </body>
+
 </html>
