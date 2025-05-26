@@ -20,10 +20,10 @@
             --color-tertiary-bg: #f3f4f6;
             --color-text-primary: #1f2937;
             --color-text-secondary: #4b5563;
-            --color-main: #6B46C1;
+            --color-main: #2196f3;
             /* Main purple for general branding */
-            --color-dark: #553C9A;
-            --color-light: #DDD6FE;
+            --color-dark: #1565c0;
+            --color-light: #bbdefb;
             --color-shadow: rgba(0, 0, 0, 0.05);
             --color-hero-gradient-start: #b600c8;
             /* Flutter gradient start */
@@ -52,9 +52,9 @@
             --color-tertiary-bg: #222b3a;
             --color-text-primary: #e2e8f0;
             --color-text-secondary: #a0aec0;
-            --color-main: #7F5AD5;
-            --color-dark: #6B46C1;
-            --color-light: #A78BFA;
+            --color-main: #2196f3;
+            --color-dark: #1565c0;
+            --color-light: #bbdefb;
             --color-shadow: rgba(0, 0, 0, 0.3);
             --color-hero-gradient-start: #4e37c3;
             /* Darker Flutter gradient start */
@@ -361,7 +361,7 @@
         .screenshot-btn {
             padding: 0.5rem 1.5rem;
             /* Tailwind: px-6 py-2 */
-            border-radius: 0.375rem;
+            border-radius: 1.375rem;
             /* Tailwind: rounded-md */
             font-weight: 500;
             /* Tailwind: font-medium */
@@ -459,6 +459,53 @@
             transform: scale(1.1);
         }
 
+        /* FAQ Search Styles */
+        .faq-search {
+            margin-bottom: 2rem;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .faq-search input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            border: 2px solid var(--color-main);
+            background-color: var(--color-secondary-bg);
+            color: var(--color-text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-search input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px var(--color-light);
+        }
+
+        .faq-search input::placeholder {
+            color: var(--color-text-secondary);
+        }
+
+        /* Feature Box Styles Update */
+        .feature-box {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
         /* Screenshots Swiper Styles */
         .screenshots-swiper {
             padding: 20px 10px 50px;
@@ -532,6 +579,25 @@
             color: white !important;
             transition: all 0.3s ease;
         }
+
+        /* Feature Box Styles */
+        .feature-box {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
     </style>
 </head>
 
@@ -581,11 +647,9 @@
             Use</a>
         <a href="#faqs"
             class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">FAQs</a>
-    </nav>
-    <main>
-        <section id="hero" class="hero-gradient section-padding flex flex-col min-h-[calc(100vh-80px)]">
-            <div
-                class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8 flex-grow">
+    </nav>    <main>
+        <section id="hero" class="hero-gradient section-padding flex flex-col">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8">
                 <div class="text-center md:text-left max-w-xl">
                     <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6"
                         style="color: var(--color-footer-top-text);">
@@ -643,7 +707,11 @@
             </div>
         </section>
 
-        <section id="features" class="section-padding" style="background-color: var(--color-tertiary-bg);">
+        <section id="features" class="section-padding" style="background-color: var(--color-tertiary-bg);">            <!-- FAQ Search -->
+            <div class="faq-search">
+                <input type="text" id="faqSearch" placeholder="Search FAQs..." onkeyup="filterFAQs()">
+            </div>
+
             <div class="text-center max-w-4xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--color-text-primary);">
                     Unlock Your Financial Potential with Gro
@@ -654,12 +722,10 @@
                     Independence, Retire Early (FIRE), Gro provides the tools and insights you need to manage your money
                     effectively and reach your financial goals.
                 </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
+            </div>            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
 
                 <!-- Security Focus -->
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+                <div class="feature-box p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
                     style="background-color: var(--color-secondary-bg);">
                     <ion-icon name="shield-checkmark-outline" class="text-4xl mb-4"
                         style="color: var(--color-main);"></ion-icon>
@@ -668,9 +734,8 @@
                     <p style="color: var(--color-text-secondary);">Your data's security is our priority. Enjoy peace of
                         mind with end-to-end encryption, on-device password protection, PIN verification, pattern lock,
                         fingerprint authentication, and secure cloud backups.</p>
-                </div>
-                <!-- Financial Management -->
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+                </div>                <!-- Financial Management -->
+                <div class="feature-box p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
                     style="background-color: var(--color-secondary-bg);">
                     <ion-icon name="wallet-outline" class="text-4xl mb-4" style="color: var(--color-main);"></ion-icon>
                     <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Financial
@@ -678,9 +743,8 @@
                     <p style="color: var(--color-text-secondary);">Manage accounts, transactions, and transfers in one
                         place. Track multiple account types, categorize income and expenses, and easily move money
                         between accounts with our intuitive transfer system.</p>
-                </div>
-                <!-- FIRE Planning -->
-                <div class="p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+                </div>                <!-- FIRE Planning -->
+                <div class="feature-box p-8 rounded-xl shadow-lg flex flex-col items-start text-left hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
                     style="background-color: var(--color-secondary-bg);">
                     <ion-icon name="flame-outline" class="text-4xl mb-4" style="color: var(--color-main);"></ion-icon>
                     <h3 class="text-xl font-semibold mb-3" style="color: var(--color-text-primary);">Financial
@@ -755,8 +819,8 @@
             <div class="content-section max-w-5xl mx-auto">
                 <h2>Explore Gro</h2>
                 <p>Gro is intuitively organized into main tabs and key management areas, ensuring you can easily find
-                    what you need. When you first open the app, you might be greeted by a tutorial or a Quick Start
-                    Guide, especially in the "Money" section. Follow these prompts for a smooth start.</p>
+                    what you need. When you first open the app, you might be greeted by a Setup
+                    Guide. Follow these prompts for a smooth start.</p>
 
                 <details>
                     <summary class="collapsible-h3">Setup Guide: Your Onboarding Companion</summary>
@@ -969,10 +1033,22 @@
         </section>
     </footer>
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>    <script>
+        // FAQ Search Functionality
+        function filterFAQs() {
+            const searchText = document.getElementById('faqSearch').value.toLowerCase();
+            const faqGroups = document.querySelectorAll('.faq-group');
+            
+            faqGroups.forEach(group => {
+                const question = group.querySelector('summary').textContent.toLowerCase();
+                const answer = group.querySelector('p').textContent.toLowerCase();
+                const matches = question.includes(searchText) || answer.includes(searchText);
+                group.parentElement.style.display = matches ? 'block' : 'none';
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            // Theme toggle logic
+            // Theme toggle logic with persistence
             const themeToggle = document.getElementById('theme-toggle');
             const htmlElement = document.documentElement;
             const sunIcon = document.getElementById('sun-icon');
@@ -1031,38 +1107,76 @@
 
             // Data for FAQs
             const faqsData = [
-                { q: 'How do I add a new transaction?', a: 'In the "Money" tab, use the Floating Action Button (FAB). Drag left for expense, right for income, or tap for a detailed dialog.' },
-                { q: 'How do I manage my transaction categories?', a: 'You can manage categories by accessing the "Categories" option, typically found in the grid menu on the "Money" tab. There you can add new ones, edit names, icons, colors of existing ones, or delete them.' },
-                { q: 'Can I set up recurring/repeating transactions?', a: 'Yes, Gro supports repeating transactions. You can set these up via the "Repeat Transactions" option, usually found in the grid menu on the "Money" tab, to automate logging for regular bills or income.' },
-                { q: 'Is it possible to import transactions from a file?', a: 'Yes, Gro offers a feature to "Import Transactions," accessible from the grid menu in the "Money" tab. This allows you to bring in data from external sources.' },
-                { q: 'How do I track my budgets?', a: 'Navigate to the "Plans" tab and select "Budget & Targets." Create budgets (for expenses) or targets (for income), link categories, set amounts/periods, and monitor progress.' },
-                { q: 'Can I see my net worth?', a: 'Yes. The "Assets & Net Worth" section under the "Plans" tab helps you list assets. Combined with "Debts & Liabilities," it gives you the components to understand your Net Worth (Assets - Liabilities).' },
-                { q: 'How does Gro help with Financial Independence, Retire Early (FIRE)?', a: 'The "Financial Independence (FIRE)" section in the "Plans" tab helps calculate your "FIRE Number" and projects when you might reach it based on your financial inputs.' },
-                { q: 'Does Gro support dark mode?', a: 'Yes, Gro supports both Light and Dark themes. You can usually find theme settings in the app\'s main settings/preferences menu.' },
-                { q: 'Can I use Gro with different currencies?', a: 'Yes, Gro offers multi-currency support. You can set a primary currency and manage transactions in various currencies, typically configured in the app\'s settings.' },
-                { q: 'How are my bank account balances updated in the Assets section?', a: 'The \'All Bank Accounts\' asset in the "Plans" tab automatically sums the balances of accounts you\'ve designated as \'Bank\' type. These balances update as you log transactions to those accounts. For other manually added assets (like investments), you\'ll need to update their values periodically.' },
-                { q: 'Is my data secure?', a: 'Gro takes data security seriously. For instance, transactions are typically encrypted by default when saved, adding a layer of protection to your financial information.' },
-                { q: 'What if I need more help with a specific planning section like Budgets or FIRE?', a: 'Each module within the "Plans" tab (Budget & Targets, Assets & Net Worth, Debts & Liabilities, FIRE) has its own detailed information dialog, accessible via an info icon (often \'i\' or \'?\') within that section.' },
-                { q: 'How does currency support work in Gro?', a: 'Gro uses a primary currency system where you choose one main currency for your accounts. All transactions and calculations are performed in this currency to ensure consistent tracking and reporting. While you can\'t directly manage multiple currencies, you can set your preferred currency when setting up the app.' }
+                // Getting Started
+                { q: 'How do I get started with Gro?', a: 'After downloading and installing Gro, go through the Setup Guide on the Money tab. You\'ll be guided step by step to set up your accounts, customize categories, and learn the basic features. The process takes about 5-10 minutes.' },
+                { q: 'How do I add my bank accounts?', a: 'Tap the account selector in the Money tab or go to the Accounts area. Choose "Add Account", select the account type (checking, savings, etc.), and enter a name and starting balance. You can also customize the color and icon to make it easily recognizable.' },
+                { q: 'How do I add a credit card?', a: 'Similar to bank accounts, go to the Accounts area, tap "Add Account", and select "Credit Card". Enter the card name, starting balance (if any), and customize it with a color and icon. Gro will help you track your credit card spending and payments.' },
+                
+                // Daily Usage
+                { q: 'How do I add transactions?', a: 'Use the Floating Action Button (FAB) in the Money tab - swipe left for expenses, right for income, or tap for more options. For regular bills or income, set up recurring transactions through the grid menu to save time.' },
+                { q: 'How can I organize my spending?', a: 'Gro uses categories to organize transactions. Find pre-set categories in the grid menu, or create your own with custom names, colors, and icons. You can also set budgets for expense categories and income targets to stay on track.' },
+                { q: 'How do I transfer money between accounts?', a: 'To transfer funds, tap the FAB in the Money tab, select "Transfer", choose the source and destination accounts, enter the amount, and add a note if needed. Gro will automatically update both account balances.' },
+                { q: 'How do I view my financial insights?', a: 'The Money tab provides quick insights like net savings, expenses by category, income sources, and transfer history. For deeper analysis, go to the Analytics section for detailed reports and trends.' },
+                { q: 'How do I set up budgets?', a: 'In the Plans section, go to "Budget & Targets". Here you can set monthly or yearly budgets for expense categories and income targets. Gro will notify you if you exceed your budgets.' },
+                { q: 'How do I manage my bills?', a: 'For regular bills, set up repeat transactions in the grid menu. You can also categorize them under a specific expense category for better tracking. Gro will automatically create transactions on specified dates. ' },
+                { q: 'How do I handle cash transactions?', a: 'For cash transactions, create a "Cash" account in the Accounts section. Add cash expenses or income just like any other transaction, and Gro will keep your cash balance updated.' },
+                { q: 'What if I forget to record transactions?', a: 'No problem! You can add transactions for any date. Use the account reconciliation feature to match your recorded balance with your actual bank balance, and Gro will help identify missing transactions.' },
+                
+                // Features & Capabilities
+                { q: 'How to track my net worth?', a: 'Go to Plans > Assets & Debts to see your complete financial picture. Add your assets (property, vehicles, investments) and track their values. Combined with the Debts & Liabilities section, you\'ll see your current net worth and its growth over time.' },
+                { q: 'Can I import my existing transactions?', a: 'Yes! Access the Import feature from the grid menu. You can import transactions from CSV files - perfect for bringing in history from other apps or bank exports. Check our guide for the correct CSV format.' },
+                { q: 'What reports and insights are available?', a: 'The Analytics section offers various insights: expense breakdowns by category, income source analysis, savings rate trends, and cash flow reports. You can view data weekly, monthly, or yearly, and compare periods to track your progress.' },
+                
+                // Planning & Goals
+                { q: 'Can I track my investments?', a: 'Yes! Add investments as assets in the Plans section and update their values periodically. For now, you\'ll need to manually update investment values as they change. Automatic investment tracking is planned for a future update.' },
+                { q: 'How do I set financial goals?', a: 'In the Plans section, you can set financial goals like saving for a vacation or paying off debt. Use the Budget & Targets feature to create specific savings targets and track your progress over time.' },
+                { q: 'Can I track my savings progress?', a: 'Absolutely! The Plans section allows you to set savings goals and track your progress. You can create specific savings targets, like building an emergency fund or saving for a major purchase, and monitor how close you are to achieving them.' },
+                { q: 'How do I manage my debts?', a: 'In the Plans section, go to Debts & Liabilities. Here you can add loans, credit cards, or any other debts. Track balances, payment schedules, and view detailed amortization schedules to manage your repayments effectively.' },
+                { q: 'How do I categorize my transactions?', a: 'When adding or editing a transaction, you can assign it to a category. Gro comes with pre-set categories, but you can also create custom ones in the Categories section. This helps you track spending and income sources effectively.' },
+                { q: 'How do I manage my cash flow?', a: 'The Money tab provides a quick overview of your cash flow, showing net savings (Income - Expenses) for the selected period. For detailed cash flow reports, go to the Analytics section.' },
+
+                // FIRE Planning
+                { q: 'What is FIRE planning?', a: 'FIRE (Financial Independence, Retire Early) is a financial strategy to save and invest aggressively so you can retire earlier than traditional retirement age. Gro\'s FIRE calculator helps you plan this journey by calculating how much you need to save and how long it will take.' },
+                { q: 'How do I use the FIRE calculator?', a: 'Go to Plans > FIRE Planning, then enter three key numbers: your current savings, expected annual investment returns (typically 6-8%), and desired retirement income. Gro will calculate your FIRE number (total savings needed) and show a timeline to reach it.' },
+                { q: 'What is the 4% rule in FIRE planning?', a: 'The 4% rule suggests you can withdraw 4% of your retirement savings annually without running out of money. For example, if you need $40,000/year in retirement, you\'d need to save $1 million (your FIRE number). Gro uses this rule to help calculate your savings target.' },
+                { q: 'How can I track my FIRE progress?', a: 'The FIRE Planning section shows your progress toward your FIRE number through an interactive timeline. As you update your savings and investments in Gro, you\'ll see your projected retirement date adjust automatically. You can also adjust your retirement income goals anytime to see how they affect your timeline.' },
+
+                // Investment & Passive Income tracking
+                { q: 'How do I track my investments?', a: 'Currently, Gro allows you to add investments as assets in the Plans section. You can manually update their values over time. We plan to introduce automatic investment tracking in a future update.' },
+                { q: 'Can I track passive income?', a: 'Yes! You can categorize income sources as "Passive" in the Income section. This helps you see how much of your income comes from passive sources like dividends, interest, or rental income.' },
+                
+                // Analytics & Reports
+                { q: 'What kind of analytics does Gro provide?', a: 'Gro offers detailed analytics on your finances, including income and expense breakdowns by category, savings trends, net worth tracking, and cash flow reports. You can view data weekly, monthly, or yearly to identify patterns and make informed decisions.' },
+                { q: 'Can I compare different time periods?', a: 'Yes! In the Analytics section, you can compare financial data across different periods (e.g., this month vs. last month) to see how your spending and income change over time.' },
+                { q: 'Can I track my spending habits?', a: 'Yes! The Analytics section provides insights into your spending habits, including expense breakdowns by category, trends over time, and comparisons against budgets. You can also see how much you spend on needs vs. wants.' },
+                { q: 'How do I view my income sources?', a: 'In the Money tab, you can see your income sources by category. The Analytics section also provides detailed insights into your income trends, including active vs. passive income sources.' },
+                { q: 'Can I set financial targets?', a: 'Yes! In the Plans section, you can set income targets and expense budgets. Gro will notify you if you exceed your budgets or fall short of your income targets, helping you stay on track.' },
+                
+                // Settings & Preferences
+                { q: 'Can I use Gro in my language and currency?', a: 'Yes! During setup or in Settings, choose your preferred language and set your primary currency. All transactions and calculations will use this currency for consistency.' },
+                { q: 'How do I change the app\'s theme?', a: 'Gro supports both light and dark themes. You can switch between them in Settings > Appearance. The app will remember your choice for future sessions.' },
+                { q: 'Can I customize the app\'s categories?', a: 'Absolutely! Go to the Categories section in the grid menu to create, edit, or delete categories. You can customize names, colors, and icons to fit your financial needs.' },
+                { q: 'Does Gro work offline?', a: 'Yes, Gro works completely offline. All your data is stored locally on your device, so you can manage your finances anywhere, anytime, without needing an internet connection.' },
+                { q: 'How do I customize the app\'s appearance?', a: 'Gro offers both light and dark themes - switch between them in Settings. You can also customize account colors, category icons, and other visual elements to make the app truly yours.' },
+                
+                // Data & Security
+                { q: 'How secure is my financial data?', a: 'Very secure! Gro uses bank-grade encryption for all data, supports fingerprint/face authentication, and offers PIN/pattern locks. Your data is encrypted both on your device and in your Google Drive backups.' },
+                { q: 'How do I back up my data?', a: 'Gro automatically backs up your encrypted data to your Google Drive. You can also manually trigger a backup from Settings > Backup & Restore. Your data is protected with your account password and device authentication.' },
+                { q: 'How do I restore my data from a backup?', a: 'To restore your data, go to Settings > Backup & Restore and select "Restore from Google Drive". Make sure you have an existing backup available. The app will prompt you to confirm the restoration process.' },
+                { q: 'Can I delete my data?', a: 'Yes, you can delete all your data from Settings > Data & Security. This will remove all accounts, transactions, and settings from the app. Use this option with caution, as it cannot be undone.' },
+                { q: 'How do I reset Gro to start fresh?', a: 'If you want to reset Gro, go to Settings > Data Management and select "Delete and Start Fresh". This will remove all your data and settings, allowing you to set up the app as if it were new. Use this option with caution.' },
+                
+                // Future Plans
+                { q: 'Is there a way to collaborate with family?', a: 'Currently, Gro is designed for individual use with data stored locally on your device. We\'re actively working on a family sharing feature that will allow secure data sharing between family members. Stay tuned for this update!' },
+                { q: 'Can I track business expenses separately?', a: 'While you can currently use categories to organize different types of expenses, dedicated business expense tracking is coming in a future update. This will include features like receipt scanning, tax category tagging, and business-specific reports. For now, we recommend using categories and tags to separate personal and business transactions.' },
+
+                
+                // Tips & Tricks
+                { q: 'How can I make the most of the budgeting features?', a: 'Start with realistic category budgets based on your past spending (visible in Analytics). Use the "Need vs Want" tags for better insights, set up budget notifications, and regularly review your progress in the Analytics section. The app can help identify areas where you\'re consistently over or under budget.' },
+                { q: 'What are some tips for effective financial planning with Gro?', a: 'Regularly review your financial health in the Analytics section. Set clear financial goals (like saving for a vacation or paying off debt) and use the Plans section to track progress. Automate savings by setting up recurring transfers to your savings account. Finally, keep your categories organized and up-to-date for accurate tracking.' }
             ];
 
-            const faqsContainer = document.querySelector('#faqs .space-y-4');
-            if (faqsContainer) {
-                faqsData.forEach(faq => {
-                    const faqItem = document.createElement('div');
-                    faqItem.classList.add('p-6', 'rounded-xl', 'shadow-lg', 'hover:shadow-xl', 'transition-shadow', 'duration-300');
-                    faqItem.style.backgroundColor = 'var(--color-secondary-bg)';
-                    faqItem.innerHTML = `
-                        <details class="group faq-group">
-                            <summary class="flex justify-between items-center font-semibold text-lg cursor-pointer faq-summary list-none" style="color: var(--color-text-primary);">
-                                ${faq.q}
-                            </summary>
-                            <p class="mt-4" style="color: var(--color-text-secondary);">${faq.a}</p>
-                        </details>
-                    `;
-                    faqsContainer.appendChild(faqItem);
-                });
-            }            // Screenshot Gallery Logic
+            // Screenshot Gallery Logic
             const galleryImages = {
                 light: [
                     { src: "https://placehold.co/400x700/f7f7f7/1f2937?text=Gro+Light+1", alt: "Gro App Light Theme Screenshot 1" },
@@ -1083,71 +1197,42 @@
             let screenshotsSwiper = null;
 
             function initScreenshotsSwiper(theme) {
-                const swiperWrapper = document.querySelector('.screenshots-swiper .swiper-wrapper');
-                swiperWrapper.innerHTML = ''; // Clear existing slides
+                const images = galleryImages[theme];
+                const slidesContainer = document.querySelector('.screenshots-swiper .swiper-wrapper');
+                slidesContainer.innerHTML = '';
 
-                // Add slides for the current theme
-                galleryImages[theme].forEach(image => {
-                    const slide = document.createElement('div');
-                    slide.className = 'swiper-slide';
-                    slide.innerHTML = `
-                        <img src="${image.src}" 
-                             alt="${image.alt}" 
-                             class="w-full h-auto rounded-lg" 
-                             style="max-height: 700px; object-fit: contain;"
-                             loading="lazy">
-                    `;
-                    swiperWrapper.appendChild(slide);
-                });
+                if (images && images.length > 0) {
+                    images.forEach(image => {
+                        const slide = document.createElement('div');
+                        slide.classList.add('swiper-slide');
+                        slide.innerHTML = `
+                            <img src="${image.src}" alt="${image.alt}" class="w-full h-auto rounded-lg" style="max-height: 700px; object-fit: cover;" onerror="this.onerror=null;this.src='https://placehold.co/400x700/cccccc/969696?text=Load+Error';">
+                        `;
+                        slidesContainer.appendChild(slide);
+                    });
 
-                // Initialize or update Swiper
-                if (screenshotsSwiper) {
-                    screenshotsSwiper.destroy();
-                } screenshotsSwiper = new Swiper('.screenshots-swiper', {
-                    slidesPerView: 1,
-                    spaceBetween: 20,
-                    grabCursor: true,
-                    loop: true,
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true,
-                    },
-                    navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                    },
-                    breakpoints: {
-                        // >= 768px
-                        768: {
-                            slidesPerView: 2,
-                            spaceBetween: 30,
+                    if (screenshotsSwiper) {
+                        screenshotsSwiper.destroy();
+                    }
+
+                    screenshotsSwiper = new Swiper('.screenshots-swiper', {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
                         },
-                        // >= 1024px
-                        1024: {
-                            slidesPerView: 3,
-                            spaceBetween: 40,
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
                         },
-                    },
-                });
-
-                // Position navigation arrows outside and make them bigger
-                const root = document.documentElement;
-                root.style.setProperty('--swiper-navigation-size', '44px');
-                root.style.setProperty('--swiper-navigation-sides-offset', '10%');
-
-                const swiperNav = document.querySelectorAll('.swiper-button-next, .swiper-button-prev');
-                swiperNav.forEach(nav => {
-                    nav.style.width = '44px';
-                    nav.style.height = '44px';
-                    nav.style.backgroundColor = 'var(--color-secondary-bg)';
-                    nav.style.borderRadius = '50%';
-                    nav.style.boxShadow = '0 4px 6px var(--color-shadow)';
-                });
-
-                const nextButton = document.querySelector('.swiper-button-next');
-                const prevButton = document.querySelector('.swiper-button-prev');
-                if (nextButton) nextButton.style.right = '-60px';
-                if (prevButton) prevButton.style.left = '-60px';
+                        on: {
+                            init: function () {
+                                updateSwiperSlides();
+                            },
+                        },
+                    });
+                }
             }
 
             // Theme switcher functionality
@@ -1156,12 +1241,10 @@
 
             function switchToGalleryTheme(themeName) {
                 currentGalleryTheme = themeName;
-
                 galleryThemeLightBtn.classList.toggle('screenshot-btn-active', themeName === 'light');
                 galleryThemeLightBtn.classList.toggle('screenshot-btn-inactive', themeName !== 'light');
                 galleryThemeDarkBtn.classList.toggle('screenshot-btn-active', themeName === 'dark');
                 galleryThemeDarkBtn.classList.toggle('screenshot-btn-inactive', themeName !== 'dark');
-
                 initScreenshotsSwiper(themeName);
             }
 
@@ -1169,11 +1252,8 @@
             if (galleryThemeLightBtn && galleryThemeDarkBtn) {
                 galleryThemeLightBtn.classList.add('screenshot-btn-active');
                 galleryThemeDarkBtn.classList.add('screenshot-btn-inactive');
-
                 galleryThemeLightBtn.addEventListener('click', () => switchToGalleryTheme('light'));
                 galleryThemeDarkBtn.addEventListener('click', () => switchToGalleryTheme('dark'));
-
-                // Initialize Swiper with default theme
                 initScreenshotsSwiper('light');
             }
 
@@ -1181,7 +1261,7 @@
             function updateSwiperSlides() {
                 const images = galleryImages[currentGalleryTheme];
                 const slidesContainer = swiper.slidesEl.querySelector('.swiper-wrapper');
-                slidesContainer.innerHTML = ''; // Clear existing slides
+                slidesContainer.innerHTML = '';
                 if (images && images.length > 0) {
                     images.forEach((image, index) => {
                         const slide = document.createElement('div');
@@ -1204,6 +1284,104 @@
                 switchToGalleryTheme('dark');
                 updateSwiperSlides();
             });
+
+            // FAQ rendering and search functionality
+            const faqsContainer = document.querySelector('#faqs .space-y-4');
+            if (faqsContainer) {
+                const ITEMS_PER_PAGE = 8;
+                let visibleItems = ITEMS_PER_PAGE;
+
+                function renderFAQs() {
+                    // Clear existing content
+                    faqsContainer.innerHTML = '';
+                    
+                    // Render visible FAQs
+                    faqsData.slice(0, visibleItems).forEach(faq => {
+                        const faqItem = document.createElement('div');
+                        faqItem.classList.add('p-6', 'rounded-xl', 'shadow-lg', 'hover:shadow-xl', 'transition-shadow', 'duration-300');
+                        faqItem.style.backgroundColor = 'var(--color-secondary-bg)';
+                        faqItem.innerHTML = `
+                            <details class="group faq-group">
+                                <summary class="flex justify-between items-center font-semibold text-lg cursor-pointer faq-summary list-none" style="color: var(--color-text-primary);">
+                                    ${faq.q}
+                                </summary>
+                                <p class="mt-4" style="color: var(--color-text-secondary);">${faq.a}</p>
+                            </details>
+                        `;
+                        faqsContainer.appendChild(faqItem);
+                    });
+
+                    // Add or update Show More button
+                    let showMoreBtn = document.querySelector('#show-more-faqs');
+                    if (visibleItems < faqsData.length) {
+                        if (!showMoreBtn) {
+                            showMoreBtn = document.createElement('button');
+                            showMoreBtn.id = 'show-more-faqs';
+                            showMoreBtn.classList.add('mt-8', 'px-6', 'py-3', 'bg-primary', 'text-white', 'rounded-lg', 'hover:bg-primary-dark', 'transition-colors', 'duration-300', 'mx-auto', 'block');
+                            showMoreBtn.textContent = 'Show More';
+                            faqsContainer.parentNode.insertBefore(showMoreBtn, faqsContainer.nextSibling);
+                            
+                            showMoreBtn.addEventListener('click', () => {
+                                visibleItems = Math.min(visibleItems + ITEMS_PER_PAGE, faqsData.length);
+                                renderFAQs();
+                            });
+                        }
+                    } else if (showMoreBtn) {
+                        showMoreBtn.remove();
+                    }
+                }
+
+                // Initial render
+                renderFAQs();
+
+                // FAQ search functionality
+                const faqSearchInput = document.querySelector('.faq-search input');
+                if (faqSearchInput) {
+                    faqSearchInput.addEventListener('input', function () {
+                        const searchTerm = this.value.toLowerCase();
+                        visibleItems = ITEMS_PER_PAGE;
+                        faqsContainer.innerHTML = '';
+
+                        const filteredFAQs = faqsData.filter(faq => {
+                            return faq.q.toLowerCase().includes(searchTerm) || faq.a.toLowerCase().includes(searchTerm);
+                        });
+
+                        filteredFAQs.slice(0, visibleItems).forEach(faq => {
+                            const faqItem = document.createElement('div');
+                            faqItem.classList.add('p-6', 'rounded-xl', 'shadow-lg', 'hover:shadow-xl', 'transition-shadow', 'duration-300');
+                            faqItem.style.backgroundColor = 'var(--color-secondary-bg)';
+                            faqItem.innerHTML = `
+                                <details class="group faq-group">
+                                    <summary class="flex justify-between items-center font-semibold text-lg cursor-pointer faq-summary list-none" style="color: var(--color-text-primary);">
+                                        ${faq.q}
+                                    </summary>
+                                    <p class="mt-4" style="color: var(--color-text-secondary);">${faq.a}</p>
+                                </details>
+                            `;
+                            faqsContainer.appendChild(faqItem);
+                        });
+
+                        // Update Show More button for filtered results
+                        let showMoreBtn = document.querySelector('#show-more-faqs');
+                        if (visibleItems < filteredFAQs.length) {
+                            if (!showMoreBtn) {
+                                showMoreBtn = document.createElement('button');
+                                showMoreBtn.id = 'show-more-faqs';
+                                showMoreBtn.classList.add('mt-8', 'px-6', 'py-3', 'bg-primary', 'text-white', 'rounded-lg', 'hover:bg-primary-dark', 'transition-colors', 'duration-300', 'mx-auto', 'block');
+                                showMoreBtn.textContent = 'Show More';
+                                faqsContainer.parentNode.insertBefore(showMoreBtn, faqsContainer.nextSibling);
+                                
+                                showMoreBtn.addEventListener('click', () => {
+                                    visibleItems = Math.min(visibleItems + ITEMS_PER_PAGE, filteredFAQs.length);
+                                    renderFAQs();
+                                });
+                            }
+                        } else if (showMoreBtn) {
+                            showMoreBtn.remove();
+                        }
+                    });
+                }
+            }
         });
     </script>
 </body>
