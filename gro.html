@@ -1,11 +1,120 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gro Money Saver and Expense Tracker</title>
+<head>    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Gro Money Saver & Track Expenses - a³zsoft</title>
+    <meta name="description" content="Download Gro Money Saver & Expense Tracker - Your ultimate financial companion for tracking daily expenses, managing budgets, and achieving FIRE (Financial Independence, Retire Early). Features include net worth tracking, budget analysis, and secure bank-grade encryption. Start your journey to financial freedom today.">
+    <meta name="keywords" content="expense tracker app, money management software, FIRE calculator, financial independence retire early, budget planner, personal finance app, net worth tracker, financial planning tool, spending tracker, savings goals, retirement calculator, budget analytics, secure finance app, android finance app">
+    <meta name="author" content="a3zsoft">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#071326">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://a3zsoft.com/gro.html" />
+    
+    <!-- Favicon -->
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="assets/gro_icon.png">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Gro Money Saver & Track Expenses">
+    <meta property="og:description" content="Track expenses, manage budgets, and achieve Financial Independence (FIRE) with Gro. Your complete financial companion with bank-grade security.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://a3zsoft.com/gro.html">
+    <meta property="og:image" content="https://a3zsoft.com/assets/gro_icon.png">
+    <meta property="og:site_name" content="a3zsoft">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gro Money Saver & Expense Tracker | Towards your Financial Freedom">
+    <meta name="twitter:description" content="Smart expense tracker with FIRE planning, budget management, and complete financial analytics. Start your journey to financial independence.">
+    <meta name="twitter:image" content="https://a3zsoft.com/assets/gro_icon.png">
+    
+    <!-- Mobile Specific -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Gro Money Saver & Expense Tracker",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Android",
+      "description": "Gro Money Saver & Expense Tracker is a comprehensive financial tracking and planning application that helps users manage expenses, track budgets, and plan for financial independence (FIRE). Features include expense tracking, budget management, net worth tracking, and FIRE planning tools.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1000"
+      },
+      "featureList": [
+        "Expense Tracking",
+        "Budget Management",
+        "FIRE Planning",
+        "Net Worth Tracking",
+        "Financial Analytics",
+        "Bank-grade Security"
+      ]
+    }
+    </script>
+    
+    <!-- FAQ Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "What is Gro Money Saver & Expense Tracker?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gro Money Saver & Expense Tracker is a comprehensive financial management app that helps you track expenses, manage budgets, and plan for financial independence (FIRE). It includes features like expense tracking, budget analysis, net worth tracking, and secure data encryption."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Is Gro Money Saver & Expense Tracker free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Gro Money Saver & Expense Tracker is completely free to use with all its core features including expense tracking, budget management, and FIRE planning tools."
+        }
+      }, {
+        "@type": "Question",
+        "name": "How secure is my financial data with Gro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gro Money Saver & Expense Tracker uses bank-grade security encryption to protect your financial data. Your information is stored locally on your device and can be securely backed up to your preferred cloud storage."
+        }
+      }]
+    }
+    </script>
+    
+    <!-- Breadcrumb Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://a3zsoft.com/"
+      }, {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Gro Money Saver",
+        "item": "https://a3zsoft.com/gro.html"
+      }]
+    }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&display=swap"
@@ -602,9 +711,9 @@
         <section id="hero" class="hero-gradient section-padding flex flex-col">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8">
                 <div class="text-center md:text-left max-w-xl">
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6"
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6"
                         style="color: var(--color-footer-top-text);">
-                        <span style="color: var(--color-footer-top-text);">Master</span> Your Money
+                        Gro towards your financial freedom
                     </h1>
                     <p class="text-lg md:text-xl mb-8" style="color: var(--color-footer-top-text); opacity: 0.9;">
                         From daily transaction tracking to achieving FIRE (Financial Independence, Retire Early), Gro
@@ -647,9 +756,9 @@
                 </div>
                 <div class="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0">
                     <div class="relative">
-                        <img src="https://placehold.co/600x720/b600c8/0824c3?text=Gro+App+Interface"
+                        <img src="assets/phone_front.svg"
                             alt="Gro App on Phone" class="w-full h-auto rounded-xl object-cover relative z-10"
-                            onerror="this.onerror=null;this.src='https://placehold.co/600x720/cccccc/969696?text=App+Screenshot';">
+                            onerror="this.onerror=null;this.src='assets/phone_front.svg';">
                         <div
                             class="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-500 blur-3xl opacity-30 -z-10 transform scale-110">
                         </div>
