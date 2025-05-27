@@ -14,15 +14,15 @@
     <link rel="canonical" href="https://a3zsoft.com/gro.html" />
     
     <!-- Favicon -->
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="assets/gro_icon.png">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="assets/images/gro_icon.png">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Gro Money Saver & Track Expenses">
     <meta property="og:description" content="Track expenses, manage budgets, and achieve Financial Independence (FIRE) with Gro. Your complete financial companion with bank-grade security.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://a3zsoft.com/gro.html">
-    <meta property="og:image" content="https://a3zsoft.com/assets/gro_icon.png">
+    <meta property="og:image" content="https://a3zsoft.com/assets/images/gro_icon.png">
     <meta property="og:site_name" content="a3zsoft">
     <meta property="og:locale" content="en_US">
     
@@ -30,7 +30,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Gro Money Saver & Expense Tracker | Towards your Financial Freedom">
     <meta name="twitter:description" content="Smart expense tracker with FIRE planning, budget management, and complete financial analytics. Start your journey to financial independence.">
-    <meta name="twitter:image" content="https://a3zsoft.com/assets/gro_icon.png">
+    <meta name="twitter:image" content="https://a3zsoft.com/assets/images/gro_icon.png">
     
     <!-- Mobile Specific -->
     <meta name="format-detection" content="telephone=no">
@@ -388,19 +388,14 @@
             /* ~15px */
             color: var(--color-text-secondary);
             line-height: 1.6;
-        }
-
-
-        /* Mobile Menu Styles */
+        }        /* Mobile Menu Styles */
         #mobile-menu {
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            transform: translateY(-100%);
-            opacity: 0;
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
         }
 
-        #mobile-menu.open {
-            transform: translateY(0);
-            opacity: 1;
+        #mobile-menu:not(.translate-x-full) {
+            transform: translateX(0);
         }
 
         /* Footer top section with Flutter gradient */
@@ -653,13 +648,13 @@
     </style>
 </head>
 
-<body class="antialiased">
-    <header
-        class="header-shadow py-4 px-6 max-w-7xl mx-auto flex justify-between items-center rounded-b-xl sticky top-0 z-50 transition-all duration-300"
-        style="background-color: var(--color-main-bg); backdrop-filter: blur(80px);">
+<body class="antialiased">    <header
+        id="main-header"
+        class="py-4 px-6 max-w-7xl mx-auto flex justify-between items-center sticky top-0 z-50 transition-all duration-300"
+        style="background-color: transparent;">
         <div class="text-2xl font-bold" style="color: var(--color-main);">
             <a href="#hero" class="flex items-center gap-2">
-                <img src="assets/gro_logo.svg" alt="Gro Money Saver and Expense Tracker"
+                <img src="assets/images/gro_logo.svg" alt="Gro Money Saver and Expense Tracker"
                     class="h-8 w-24 object-contain logo-img"
                     style="filter: brightness(0) saturate(100%) invert(var(--logo-filter-invert, 0));">
             </a>
@@ -694,13 +689,10 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
             </svg>
         </button>
-    </header>
-
-    <nav id="mobile-menu" class="md:hidden fixed inset-x-0 top-0 pt-20 p-6 space-y-4 shadow-xl z-40"
+    </header>    <nav id="mobile-menu" class="md:hidden fixed inset-x-0 top-[72px] p-6 space-y-4 shadow-xl translate-x-full transition-transform duration-300"
         style="background-color: var(--color-secondary-bg); color: var(--color-text-secondary);">
-        <a href="#why-gro"
-            class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">Why
-            Gro?</a>
+        <a href="#features"
+            class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">Features</a>
         <a href="#app-navigation"
             class="block py-2 text-lg font-medium hover:text-purple-600 transition duration-300 mobile-menu-link">How to
             Use</a>
@@ -721,10 +713,10 @@
                         financial goals.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"> <button
-                            class="px-8 py-4 rounded-full text-lg font-semibold transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 flex items-center gap-2 ring-offset-2"
+                            class="px-8 py-4 rounded-full text-lg font-semibold transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 flex items-center justify-center gap-2 ring-offset-2"
                             style="background-color: var(--flutter-slide-bg); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark); border: 1px solid rgba(255, 255, 255, 0.2);">
                             <ion-icon name="logo-google-playstore" class="text-xl"></ion-icon>
-                            Download the app now
+                            <span>Download the app now</span>
                         </button>
                         <!-- <button class="px-8 py-4 rounded-full text-lg font-semibold transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none flex items-center gap-2 ring-2 ring-offset-2" style="background-color: var(--flutter-slide-bg); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark); border: 1px solid rgba(255, 255, 255, 0.2);">                            <ion-icon name="play-circle-outline" class="text-xl"></ion-icon>
                             Watch Demo
@@ -756,9 +748,9 @@
                 </div>
                 <div class="md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0">
                     <div class="relative">
-                        <img src="assets/phone_front.svg"
+                        <img src="assets/images/phone_front.svg"
                             alt="Gro App on Phone" class="w-full h-auto rounded-xl object-cover relative z-10"
-                            onerror="this.onerror=null;this.src='assets/phone_front.svg';">
+                            onerror="this.onerror=null;this.src='assets/images/phone_front.svg';">
                         <div
                             class="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-500 blur-3xl opacity-30 -z-10 transform scale-110">
                         </div>
@@ -1062,10 +1054,10 @@
                         Take control of your finances with Gro. 
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"> <button
-                            class="px-8 py-4 rounded-full text-lg font-semibold transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 flex items-center gap-2 ring-offset-2"
+                            class="px-8 py-4 rounded-full text-lg font-semibold transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 flex items-center justify-center gap-2 ring-offset-2"
                             style="background-color: var(--flutter-slide-bg); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark); border: 1px solid rgba(255, 255, 255, 0.2);">
                             <ion-icon name="logo-google-playstore" class="text-xl"></ion-icon>
-                            Download the app now
+                            <span>Download the app now</span>
                         </button>
                     </div>
                 </div>
@@ -1094,9 +1086,41 @@
         </section>
     </footer>
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>    <script>
+        // Wait for DOM to be fully loaded before initializing
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize UI components
+            const ui = {
+                header: document.getElementById('main-header'),
+                mobileMenu: document.getElementById('mobile-menu'),
+                mobileMenuButton: document.getElementById('mobile-menu-button'),
+                themeToggle: document.getElementById('theme-toggle'),
+                sunIcon: document.getElementById('sun-icon'),
+                moonIcon: document.getElementById('moon-icon'),
+                html: document.documentElement
+            };
+            // Mobile menu logic
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuLinks = mobileMenu.querySelectorAll('.mobile-menu-link');
+            
+            mobileMenuButton.addEventListener('click', () => {
+                const isMenuOpen = !mobileMenu.classList.contains('translate-x-full');
+                if (isMenuOpen) {
+                    mobileMenu.classList.add('translate-x-full');
+                } else {
+                    mobileMenu.classList.remove('translate-x-full');
+                }
+                mobileMenuButton.setAttribute('aria-expanded', (!isMenuOpen).toString());
+            });
+            
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('translate-x-full');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                });
+            });
+            
             // Theme toggle logic
             const themeToggle = document.getElementById('theme-toggle');
             const htmlElement = document.documentElement;
@@ -1116,22 +1140,21 @@
             themeToggle.addEventListener('click', () => {
                 const newTheme = htmlElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
                 setTheme(newTheme);
-            });
-
-            // Mobile menu logic
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileMenuLinks = mobileMenu.querySelectorAll('.mobile-menu-link');
-            mobileMenuButton.addEventListener('click', () => {
-                const isMenuOpen = mobileMenu.classList.toggle('open');
-                mobileMenuButton.setAttribute('aria-expanded', isMenuOpen.toString());
-            });
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.remove('open');
-                    mobileMenuButton.setAttribute('aria-expanded', 'false');
-                });
-            });
+            });            // Header scroll effect
+            const header = document.getElementById('main-header');
+            const updateHeaderStyle = () => {
+                if (window.scrollY > 10) {
+                    header.classList.add('header-shadow', 'rounded-b-xl');
+                    header.style.backgroundColor = 'var(--color-main-bg)';
+                    header.style.backdropFilter = 'blur(80px)';
+                } else {
+                    header.classList.remove('header-shadow', 'rounded-b-xl');
+                    header.style.backgroundColor = 'transparent';
+                    header.style.backdropFilter = 'none';
+                }
+            };
+            window.addEventListener('scroll', updateHeaderStyle);
+            updateHeaderStyle(); // Initial call
 
             // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
