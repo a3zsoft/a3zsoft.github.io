@@ -100,8 +100,16 @@ body {
     }
 }
 
+.faq-summary {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Pushes text to left, icon to right */
+    align-items: center; /* Vertically centers items */
+    list-style: none; /* Removes default marker for most browsers */
+    cursor: pointer; /* Indicates it's clickable */
+}
+
 .faq-summary::-webkit-details-marker {
-    display: none;
+    display: none; /* Specifically for WebKit browsers */
 }
 
 .faq-summary::after {
@@ -109,7 +117,8 @@ body {
     font-size: 1.5rem;
     transition: transform 0.3s ease;
     color: var(--color-main);
-    float: right;
+    /* float: right; Removed, flexbox handles positioning */
+    margin-left: 0.5rem; /* Adds a little space between text and icon */
 }
 
 details[open]>.faq-summary::after {
@@ -1030,6 +1039,8 @@ html[data-theme='dark'] .main-logo-image {
 .faq-item-container summary {
     padding: 0.5rem 0;
     transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+    font-size: 1.2rem;
 }
 
 .faq-item-container summary:hover {
@@ -1122,6 +1133,10 @@ html[data-theme='dark'] .main-logo-image {
     /* color is set by inline style with CSS var */
 }
 
+.font-semibold {
+    font-weight: 600;
+}
+
 .footer-bottom-content-container {
     max-width: 80rem; /* max-w-7xl */
     margin-left: auto;
@@ -1137,7 +1152,8 @@ html[data-theme='dark'] .main-logo-image {
 .footer-legal-nav-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
+    text-align: left; /* Center align items like the logo and nav */
     gap: 1rem; /* gap-4 */
 }
 
@@ -1145,7 +1161,19 @@ html[data-theme='dark'] .main-logo-image {
     display: flex;
     flex-wrap: wrap; /* flex-wrap */
     justify-content: center; /* justify-center */
+    align-items: center; /* Vertically align items in the nav */
     gap: 0.5rem 1.5rem; /* gap-y-2 gap-x-6 */
+}
+
+.footer-logo-link {
+    display: inline-block; /* Or block if it's on its own line on mobile */
+    margin-bottom: 0.75rem; /* Space below the logo before legal links on mobile */
+}
+
+.footer-logo-image {
+    height: 3rem; /* Adjust size as needed, e.g., 32px */
+    width: auto;
+    vertical-align: middle; /* Helps with inline alignment if next to text */
 }
 
 .footer-copyright-text {
@@ -1204,7 +1232,11 @@ html[data-theme='dark'] .main-logo-image {
 @media (min-width: 768px) { /* md breakpoint */
     .footer-download-content-container { flex-direction: row; /* md:flex-row */ }
     .footer-download-content-container {
-        align-items: flex-end; /* Align items to the bottom of the container */
+        align-items: flex-end; /* Align items to the bottom of the container for download section */
+    }
+    .footer-legal-nav-container {
+        flex-direction: row; /* Align logo and nav links in a row */
+        align-items: left; /* Vertically center logo and nav links */
     }
     .footer-download-text-block { text-align: left; /* md:text-left */  }
     .footer-download-headline { font-size: 3rem; /* md:text-5xl */ }
@@ -1213,7 +1245,10 @@ html[data-theme='dark'] .main-logo-image {
     .footer-app-image-container { width: 33.333333%; /* md:w-1/3 */ justify-content: flex-end; /* md:justify-end */ margin-top: 0; /* md:mt-0 */ }
 
     .footer-bottom-content-container { flex-direction: row; /* md:flex-row */ }
-    .footer-legal-nav-container { align-items: flex-start; /* md:items-start */ }
+    .footer-legal-nav-container { 
+        align-items: left; /* md:items-start changed to center for better vertical alignment with logo */
+        gap: 1rem; /* Add some space between logo and nav links */
+    }
     .footer-legal-nav { justify-content: flex-start; /* md:justify-start */ }
     .footer-copyright-text { text-align: left; /* md:text-left */ }
     .footer-contact-text { text-align: right; /* md:text-right */ }
