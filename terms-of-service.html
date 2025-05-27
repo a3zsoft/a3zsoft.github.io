@@ -1,29 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Terms of Service - Gro Money Saver & Expense Tracker</title>
     <meta name="description"
-        content="Terms of Service for Gro Money Saver & Expense Tracker app. Learn about the terms and conditions governing the use of our app.">
+        content="Terms of Service for Gro Money Saver & Expense Tracker app. Learn about the terms governing the use of our app.">
     <link rel="canonical" href="https://a3zsoft.com/terms-of-service.html" />
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="assets/images/gro_icon.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="assets/css/styles.css" rel="stylesheet">
 </head>
 
-<body class="bg-gray-50 text-gray-800">
-    <div class="max-w-4xl mx-auto px-4 py-8">
-        <header class="mb-8">
-            <h1 class="text-4xl font-bold mb-4">Terms of Service</h1>
-            <p class="text-gray-600">Last updated: May 27, 2025</p>
+<body>
+    <div class="container">
+        <header>
+            <div id="back-link-container"></div> <!-- Placeholder for the back link -->
+            <h1>Terms of Service</h1>
+            <p class="updated-date">Last updated: May 27, 2025</p>
         </header>
 
-        <div class="prose max-w-none">
+        <div class="content">
             <p class="mb-6">Welcome to Gro Money Saver & Expense Tracker. These Terms of Service ("Terms") constitute a legal agreement
                 between you ("User") and a³zsoft ("Company", "we", "us", or "our"). By downloading, installing, or using
                 our Gro Money Saver & Expense Tracker app ("Application"), you agree to be bound by these Terms.</p>
@@ -157,6 +156,28 @@
             <p><a href="mailto:contact@a3zsoft.com" class="text-blue-600 hover:text-blue-800">a3zsoft@gmail.com</a></p>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check for 'from=gro' URL parameter and add back link
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromGro = urlParams.get('from');
+            const backLinkContainer = document.getElementById('back-link-container');
+
+            if (fromGro === 'gro' && backLinkContainer) {
+                const backLink = document.createElement('a');
+                backLink.href = 'gro.html';
+                // Add class for styling if you have one defined in styles.css
+                // For now, using inline styles for simplicity or create a .back-link class in styles.css
+                backLink.style.display = 'inline-block';
+                backLink.style.marginBottom = '1.5rem';
+                backLink.style.color = 'var(--color-link)';
+                backLink.style.textDecoration = 'none';
+                backLink.style.fontWeight = '500';
+                backLink.innerHTML = '&larr; Back to Gro Home';
+                backLinkContainer.appendChild(backLink);
+            }
+        });
+    </script>
 </body>
 
 </html>

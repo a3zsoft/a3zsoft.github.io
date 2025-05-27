@@ -1,0 +1,165 @@
+/* CSS Variables for Theming */
+:root {
+    /* Light Theme Defaults */
+    --color-page-bg: #ffffff;
+    --color-text-primary: #1f2937;
+    --color-text-secondary: #4b5563;
+    --color-link: #2563eb;
+    --color-link-hover: #1d4ed8;
+    --color-border: #e5e7eb;
+    --color-container-bg: #ffffff;
+    --color-header-text: #111827;
+}
+
+/* Dark Theme Overrides */
+html[data-theme='dark'] {
+    --color-page-bg: #121212;
+    --color-text-primary: #e2e8f0;
+    --color-text-secondary: #a0aec0;
+    --color-link: #60a5fa;
+    --color-link-hover: #93c5fd;
+    --color-border: #374151;
+    --color-container-bg: #1f2937; /* Slightly lighter than page bg for contrast */
+    --color-header-text: #f3f4f6;
+}
+
+/* Apply a transition to theme changes */
+html {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+    font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.7;
+    background-color: var(--color-page-bg);
+    color: var(--color-text-primary);
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 1rem auto;
+    padding: 1rem;
+    background-color: var(--color-container-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+html[data-theme='dark'] .container {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+header {
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+}
+
+/* Style for the "Back to Home" link, if used via class */
+.back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--color-link);
+    text-decoration: none;
+    font-weight: 500;
+}
+.back-link:hover {
+    text-decoration: underline;
+    color: var(--color-link-hover);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-header-text);
+    margin-bottom: 0.5rem;
+}
+
+.updated-date {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-top: 0;
+}
+
+.content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.content p {
+    margin-bottom: 1.25rem;
+    color: var(--color-text-secondary);
+}
+
+.content ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1.25rem;
+    padding-left: 1rem;
+}
+
+.content li {
+    margin-bottom: 0.5rem;
+    color: var(--color-text-secondary);
+}
+
+.content a {
+    color: var(--color-link);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.content a:hover {
+    color: var(--color-link-hover);
+    text-decoration: underline;
+}
+
+/* Utility classes from HTML (mb-6, text-2xl, font-bold, etc.) */
+/* These are simple Tailwind-like utilities. You might want to replace them with more semantic classes in your HTML eventually. */
+.mb-6 {
+    margin-bottom: 1.5rem; /* Tailwind mb-6 */
+}
+
+.mt-8 {
+    margin-top: 2rem; /* Tailwind mt-8 */
+}
+
+.mb-4 {
+    margin-bottom: 1rem; /* Tailwind mb-4 */
+}
+
+.ml-6 {
+    margin-left: 1.5rem; /* Tailwind ml-6 */
+}
+
+.text-2xl {
+    font-size: 1.5rem; /* Tailwind text-2xl */
+}
+
+.font-bold {
+    font-weight: 700; /* Tailwind font-bold */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .content h2 {
+        font-size: 1.5rem;
+    }
+}

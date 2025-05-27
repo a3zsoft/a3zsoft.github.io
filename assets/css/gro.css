@@ -1,0 +1,1314 @@
+/* Add these styles to your existing <style> block in the <head> */
+
+/* CSS Variables for Theming */
+:root {
+    /* Light Theme Defaults */
+    --color-primary-bg: #ffffff;
+    --color-secondary-bg: #ffffff;
+    --logo-filter-invert: 0;
+    /* Logo color for light theme */
+    --color-tertiary-bg: #f1f3ff;
+    --color-text-primary: #1f2937;
+    --color-text-secondary: #4b5563;
+    --color-main: #2196f3;
+    /* Main purple for general branding */
+    --color-dark: #1565c0;
+    --color-light: #bbdefb;
+    --color-shadow: rgba(0, 0, 0, 0.05);
+    --color-hero-gradient-start: #b600c8;
+    /* Flutter gradient start */
+    --color-hero-gradient-end: #0824c3;
+    /* Flutter gradient end */
+    --color-footer-top-text: #ffffff;
+    --color-footer-bottom-bg: #e5e7eb;
+    --color-footer-bottom-text: #4b5563;
+    --color-footer-link-hover: #8B5CF6;
+
+    /* Flutter Inspired Colors (for specific sections) */
+    --flutter-gradient: linear-gradient(to bottom right, #b600c8, #4e37c3, #0824c3, #120b37);
+    --flutter-slide-bg: rgba(255, 255, 255, 0.1);
+    --flutter-slide-border-color: rgba(255, 255, 255, 0.2);
+    --flutter-slide-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    --flutter-slide-text-primary: rgba(255, 255, 255, 0.9);
+    --flutter-slide-text-secondary: rgba(255, 255, 255, 0.75);
+    --flutter-indicator-active: white;
+    --flutter-indicator-inactive: rgba(255, 255, 255, 0.3);
+}
+
+/* Dark Theme Overrides */
+html[data-theme='dark'] {
+    --color-primary-bg: #121212;
+    --color-secondary-bg: #0E0E0E;
+    --logo-filter-invert: 1;
+    /* Logo color for dark theme */
+    --color-tertiary-bg: #1A1A1A;
+    --color-text-primary: #e2e8f0;
+    --color-text-secondary: #a0aec0;
+    --color-main: #2196f3;
+    --color-dark: #1565c0;
+    --color-light: #bbdefb;
+    --color-shadow: rgba(0, 0, 0, 0.3);
+    --color-hero-gradient-start: #4e37c3;
+    /* Darker Flutter gradient start */
+    --color-hero-gradient-end: #120b37;
+    /* Darker Flutter gradient end */
+    --color-footer-top-text: #e2e8f0;
+    --color-footer-bottom-bg: #2d3748;
+    --color-footer-bottom-text: #a0aec0;
+    --color-footer-link-hover: #A78BFA;
+}
+
+body {
+    font-family: 'Urbanist', sans-serif;
+    line-height: 1.6;
+    background-color: var(--color-primary-bg);
+    color: var(--color-text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+}
+
+.header-shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.hero-gradient {
+    background: var(--flutter-gradient);
+}
+
+/* Use the full flutter gradient for hero */
+
+.section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .section-padding {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .section-padding {
+        padding-left: 6rem;
+        padding-right: 6rem;
+    }
+}
+
+.faq-summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-summary::after {
+    content: '+';
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+    color: var(--color-main);
+    float: right;
+}
+
+details[open]>.faq-summary::after {
+    content: '-';
+}
+
+/* Styles for collapsible content sections */
+.content-section details>summary.collapsible-h3 {
+    font-size: 1.5rem;
+    /* 24px */
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    list-style: none;
+    /* Remove default marker */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    /* Optional: space before content */
+}
+
+.content-section details>summary.collapsible-h3::-webkit-details-marker {
+    display: none;
+}
+
+.content-section details>summary.collapsible-h3::after {
+    content: '+';
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--color-main);
+    transition: transform 0.3s ease;
+    padding-left: 1rem;
+}
+
+.content-section details[open]>summary.collapsible-h3::after {
+    content: '-';
+}
+
+.content-section details>.collapsible-content {
+    padding-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+
+/* Styles for the "Discover Gro's Power" Carousel (Flutter Inspired) */
+.discover-power-section {
+    background: var(--flutter-gradient);
+    color: var(--flutter-slide-text-primary);
+}
+
+.swiper-slide.discover-power-slide {
+    background-color: var(--flutter-slide-bg);
+    border: 1px solid var(--flutter-slide-border-color);
+    box-shadow: var(--flutter-slide-shadow);
+    border-radius: 24px;
+    padding: 2rem 1.5rem;
+    /* Adjusted padding */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 380px;
+    box-sizing: border-box;
+    color: var(--flutter-slide-text-secondary);
+}
+
+.discover-power-slide .emoji {
+    font-size: 3.5rem;
+    /* 56px, slightly smaller than 64px for balance */
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    /* 20px */
+}
+
+.discover-power-slide h3 {
+    font-size: 1.375rem;
+    /* 22px, slightly smaller for balance */
+    font-weight: 700;
+    color: var(--flutter-slide-text-primary);
+    margin-bottom: 0.75rem;
+    /* 12px */
+}
+
+.discover-power-slide p {
+    font-size: 1rem;
+    /* 16px, for better readability in slides */
+    max-width: 95%;
+    line-height: 1.5;
+}
+
+.swiper-pagination-bullet {
+    background-color: var(--flutter-indicator-inactive);
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--color-dark) !important; /* Active dot color */
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--flutter-indicator-active);
+    --swiper-navigation-size: 28px;
+    /* Adjusted size */
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 18px !important;
+}
+
+
+/* Styles for "Our Core Principles" Section */
+.core-principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.principle-card {
+    background-color: var(--color-secondary-bg);
+    padding: 1.75rem;
+    border-radius: 12px;
+    box-shadow: var(--color-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.principle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--color-shadow);
+}
+
+.principle-card svg {
+    width: 2.5rem;
+    /* 40px */
+    height: 2.5rem;
+    /* 40px */
+    margin-bottom: 1rem;
+    color: var(--color-main);
+}
+
+.principle-card h3 {
+    font-size: 1.25rem;
+    /* 20px */
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.principle-card p {
+    font-size: 0.95rem;
+    /* ~15px */
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+/* Mobile Menu Styles */
+#mobile-menu {
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%);
+}
+
+#mobile-menu:not(.translate-x-full) {
+    transform: translateX(0);
+}
+
+/* Footer top section with Flutter gradient */
+.footer-download-section {
+    background: var(--flutter-gradient);
+    color: var(--color-footer-top-text);
+}
+
+.footer-download-section h2,
+.footer-download-section p {
+    color: var(--color-footer-top-text);
+    /* Ensure text is white */
+}
+
+/* Styling for long-form text sections */
+.content-section {
+    background-color: var(--color-secondary-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--color-shadow);
+}
+
+.content-section h2 {
+    /* For main section titles like "App Navigation" */
+    font-size: 2rem;
+    /* 32px */
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-main);
+}
+
+.content-section h3 {
+    /* For sub-sections like "Money Tab" */
+    font-size: 1.5rem;
+    /* 24px */
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.content-section h4 {
+    /* For further sub-headings */
+    font-size: 1.2rem;
+    /* ~19px */
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.content-section p,
+.content-section li {
+    font-size: 1rem;
+    /* 16px */
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.content-section ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.content-section strong {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+/* Styles for Screenshot Theme Switcher Buttons */
+.screenshot-btn {
+    padding: 0.5rem 1.5rem;
+    /* Tailwind: px-6 py-2 */
+    border-radius: 1.375rem;
+    /* Tailwind: rounded-md */
+    font-weight: 500;
+    /* Tailwind: font-medium */
+    font-family: Urbanist, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border-width: 2px;
+    border-style: solid;
+    cursor: pointer;
+}
+
+.screenshot-btn-active {
+    background-color: var(--color-main);
+    color: white;
+    border-color: var(--color-main);
+}
+
+.screenshot-btn-inactive {
+    background-color: var(--color-secondary-bg);
+    color: var(--color-main);
+    border-color: var(--color-main);
+}
+
+.screenshot-btn-inactive:hover {
+    background-color: var(--color-light);
+    border-color: var(--color-dark);
+    color: var(--color-dark);
+}
+
+/* Styles for Screenshot Gallery Navigation Buttons */
+.gallery-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(45, 55, 72, 0.6);
+    /* bg-gray-700/60 */
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    /* rounded-full */
+    width: 2.5rem;
+    /* w-10 */
+    height: 2.5rem;
+    /* h-10 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    z-index: 10;
+}
+
+.gallery-nav-btn:hover:not(:disabled) {
+    background-color: rgba(45, 55, 72, 0.9);
+    /* bg-gray-700/90 */
+}
+
+.gallery-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.gallery-nav-btn.prev {
+    left: -3.25rem;
+    /* Adjust to position outside the image container */
+}
+
+.gallery-nav-btn.next {
+    right: -3.25rem;
+    /* Adjust to position outside the image container */
+}
+
+/* Styles for Pagination Dots */
+.gallery-pagination-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-light);
+    /* Inactive dot color */
+    margin: 0 5px;
+    cursor: pointer;
+    border: none;
+    /* Ensure it's a button without default styling */
+    padding: 0;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.gallery-pagination-dot:hover:not(.active) {
+    transform: scale(1.2);
+    background-color: var(--color-main);
+    opacity: 0.7;
+}
+
+.gallery-pagination-dot.active {
+    background-color: var(--color-main);
+    /* Active dot color */
+    transform: scale(1.1);
+}
+
+/* Screenshots Swiper Styles */
+.screenshots-swiper {
+    /* padding: 20px 10px 50px; Original padding */
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px; /* Reduced as pagination is now external */
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Styling for external pagination containers */
+.screenshots-container .swiper-pagination {
+    position: relative; /* Will be in normal document flow */
+    width: 100%;
+    text-align: center; /* Center the bullets */
+    margin-top: 30px;   /* Space between swiper and pagination */
+    padding-bottom: 20px; /* Space below pagination */
+    /* display: none; /* Initially hidden, JS will manage visibility */
+    /* The specific light/dark pagination divs have inline display:none initially */
+}
+
+.screenshots-swiper .swiper-button-next,
+.screenshots-swiper .swiper-button-prev {
+    color: var(--color-main);
+    --swiper-navigation-size: 44px;
+    width: var(--swiper-navigation-size);
+    height: var(--swiper-navigation-size);
+    background-color: var(--color-secondary-bg);
+    border-radius: 50%;
+    box-shadow: 0 4px 6px var(--color-shadow);
+}
+
+.screenshots-swiper .swiper-button-prev {
+    left: -60px;
+}
+
+.screenshots-swiper .swiper-button-next {
+    right: -60px;
+}
+
+.screenshots-swiper .swiper-button-next:after,
+.screenshots-swiper .swiper-button-prev:after {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Bullet styling remains the same, but now applies to external pagination */
+.screenshots-swiper .swiper-pagination-bullet {
+    width: 12px; /* Bigger dots */
+    height: 12px; /* Bigger dots */
+    background-color: var(--color-light); /* Inactive dot color */
+    opacity: 0.7;
+    margin: 0 6px !important; /* Spacing between dots */
+}
+
+/* Targeting external pagination bullets specifically if needed */
+.screenshots-container > .swiper-pagination .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-light);
+    opacity: 0.7;
+    margin: 0 6px !important;
+}
+
+.screenshots-swiper .swiper-pagination-bullet-active {
+    background-color: var(--color-dark) !important; /* Active dot color */
+    opacity: 1;
+}
+
+@media (max-width: 1400px) {
+    .screenshots-swiper .swiper-button-prev {
+        left: 10px;
+    }
+
+    .screenshots-swiper .swiper-button-next {
+        right: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .screenshots-swiper {
+        padding: 0;
+    }
+
+    .screenshots-swiper .swiper-slide {
+        height: 500px;
+    }
+
+    .screenshots-swiper .swiper-button-next,
+    .screenshots-swiper .swiper-button-prev {
+        display: none;
+    }
+}
+
+/* Swiper Navigation Styles */
+@media (max-width: 768px) {
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none !important;
+    }
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: var(--color-primary) !important;
+    color: white !important;
+    transition: all 0.3s ease;
+}
+
+
+/* General utility */
+.hidden {
+    display: none !important;
+}
+
+/* Styles for the main header */
+.site-header {
+    padding: 0.75rem 1.5rem; /* py-3 (for 72px height) px-6 */
+    max-width: 80rem; /* max-w-7xl (1280px) */
+    margin-left: auto; /* mx-auto */
+    margin-right: auto; /* mx-auto */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; /* sticky */
+    top: 0; /* top-0 */
+    z-index: 50; /* z-50 */
+    transition-property: background-color, box-shadow; /* From transition-all, simplified */
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms; /* duration-300 */
+    background-color: transparent; /* Initial state */
+}
+
+/* Styles for the logo container and link */
+.header-logo-container {
+    font-size: 1.5rem; /* text-2xl (24px) */
+    line-height: 2rem; /* text-2xl (32px) */
+    font-weight: 700; /* font-bold */
+    color: var(--color-main); /* From original inline style */
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* gap-2 (8px) */
+    text-decoration: none; /* Common practice */
+    color: inherit;
+}
+
+/* Styles for the main logo image */
+.main-logo-image {
+    height: 2rem; /* h-8 (32px) */
+    width: 6rem; /* w-24 (96px) */
+    object-fit: contain; /* object-contain */
+    filter: none; /* Default: original color for light theme */
+}
+html[data-theme='dark'] .main-logo-image {
+    filter: brightness(0) invert(1); /* Makes the logo white on dark theme */
+}
+
+/* Styles for desktop navigation */
+.desktop-nav {
+    display: none; /* hidden */
+    font-size: 1.125rem; /* text-lg (18px) */
+    line-height: 1.75rem; /* text-lg (28px) */
+    font-weight: 500; /* font-medium */
+    color: var(--color-text-secondary); /* From original inline style */
+}
+
+@media (min-width: 768px) { /* md:flex */
+    .desktop-nav {
+        display: flex;
+        gap: 1.5rem; /* space-x-6 equivalent (24px) */
+    }
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* gap-2 (8px) */
+    color: inherit; /* Inherits color from .desktop-nav */
+    text-decoration: none;
+    transition-property: color; /* transition */
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms; /* duration-300 */
+}
+
+.nav-link:hover {
+    color: #9333ea; /* hover:text-purple-600 (Tailwind's purple-600) */
+}
+
+.nav-icon {
+    font-size: 1.25rem; /* text-xl (20px) */
+    line-height: 1.75rem; /* text-xl (28px) */
+    /* ion-icons typically size via font-size */
+}
+
+/* Styles for the theme toggle button */
+.theme-toggle-button {
+    padding: 0.5rem; /* p-2 (8px) */
+    border-radius: 9999px; /* rounded-full */
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; /* transition-colors */
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms; /* duration-300 */
+    background-color: transparent; /* Assuming default, adjust if needed */
+    border: none; /* Assuming no border by default */
+    cursor: pointer;
+    color: var(--color-text-secondary); /* Default color, JS might change this */
+    font-family: Urbanist, sans-serif; /* font-sans */
+}
+
+.theme-toggle-button:focus {
+    outline: none; /* focus:outline-none */
+    /* focus:ring-2 focus:ring-offset-2.
+       Using var(--color-main) for ring and var(--color-secondary-bg) for offset,
+       similar to how mobile menu button's ring is defined.
+       The offset color should ideally match the header's background when focused.
+    */
+    box-shadow: 0 0 0 2px var(--color-secondary-bg), 0 0 0 4px var(--color-main);
+}
+
+.theme-toggle-button .theme-icon { /* Updated selector */
+    font-size: 1.25rem; /* text-xl */
+    line-height: 1.75rem; /* text-xl */
+}
+
+/* Styles for the mobile menu toggle button */
+.mobile-menu-toggle {
+    display: block; /* Default for button, ensure it's not inline */
+    padding: 0.5rem; /* p-2 (8px) */
+    border-radius: 0.375rem; /* rounded-md (6px) */
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) { /* md:hidden */
+    .mobile-menu-toggle {
+        display: none;
+    }
+}
+
+.mobile-menu-toggle:focus {
+    outline: none; /* focus:outline-none */
+    /* focus:ring-2 focus:ring-inset. The --ring-color is set inline. */
+    /* For ring-inset, the shadow is inset. */
+    box-shadow: inset 0 0 0 2px var(--ring-color, var(--color-main));
+}
+
+.mobile-menu-toggle svg {
+    width: 2rem; /* w-8 (32px) */
+    height: 2rem; /* h-8 (32px) */
+    /* stroke, fill, etc., are handled by currentColor and parent's color */
+}
+
+/* Ensure the .header-shadow class (used by JS) is defined if not already */
+/* .header-shadow is already defined in your existing CSS. */
+
+/* The JS also adds .rounded-b-xl to the header on scroll.
+   If this class is purely from Tailwind, you'll need to define it: */
+.rounded-b-xl {
+  border-bottom-right-radius: 0.75rem; /* 12px */
+  border-bottom-left-radius: 0.75rem; /* 12px */
+}
+
+/* Mobile Navigation Menu Styles */
+.mobile-nav-menu {
+    display: none; /* md:hidden */
+    position: fixed;
+    inset-inline-start: 0; /* inset-x-0 */
+    inset-inline-end: 0; /* inset-x-0 */
+    top: 72px; /* top-[72px] - assuming header is 72px */
+    padding: 1.5rem; /* p-6 */
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); /* shadow-xl */
+    transform: translateX(100%);
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+    /* background-color and color are set via inline style with CSS variables */
+    z-index: 40; /* Below header (z-50) */
+}
+
+.mobile-nav-menu.menu-open { /* Class toggled by JS */
+    transform: translateX(0);
+}
+
+.mobile-menu-link {
+    display: block; /* block */
+    padding-top: 0.5rem; /* py-2 */
+    padding-bottom: 0.5rem; /* py-2 */
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 500; /* font-medium */
+    transition: color 300ms; /* transition duration-300 */
+    text-decoration: none;
+    color: inherit; /* Inherits from .mobile-nav-menu */
+}
+.mobile-menu-link:hover {
+    color: #9333ea; /* hover:text-purple-600 */
+}
+
+
+/* Use the full flutter gradient for hero */
+
+.section-padding {
+    padding-top: 4rem; /* py-16 or py-20 based on context, Tailwind's section-padding is not a direct utility */
+    padding-bottom: 4rem; /* py-16 or py-20 */
+    padding-left: 1.5rem; /* px-6 */
+    padding-right: 1.5rem; /* px-6 */
+}
+
+/* Hero Section Styles */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    /* Making hero section more compact by reducing vertical padding */
+    padding-top: 2rem; /* Further reduced from 3rem */
+    padding-bottom: 2rem; /* Further reduced from 3rem */
+    flex-direction: column;
+}
+
+.hero-content-container {
+    max-width: 80rem; /* max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem; /* gap-12 */
+}
+
+.hero-text-content {
+    text-align: center;
+    max-width: 36rem; /* max-w-xl */
+}
+
+.hero-headline {
+    font-size: 1.875rem; /* text-3xl */
+    line-height: 1.25; /* leading-tight */
+    font-weight: 800; /* font-extrabold */
+    margin-bottom: 1.5rem; /* mb-6 */
+    /* color is set inline via CSS var */
+}
+
+.hero-description {
+    font-size: 1.125rem; /* text-lg */
+    line-height: 1.75rem; /* text-lg */
+    margin-bottom: 2rem; /* mb-8 */
+    /* color and opacity are set inline */
+}
+
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* gap-4 */
+    justify-content: center;
+}
+
+.hero-button {
+    padding-left: 2rem; /* px-8 */
+    padding-right: 2rem; /* px-8 */
+    padding-top: 1rem; /* py-4 */
+    padding-bottom: 1rem; /* py-4 */
+    border-radius: 9999px; /* rounded-full */
+    font-size: 1.125rem; /* text-lg */
+    font-family: Urbanist, sans-serif; /* font-sans */
+    font-weight: 600; /* font-semibold */
+    transition-property: transform; /* transition-transform */
+    transition-duration: 300ms; /* duration-300 */
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; /* gap-2 */
+    cursor: pointer;
+    /* Inline styles handle background, color, border, and custom ring properties */
+}
+
+.hero-button:hover {
+    transform: scale(1.05); /* hover:scale-105 */
+}
+
+.hero-button:focus {
+    outline: 2px solid transparent; /* focus:outline-none (Tailwind's default) */
+    outline-offset: 2px;
+    /* Replicating focus:ring-2 and ring-offset-2 with CSS variables set inline */
+    box-shadow: 0 0 0 2px var(--ring-offset-color, transparent), 0 0 0 4px var(--ring-color, transparent);
+}
+
+.hero-button-icon {
+    font-size: 1.25rem; /* text-xl */
+    line-height: 1.75rem; /* text-xl */
+}
+
+.hero-image-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem; /* mt-8 */
+}
+
+.hero-image-container {
+    position: relative;
+}
+
+.hero-phone-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem; /* rounded-xl */
+    max-height: 550px; /* Max height for the phone image */
+    object-fit: cover;
+    position: relative; /* relative */
+    z-index: 10; /* z-10 */
+}
+
+.hero-image-glow {
+    position: absolute; /* absolute */
+    top: 0; right: 0; bottom: 0; left: 0; /* inset-0 */
+    background-image: linear-gradient(to right, #a855f7, #6366f1); /* bg-gradient-to-r from-purple-500 to-indigo-500 */
+    filter: blur(64px); /* blur-3xl */
+    opacity: 0.3; /* opacity-30 */
+    z-index: -10; /* -z-10 */
+    transform: scale(1.1); /* scale-110 */
+}
+
+/* Responsive adjustments for Hero Section */
+@media (min-width: 640px) { /* sm breakpoint */
+    .hero-headline {
+        font-size: 2.25rem; /* sm:text-4xl */
+        line-height: 2.5rem; /* sm:text-4xl */
+    }
+    .hero-actions {
+        flex-direction: row; /* sm:flex-row */
+    }
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+    .hero-content-container {
+        flex-direction: row; /* md:flex-row */
+        gap: 2rem; /* md:gap-8 */
+    }
+    .hero-text-content {
+        text-align: left; /* md:text-left */
+    }
+    .hero-headline {
+        font-size: 3rem; /* md:text-5xl */
+        line-height: 1; /* md:text-5xl */
+    }
+    .hero-description {
+        font-size: 1.25rem; /* md:text-xl */
+        line-height: 1.75rem; /* md:text-xl */
+    }
+    .hero-actions {
+        justify-content: flex-start; /* md:justify-start */
+    }
+    .hero-image-wrapper {
+        width: 40%; /* md:w-1/2, reduced to make image smaller */
+        justify-content: flex-end; /* md:justify-end */
+        margin-top: 0; /* md:mt-0 */
+    }
+}
+
+/* Features Section Styles */
+.features-intro {
+    text-align: center;
+    max-width: 64rem; /* max-w-4xl */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Ensure content sections like #app-navigation and #faqs use the full 80rem width */
+.content-section.max-w-7xl, #faqs .max-w-7xl {
+    margin-right: auto;
+}
+
+.features-headline {
+    font-size: 1.875rem; /* text-3xl */
+    line-height: 2.25rem; /* text-3xl */
+    font-weight: 700; /* font-bold */
+    margin-bottom: 1.5rem; /* mb-6 */
+    /* color is set inline via CSS var */
+}
+
+.features-subheadline {
+    font-size: 1.125rem; /* text-lg */
+    line-height: 1.75rem; /* text-lg */
+    margin-bottom: 3rem; /* mb-12 */
+    /* color is set inline via CSS var */
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr)); /* grid-cols-1 */
+    gap: 2rem; /* gap-8 */
+    max-width: 80rem; /* max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem; /* mb-12 */
+}
+
+.feature-card {
+    padding: 2rem; /* p-8 */
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* items-start */
+    text-align: left; /* text-left */
+    transition-property: box-shadow, transform; /* transition-shadow, implicit for transform */
+    transition-duration: 300ms; /* duration-300 */
+    /* background-color is set inline via CSS var */
+}
+
+.feature-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* hover:shadow-xl */
+    transform: translateY(-0.25rem); /* hover:-translate-y-1 */
+}
+
+.feature-card-icon {
+    font-size: 2.25rem; /* text-4xl */
+    line-height: 2.5rem; /* text-4xl */
+    margin-bottom: 1rem; /* mb-4 */
+    /* color is set inline via CSS var */
+}
+
+.feature-card-title {
+    font-size: 1.25rem; /* text-xl */
+    line-height: 1.75rem; /* text-xl */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: 0.75rem; /* mb-3 */
+    /* color is set inline via CSS var */
+}
+
+/* Responsive adjustments for Features Section */
+@media (min-width: 768px) { /* md breakpoint */
+    .features-headline {
+        font-size: 2.25rem; /* md:text-4xl */
+        line-height: 2.5rem; /* md:text-4xl */
+    }
+    .features-subheadline {
+        font-size: 1.25rem; /* md:text-xl */
+        line-height: 1.75rem; /* md:text-xl */
+    }
+    .features-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* md:grid-cols-2 */
+    }
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+    .features-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)); /* lg:grid-cols-3 */
+    }
+}
+
+/* Original .section-padding for reference and to ensure it's correctly placed */
+.section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    padding-left: 1.5rem;
+}
+
+/* FAQ Section UI Enhancements */
+.faq-item-container { /* New class added in JS for the div wrapping <details> */
+    border-radius: 0.75rem; /* Matches rounded-xl */
+    padding: 1.5rem; /* Matches p-6 */
+    background-color: var(--color-secondary-bg);
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.05); /* Softer shadow */
+    margin-bottom: 1rem; /* Replaces space-y-4 for direct items */
+}
+
+.faq-item-container summary {
+    padding: 0.5rem 0;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.faq-item-container summary:hover {
+    background-color: rgba(0,0,0,0.03); /* Subtle hover for light theme */
+}
+
+/* FAQ Show More Button */
+.faq-show-more-button {
+    display: block; /* block */
+    margin-left: auto; /* mx-auto */
+    margin-right: auto; /* mx-auto */
+    margin-top: 2rem; /* mt-8 */
+    padding: 0.75rem 1.5rem; /* px-6 py-3 */
+    background-color: var(--color-main); /* bg-primary (using --color-main) */
+    color: white; /* Assuming white text for primary button */
+    border-radius: 4rem; /* rounded-lg */
+    border: none;
+    font-family: Urbanist, sans-serif; /* font-sans */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* transition-colors duration-300 */
+}
+
+.faq-show-more-button:hover {
+    background-color: var(--color-dark); /* hover:bg-primary-dark (using --color-dark) */
+}
+
+/* Footer Download Section Styles */
+/* .footer-download-section {
+    padding: 4rem 1.5rem; py-16 px-6 
+} */
+
+.footer-download-content-container {
+    max-width: 80rem; /* max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem; /* gap-8 */
+}
+
+.footer-download-text-block {
+    text-align: center;
+    max-width: 42rem; /* max-w-2xl */
+    padding: 4rem 1.5rem;
+}
+
+.footer-download-headline {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 700; /* font-bold */
+    line-height: 1.2; /* leading-tight */
+    margin-bottom: 1rem; /* mb-4 */
+    color: inherit; /* Inherits from parent section */
+}
+
+.footer-download-description {
+    font-size: 1.125rem; /* text-lg */
+    margin-bottom: 2rem; /* mb-8 */
+    color: inherit; /* Inherits from parent section */
+    opacity: 0.9;
+}
+
+.footer-download-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* gap-4 */
+    justify-content: center;
+}
+
+.footer-app-image-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem; /* mt-8 */
+    overflow: hidden; /* Hide parts of the image that extend beyond this container */
+}
+
+.footer-app-image {
+    max-width: 21.625rem; /* max-w-xs (250px) */
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem; /* rounded-lg */
+    margin-bottom: -10px; /* Pull the image down by 10px to hide the bottom part */
+}
+
+/* Footer Bottom Section Styles */
+.site-footer-bottom {
+    padding: 2rem 1.5rem; /* py-8 px-6 */
+    /* color is set by inline style with CSS var */
+}
+
+.footer-bottom-content-container {
+    max-width: 80rem; /* max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem; /* text-sm */
+    gap: 1rem; /* gap-4 */
+}
+
+.footer-legal-nav-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* gap-4 */
+}
+
+.footer-legal-nav {
+    display: flex;
+    flex-wrap: wrap; /* flex-wrap */
+    justify-content: center; /* justify-center */
+    gap: 0.5rem 1.5rem; /* gap-y-2 gap-x-6 */
+}
+
+.footer-copyright-text {
+    text-align: center; /* text-center */
+}
+
+.footer-legal-link {
+    color: inherit; /* Uses color from parent */
+    text-decoration: none;
+    transition: text-decoration 0.3s;
+}
+.footer-legal-link:hover {
+    text-decoration: underline; /* hover:underline */
+    color: var(--color-footer-link-hover); /* Added for explicit hover color */
+}
+
+.footer-contact-info { /* Was: flex items-center gap-2 */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-contact-text {
+    text-align: center; /* text-center */
+}
+
+.footer-contact-details {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* gap-2 */
+}
+
+.footer-contact-link {
+    text-decoration: underline;
+    color: inherit;
+    transition: color 0.3s;
+}
+.footer-contact-link:hover {    color: var(--color-footer-link-hover);
+}
+
+/* Ensure footer content items take full width on mobile for better text alignment */
+@media (max-width: 767.98px) { /* Before md breakpoint */
+    .footer-legal-nav-container,
+    .footer-contact-details {
+        width: 100%;
+    }
+}
+
+
+/* Responsive adjustments for footers */
+@media (min-width: 640px) { /* sm breakpoint */
+    .footer-download-headline { font-size: 2.25rem; /* sm:text-4xl */ }
+    .footer-download-actions { flex-direction: row; /* sm:flex-row */ }
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+    .footer-download-content-container { flex-direction: row; /* md:flex-row */ }
+    .footer-download-content-container {
+        align-items: flex-end; /* Align items to the bottom of the container */
+    }
+    .footer-download-text-block { text-align: left; /* md:text-left */  }
+    .footer-download-headline { font-size: 3rem; /* md:text-5xl */ }
+    .footer-download-description { font-size: 1.25rem; /* md:text-xl */ }
+    .footer-download-actions { justify-content: flex-start; /* md:justify-start */ }
+    .footer-app-image-container { width: 33.333333%; /* md:w-1/3 */ justify-content: flex-end; /* md:justify-end */ margin-top: 0; /* md:mt-0 */ }
+
+    .footer-bottom-content-container { flex-direction: row; /* md:flex-row */ }
+    .footer-legal-nav-container { align-items: flex-start; /* md:items-start */ }
+    .footer-legal-nav { justify-content: flex-start; /* md:justify-start */ }
+    .footer-copyright-text { text-align: left; /* md:text-left */ }
+    .footer-contact-text { text-align: right; /* md:text-right */ }
+    .mobile-nav-menu { display: none; } /* md:hidden for the menu itself */
+}
+
+/* Screenshots Section Title and Buttons Styling */
+.screenshots-container {
+    max-width: 80rem; /* Changed to 80rem for consistency with 1280px */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; /* Centers the headline */
+}
+
+.screenshots-headline {
+    font-size: 1.875rem; /* text-3xl */
+    line-height: 2.25rem;
+    font-weight: 700; /* font-bold */
+    margin-bottom: 2rem; /* mb-8 */
+    /* color is set by inline style: var(--color-text-primary) */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+    .screenshots-headline {
+        font-size: 2.25rem; /* md:text-4xl */
+        line-height: 2.5rem;
+    }
+}
+
+.screenshots-theme-switcher {
+    display: flex;
+    justify-content: center; /* Centers the buttons */
+    gap: 1rem; /* space-x-4 */
+    margin-bottom: 2rem; /* mb-8 */
+}
+
+.screenshots-swiper {
+    padding: 20px 10px 50px; /* Default padding */
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    /* Removed CSS vars for top positioning */
+}
+
+.screenshots-swiper .swiper-button-next,
+.screenshots-swiper .swiper-button-prev {
+    color: var(--color-main);
+    --swiper-navigation-size: 40px; /* Slightly smaller */
+    width: var(--swiper-navigation-size);
+    height: var(--swiper-navigation-size);
+    background-color: var(--color-secondary-bg);
+    border-radius: 50%;
+    box-shadow: 0 4px 8px var(--color-shadow); /* Enhanced shadow */
+    top: 50%; /* Vertically centered */
+    transform: translateY(-50%); /* Precise vertical centering */
+}
+
+.screenshots-swiper .swiper-button-prev {
+    left: 15px; /* Position inside padding */
+}
+
+.screenshots-swiper .swiper-button-next {
+    right: 15px; /* Position inside padding */
+}
+
+.screenshots-swiper .swiper-button-next:after,
+.screenshots-swiper .swiper-button-prev:after {
+    font-size: 20px; /* Adjusted icon size */
+    font-weight: bold;
+}
+
+@media (max-width: 768px) { /* On smaller screens, hide custom desktop nav buttons */
+    .screenshots-swiper .swiper-button-next,
+    .screenshots-swiper .swiper-button-prev {
+        display: none; /* Swiper's default mobile behavior is often better */
+    }
+}
+
+/* Example for applying gradient to TEXT (if your logo was text) */
+.logo-text-gradient-example {
+    display: inline-block; /* Or block, depending on layout */
+    font-size: 1.5rem; /* Example size */
+    font-weight: 700; /* Example weight */
+    background: var(--flutter-gradient); /* Your desired gradient */
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+/* In gro.css, if you prefer class-based visibility */
+.screenshots-swiper-light, .screenshots-swiper-dark {
+    display: none; /* Hide both by default */
+}
+.screenshots-swiper.active-gallery {
+    display: block; /* Show only the active one */
+}
