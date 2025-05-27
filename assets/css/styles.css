@@ -9,6 +9,7 @@
     --color-border: #e5e7eb;
     --color-container-bg: #ffffff;
     --color-header-text: #111827;
+    --color-tertiary-bg: #f1f3ff;
 }
 
 /* Dark Theme Overrides */
@@ -19,8 +20,9 @@ html[data-theme='dark'] {
     --color-link: #60a5fa;
     --color-link-hover: #93c5fd;
     --color-border: #374151;
-    --color-container-bg: #1f2937; /* Slightly lighter than page bg for contrast */
+    --color-container-bg: #121212; /* Slightly lighter than page bg for contrast */
     --color-header-text: #f3f4f6;
+    --color-tertiary-bg: #1A1A1A;
 }
 
 /* Apply a transition to theme changes */
@@ -31,7 +33,7 @@ html {
 body {
     font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     line-height: 1.7;
-    background-color: var(--color-page-bg);
+    background-color: var(--color-tertiary-bg);
     color: var(--color-text-primary);
     margin: 0;
     padding: 0;
@@ -53,8 +55,8 @@ html[data-theme='dark'] .container {
 }
 
 header {
-    border-bottom: 1px solid var(--color-border);
-    margin-bottom: 2rem;
+    /* border-bottom: 1px solid var(--color-border); */
+    /* margin-bottom: 2rem; */
     padding-bottom: 1.5rem;
 }
 

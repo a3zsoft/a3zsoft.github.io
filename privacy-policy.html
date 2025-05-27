@@ -121,7 +121,7 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Check for 'from=gro' URL parameter and add back link
+            // --- Back Link Logic ---
             const urlParams = new URLSearchParams(window.location.search);
             const fromGro = urlParams.get('from');
             const backLinkContainer = document.getElementById('back-link-container');
@@ -139,6 +139,20 @@
                 backLink.innerHTML = '&larr; Back to Gro Home';
                 backLinkContainer.appendChild(backLink);
             }
+
+            // --- Theme Initialization Logic ---
+            const htmlElement = document.documentElement;
+            const themeFromUrl = urlParams.get('theme'); // Reuse urlParams from Back Link Logic
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            let finalTheme = 'light'; // Default to light
+
+            if (themeFromUrl === 'dark' || themeFromUrl === 'light') {
+                finalTheme = themeFromUrl;
+            } else if (prefersDark) {
+                finalTheme = 'dark';
+            }
+            // Apply the determined theme
+            htmlElement.setAttribute('data-theme', finalTheme);
         });
     </script>
 </body>

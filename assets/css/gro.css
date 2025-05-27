@@ -1052,19 +1052,23 @@ html[data-theme='light'] .main-logo-image {
 
 /* FAQ Show More Button */
 .faq-show-more-button {
-    display: block; /* block */
+    display: inline-block; /* Changed to inline-block for centering with text-align */
     margin-left: auto; /* mx-auto */
     margin-right: auto; /* mx-auto */
     margin-top: 2rem; /* mt-8 */
-    padding: 0.75rem 1.5rem; /* px-6 py-3 */
+    padding: 0.5rem 1.25rem; /* Reduced padding for a smaller button */
     background-color: var(--color-main); /* bg-primary (using --color-main) */
     color: white; /* Assuming white text for primary button */
     border-radius: 4rem; /* rounded-lg */
     border: none;
     font-family: Urbanist, sans-serif; /* font-sans */
-    font-weight: 600;
+    font-weight: 500; /* Slightly less bold */
+    font-size: 0.9rem; /* Smaller font size */
     cursor: pointer;
     transition: background-color 0.3s ease; /* transition-colors duration-300 */
+    text-decoration: none; /* Ensure no underline if it's an <a> tag */
+    text-align: center; /* Ensure text inside is centered */
+    line-height: normal; /* Ensure consistent line height */
 }
 
 .faq-show-more-button:hover {
@@ -1204,7 +1208,6 @@ html[data-theme='light'] .main-logo-image {
 }
 
 .footer-contact-details {
-    display: flex;
     align-items: center;
     gap: 0.5rem; /* gap-2 */
 }
@@ -1222,7 +1225,25 @@ html[data-theme='light'] .main-logo-image {
     .footer-legal-nav-container,
     .footer-contact-details {
         width: 100%;
+        /* Ensure child flex items are centered */
+        align-items: center; 
     }
+    .footer-legal-nav {
+        /* Ensure nav links themselves are centered on mobile */
+        justify-content: center;
+    }
+
+}
+
+/* Center the FAQ button container on all screen sizes.
+   The button is inserted after the div with class 'space-y-4'.
+   So, we target the parent of 'space-y-4' which is '.max-w-7xl' within '#faqs'. */
+#faqs .max-w-7xl {
+    text-align: center;
+}
+
+#faqs p {
+    text-align: left;
 }
 
 
@@ -1349,4 +1370,84 @@ html[data-theme='light'] .main-logo-image {
 }
 .screenshots-swiper.active-gallery {
     display: block; /* Show only the active one */
+}
+
+.light-swiper-pagination,
+.dark-swiper-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    position: relative;
+    bottom: auto;
+}
+
+#features .features-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+
+    #features .features-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+
+    #features .features-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+#features .feature-card {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+#features .feature-card-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    min-height: 3.5rem;
+}
+
+#features .feature-card-icon {
+    font-size: 2rem;
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+#features .feature-card-title {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    margin-top: 0;
+    flex-grow: 1;
+    line-height: 1.4;
+}
+
+#features .feature-card-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    width: 100%;
+    padding-left: 0;
+    min-height: 7.2em;
+    max-height: 7.2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    -webkit-box-orient: vertical;
+    margin-top: 0.5em;
+}
+
+/* Ensure the mobile menu becomes visible when 'menu-open' is applied */
+.mobile-nav-menu.menu-open {
+    transform: translateX(0) !important; /* Override the default hide transform */
+    display: block !important; /* Ensure it's displayed, overriding md:hidden if button were visible */
 }

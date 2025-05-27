@@ -97,7 +97,7 @@
         "name": "How secure is my financial data with Gro?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Gro Money Planner & Budget Tracker uses bank-grade security encryption to protect your financial data. Your information is stored locally on your device and can be securely backed up to your preferred cloud storage."
+          "text": "Gro Money Planner & Budget Tracker uses bank-grade security encryption to protect your financial data. Your information is stored locally on your device and can be securely backed up to your google drive storage."
         }
       }]
     }
@@ -125,26 +125,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- Add this style to your existing <style> block or gro.css -->
+    <style>
+        /* Ensure the mobile menu becomes visible when 'menu-open' is applied */
+        .mobile-nav-menu.menu-open {
+            transform: translateX(0) !important; /* Override the default hide transform */
+            display: block !important; /* Ensure it's displayed, overriding md:hidden if button were visible */
+        }
+    </style>
     <style>
     </style>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body class="antialiased">
-    <header id="main-header"
-        class="site-header"> 
-        <div class="header-logo-container"> 
-            <a href="#hero" class="logo-link"> 
+    <header id="main-header" class="site-header">
+        <div class="header-logo-container">
+            <a href="#hero" class="logo-link">
                 <img src="assets/images/gro_logo.svg" alt="Gro Money Planner & Budget Tracker"
                     class="logo-img main-logo-image">
             </a>
         </div>
-        <nav class="desktop-nav"> 
-            <a href="#features" class="nav-link"> 
-                <ion-icon name="star-outline" class="nav-icon"></ion-icon> Features 
+        <nav class="desktop-nav">
+            <a href="#features" class="nav-link">
+                <ion-icon name="star-outline" class="nav-icon"></ion-icon> Features
             </a>
             <a href="#app-navigation" class="nav-link">
                 <ion-icon name="compass-outline" class="nav-icon"></ion-icon> How to Use
+            </a>
+            <a href="#screenshots" class="nav-link">
+                <ion-icon name="phone-portrait-outline" class="nav-icon"></ion-icon> Screenshots
             </a>
             <a href="#faqs" class="nav-link">
                 <ion-icon name="help-circle-outline" class="nav-icon"></ion-icon> FAQs
@@ -154,15 +164,13 @@
             </a>
         </nav>
         <div class="flex items-center space-x-4">
-            <button id="theme-toggle"
-                class="theme-toggle-button"
-                aria-label="Toggle theme"> <ion-icon id="sun-icon" name="sunny-outline" class="theme-icon"></ion-icon>
+            <button id="theme-toggle" class="theme-toggle-button" aria-label="Toggle theme"> <ion-icon id="sun-icon"
+                    name="sunny-outline" class="theme-icon"></ion-icon>
                 <ion-icon id="moon-icon" name="moon-outline" class="theme-icon hidden"></ion-icon>
             </button>
         </div>
-        <button id="mobile-menu-button"
-            class="mobile-menu-toggle" 
-            style="color: var(--color-text-secondary); --ring-color: var(--color-main);" aria-label="Open mobile menu" <!-- Kept inline style for CSS var -->
+        <button id="mobile-menu-button" class="mobile-menu-toggle"
+            style="color: var(--color-text-secondary); --ring-color: var(--color-main);" aria-label="Open mobile menu"
             aria-expanded="false" aria-controls="mobile-menu">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg">
@@ -170,32 +178,31 @@
             </svg>
         </button>
     </header>
-    <nav id="mobile-menu"
-        class="mobile-nav-menu" 
+    <nav id="mobile-menu" class="mobile-nav-menu"
         style="background-color: var(--color-secondary-bg); color: var(--color-text-secondary);">
         <a href="#features" class="mobile-menu-link">Features</a>
-        <a href="#app-navigation" class="mobile-menu-link">How to
-            Use</a>
+        <a href="#app-navigation" class="mobile-menu-link">How to  Use</a>
+        <a href="#screenshots" class="mobile-menu-link">Screenshots</a>
         <a href="#faqs" class="mobile-menu-link">FAQs</a>
         <a href="#download" class="mobile-menu-link">Download</a>
     </nav>
     <main>
-        <section id="hero" class="hero-section hero-gradient section-padding"> 
-            <div class="hero-content-container"> 
-                <div class="hero-text-content"> 
-                    <h1 class="hero-headline" 
-                        style="color: var(--color-footer-top-text);">
+        <section id="hero" class="hero-section hero-gradient section-padding">
+            <div class="hero-content-container">
+                <div class="hero-text-content">
+                    <h1 class="hero-headline" style="color: var(--color-footer-top-text);">
                         Gro towards your financial freedom!
                     </h1>
-                    <p class="hero-description" style="color: var(--color-footer-top-text); opacity: 0.9;"> 
+                    <p class="hero-description" style="color: var(--color-footer-top-text); opacity: 0.9;">
                         From daily transaction tracking to achieving FIRE (Financial Independence, Retire Early), Gro
                         provides the tools and insights you need to manage your money effectively and reach your
                         financial goals.
                     </p>
-                    <div class="hero-actions"> 
-                        <button class="hero-button hero-button-primary" 
+                    <div class="hero-actions">
+                        <button class="hero-button hero-button-primary"
                             style="background-color: var(--flutter-slide-bg); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark); border: 1px solid rgba(255, 255, 255, 0.2);">
-                            <ion-icon name="logo-google-playstore" class="hero-button-icon"></ion-icon> <!-- Added class -->
+                            <ion-icon name="logo-google-playstore" class="hero-button-icon"></ion-icon>
+                            <!-- Added class -->
                             <span>Download the app now</span>
                         </button>
                         <!-- <button class="px-8 py-4 rounded-full text-lg font-semibold transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none flex items-center gap-2 ring-2 ring-offset-2" style="background-color: var(--flutter-slide-bg); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark); border: 1px solid rgba(255, 255, 255, 0.2);">                            <ion-icon name="play-circle-outline" class="text-xl"></ion-icon>
@@ -203,11 +210,11 @@
                         </button> -->
                     </div>
                 </div>
-                <div class="hero-image-wrapper"> 
-                    <div class="hero-image-container"> 
-                        <img src="assets/images/hero.png" alt="Gro App on Phone" class="hero-phone-image" 
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-container">
+                        <img src="assets/images/hero.png" alt="Gro App on Phone" class="hero-phone-image"
                             onerror="this.onerror=null;this.src='assets/images/phone_front.svg';">
-                        <div class="hero-image-glow"> 
+                        <div class="hero-image-glow">
                         </div>
                     </div>
                 </div>
@@ -215,113 +222,172 @@
         </section>
 
         <section id="features" class="section-padding" style="background-color: var(--color-tertiary-bg);">
-            <div class="features-intro"> 
-                <h2 class="features-headline" style="color: var(--color-text-primary);"> 
+            <div class="features-intro">
+                <h2 class="features-headline" style="color: var(--color-text-primary);">
                     Unlock Your Financial Potential with Gro
                 </h2>
-                <p class="features-subheadline" style="color: var(--color-text-secondary);"> 
+                <p class="features-subheadline" style="color: var(--color-text-secondary);">
                     Gro is designed to empower you with a comprehensive understanding and control over your personal
                     finances. From daily transaction tracking to long-term financial planning like achieving Financial
                     Independence, Retire Early (FIRE), Gro provides the tools and insights you need to manage your money
                     effectively and reach your financial goals.
                 </p>
             </div>
-            <div class="features-grid"> 
+            <div class="features-grid">
 
                 <!-- Security Focus -->
-                <div class="feature-card" 
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="shield-checkmark-outline" class="feature-card-icon" 
-                        style="color: var(--color-main);"></ion-icon>
-                    <h3 class="feature-card-title" style="color: var(--color-text-primary);">Bank-Grade Security 
-                    </h3>
-                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Your data's security is our priority. Enjoy peace of 
-                        mind with end-to-end encryption, on-device password protection, PIN verification, pattern lock,
-                        fingerprint authentication, and secure cloud backups.</p>
+                <div class="feature-card" style="background-color: var(--color-secondary-bg);">
+                    <div class="feature-card-header">
+                        <ion-icon name="shield-checkmark-outline" class="feature-card-icon"
+                            style="color: var(--color-main);"></ion-icon>
+                        <h3 class="feature-card-title" style="color: var(--color-text-primary);">Bank-Grade Security
+                        </h3>
+                    </div>
+                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Your data's security
+                        is our priority. Enjoy peace of mind with end-to-end encryption, on-device password, PIN code, 
+                        pattern lock, fingerprint, and secure backups.</p>
                 </div>
-                <!-- Financial Management -->
-                <div class="feature-card"
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="wallet-outline" class="feature-card-icon" style="color: var(--color-main);"></ion-icon>
-                    <h3 class="feature-card-title" style="color: var(--color-text-primary);">Financial
-                        Management</h3>
-                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Manage accounts, transactions, and transfers in one
-                        place. Track multiple account types, categorize income and expenses, and easily move money
-                        between accounts with our intuitive transfer system.</p>
-                </div>
+
                 <!-- FIRE Planning -->
-                <div class="feature-card"
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="flame-outline" class="feature-card-icon" style="color: var(--color-main);"></ion-icon>
-                    <h3 class="feature-card-title" style="color: var(--color-text-primary);">Financial
-                        Independence, Retire Early (FIRE)</h3>
-                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Plan for early retirement with our dedicated FIRE
+                <div class="feature-card" style="background-color: var(--color-secondary-bg);">
+                    <div class="feature-card-header">
+                        <ion-icon name="flame-outline" class="feature-card-icon"
+                            style="color: var(--color-main);"></ion-icon>
+                        <h3 class="feature-card-title" style="color: var(--color-text-primary);">Financial
+                            Independence, Retire Early (FIRE)</h3>
+                    </div>
+                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Plan for early
+                        retirement with our dedicated FIRE
                         section. Calculate your 'FIRE Number' and use the timeline projector to map your journey to
                         Financial Independence.</p>
                 </div>
+
+                <!-- Financial Management -->
+                <div class="feature-card" style="background-color: var(--color-secondary-bg);">
+                    <div class="feature-card-header">
+                        <ion-icon name="wallet-outline" class="feature-card-icon"
+                            style="color: var(--color-main);"></ion-icon>
+                        <h3 class="feature-card-title" style="color: var(--color-text-primary);">Accounts. Transactions.
+                         Transfers</h3>
+                    </div>
+                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Track accounts,
+                        transactions, and transfers. Manage various account types, categorize income/expenses, and move
+                        money easily.</p>
+                </div>
+
+                <!-- Automated Repeat Transactions -->
+                <div class="feature-card" style="background-color: var(--color-secondary-bg);">
+                    <div class="feature-card-header">
+                        <ion-icon name="repeat-outline" class="feature-card-icon"
+                            style="color: var(--color-main);"></ion-icon>
+                        <h3 class="feature-card-title" style="color: var(--color-text-primary);">Automated Repeat
+                            Transactions</h3>
+                    </div>
+                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Simplify your
+                        finances by setting up recurring entries for regular bills, income, or expenses. Gro handles
+                        them automatically.</p>
+                </div>
                 <!-- Advanced Analytics -->
-                <div class="feature-card"
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="analytics-outline" class="feature-card-icon"
-                        style="color: var(--color-main);"></ion-icon>
-                    <h3 class="feature-card-title" style="color: var(--color-text-primary);">Analytics & Reports
-                    </h3>
-                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Explore your financial data with detailed income
+                <div class="feature-card" style="background-color: var(--color-secondary-bg);">
+                    <div class="feature-card-header">
+                        <ion-icon name="analytics-outline" class="feature-card-icon"
+                            style="color: var(--color-main);"></ion-icon>
+                        <h3 class="feature-card-title" style="color: var(--color-text-primary);">Advanced Analytics
+                        </h3>
+                    </div>
+                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Explore your
+                        financial data with detailed income
                         insights, expense deep-dives, savings progress, investment trends, and compare active vs passive
                         income.</p>
                 </div>
+
+                <!-- Customizable Categories -->
+                <div class="feature-card" style="background-color: var(--color-secondary-bg);">
+                    <div class="feature-card-header">
+                        <ion-icon name="options-outline" class="feature-card-icon"
+                            style="color: var(--color-main);"></ion-icon>
+                        <h3 class="feature-card-title" style="color: var(--color-text-primary);">Customizable Categories
+                        </h3>
+                    </div>
+                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Tailor tracking to
+                        your needs. Create, edit, or delete categories with custom names, colors, and icons for precise
+                        organization.</p>
+                </div>
                 <!-- Budget Management -->
-                <div class="feature-card"
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="wallet-outline" class="feature-card-icon" style="color: var(--color-main);"></ion-icon>
-                    <h3 class="feature-card-title" style="color: var(--color-text-primary);">Budget & Targets
-                    </h3>
-                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Set spending limits with expense budgets and income
-                        targets. Define them monthly or yearly and link them to your transaction categories.</p>
+                <div class="feature-card" style="background-color: var(--color-secondary-bg);">
+                    <div class="feature-card-header">
+                        <ion-icon name="wallet-outline" class="feature-card-icon"
+                            style="color: var(--color-main);"></ion-icon>
+                        <h3 class="feature-card-title" style="color: var(--color-text-primary);">Budget & Targets
+                        </h3>
+                    </div>
+                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Set spending limits
+                        with expense budgets and income targets. Define them monthly or yearly and link to transaction
+                        categories.</p>
                 </div>
                 <!-- Asset Tracking -->
-                <div class="feature-card"
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="trending-up-outline" class="feature-card-icon"
-                        style="color: var(--color-main);"></ion-icon>
-                    <h3 class="feature-card-title" style="color: var(--color-text-primary);">Assets & Net Worth
-                    </h3>
-                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Track your complete financial picture. Monitor bank
-                        accounts, real estate, vehicles, and investments in one place. View your up-to-date net worth
-                        and track its growth over time.</p>
+                <div class="feature-card" style="background-color: var(--color-secondary-bg);">
+                    <div class="feature-card-header">
+                        <ion-icon name="trending-up-outline" class="feature-card-icon"
+                            style="color: var(--color-main);"></ion-icon>
+                        <h3 class="feature-card-title" style="color: var(--color-text-primary);">Assets & Net Worth
+                        </h3>
+                    </div>
+                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Monitor bank
+                        accounts, real estate, vehicles, and investments. View your up-to-date net worth and track its
+                        growth.</p>
                 </div>
                 <!-- Debt Management -->
-                <div class="feature-card"
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="timer-outline" class="feature-card-icon" style="color: var(--color-main);"></ion-icon>
-                    <h3 class="feature-card-title" style="color: var(--color-text-primary);">Debts & Liabilities
-                    </h3>
-                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Manage loans and other IOUs effectively. Track
-                        balances and payment schedules, and view detailed amortization schedules for your debts.</p>
+                <div class="feature-card" style="background-color: var(--color-secondary-bg);">
+                    <div class="feature-card-header">
+                        <ion-icon name="timer-outline" class="feature-card-icon"
+                            style="color: var(--color-main);"></ion-icon>
+                        <h3 class="feature-card-title" style="color: var(--color-text-primary);">Debts & Liabilities
+                        </h3>
+                    </div>
+                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Manage loans and
+                        IOUs. Track balances, payment schedules, and view detailed amortization schedules for your
+                        debts.</p>
                 </div>
                 <!-- Multi-Currency & Language -->
-                <div class="feature-card"
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="globe-outline" class="feature-card-icon" style="color: var(--color-main);"></ion-icon>
-                    <h3 class="feature-card-title" style="color: var(--color-text-primary);">Global
-                        Accessibility</h3>
-                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Select any currency as your app's primary currency
-                        for all transactions and calculations. Use Gro in your preferred language with our comprehensive
-                        localization support.</p>
+                <div class="feature-card" style="background-color: var(--color-secondary-bg);">
+                    <div class="feature-card-header">
+                        <ion-icon name="globe-outline" class="feature-card-icon"
+                            style="color: var(--color-main);"></ion-icon>
+                        <h3 class="feature-card-title" style="color: var(--color-text-primary);">Global
+                            Accessibility</h3>
+                    </div>
+                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Select your primary
+                        currency and use Gro in your preferred language with comprehensive localization support.</p>
                 </div>
-                <!-- Transaction Automation -->
-                <div class="feature-card"
-                    style="background-color: var(--color-secondary-bg);">
-                    <ion-icon name="repeat-outline" class="feature-card-icon" style="color: var(--color-main);"></ion-icon>
-                    <h3 class="feature-card-title" style="color: var(--color-text-primary);">Repeat & Import
-                        Transactions</h3>
-                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Set up recurring transactions for regular bills and
-                        income. Get a head start by importing transactions from CSV to get started quickly. </p>
+                <!-- Import Transactions -->
+                <div class="feature-card" style="background-color: var(--color-secondary-bg);">
+                    <div class="feature-card-header">
+                        <ion-icon name="document-text-outline" class="feature-card-icon"
+                            style="color: var(--color-main);"></ion-icon>
+                        <h3 class="feature-card-title" style="color: var(--color-text-primary);">Import Transactions
+                        </h3>
+                    </div>
+                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Get a head start or
+                        migrate data easily. Import existing financial records from CSV files to quickly populate Gro.
+                    </p>
+                </div>
+                <!-- Secure Cloud Backup & Restore -->
+                <div class="feature-card" style="background-color: var(--color-secondary-bg);">
+                    <div class="feature-card-header">
+                        <ion-icon name="cloud-done-outline" class="feature-card-icon"
+                            style="color: var(--color-main);"></ion-icon>
+                        <h3 class="feature-card-title" style="color: var(--color-text-primary);">Secure Cloud Backup &
+                            Restore</h3>
+                    </div>
+                    <p class="feature-card-description" style="color: var(--color-text-secondary);">Safeguard your data
+                        with encrypted Google Drive backups. Easily restore your information on any device, ensuring
+                        peace of mind.</p>
                 </div>
             </div>
         </section>
 
-        <section id="app-navigation" class="section-padding">
+        <section id="app-navigation" class="section-padding" style="background-color: var(--color-tertiary-bg);">
             <div class="content-section max-w-7xl mx-auto">
                 <h2>Explore Gro</h2>
                 <p>Gro is intuitively organized into main tabs and key management areas, ensuring you can easily find
@@ -460,7 +526,7 @@
         </section>
 
         <section id="screenshots" class="section-padding" style="background-color: var(--color-tertiary-bg);">
-            <div class="screenshots-container"> 
+            <div class="screenshots-container">
                 <h2 class="screenshots-headline" style="color: var(--color-text-primary);">See Gro in
                     Action</h2>
 
@@ -511,42 +577,41 @@
 
     <footer>
         <section id="download" class="footer-download-section">
-            <div class="footer-download-content-container"> 
-                <div class="footer-download-text-block"> 
-                    <h2 class="footer-download-headline">Download Gro App Today 
+            <div class="footer-download-content-container">
+                <div class="footer-download-text-block">
+                    <h2 class="footer-download-headline">Download Gro App Today
                     </h2>
-                    <p class="footer-download-description"> 
+                    <p class="footer-download-description">
                         Take control of your finances with Gro.
                     </p>
-                    <div class="footer-download-actions"> 
-                        <button class="hero-button" 
+                    <div class="footer-download-actions">
+                        <button class="hero-button"
                             style="background-color: var(--flutter-slide-bg); color: white; --ring-offset-color: var(--color-hero-gradient-start); --ring-color: var(--color-dark); border: 1px solid rgba(255, 255, 255, 0.2);">
-                            <ion-icon name="logo-google-playstore" class="hero-button-icon"></ion-icon> 
+                            <ion-icon name="logo-google-playstore" class="hero-button-icon"></ion-icon>
                             <span>Download the app now</span>
                         </button>
                     </div>
                 </div>
-                <div class="footer-app-image-container"> 
-                    <img src="assets/images/download.png" alt="Phone with Gro App"
-                        class="footer-app-image">
+                <div class="footer-app-image-container">
+                    <img src="assets/images/download.png" alt="Phone with Gro App" class="footer-app-image">
                 </div>
             </div>
         </section>
 
-        <section id="footer" class="site-footer-bottom"> 
-            <div class="footer-bottom-content-container" 
-                style="color: var(--color-footer-bottom-text);">
-                <div class="footer-legal-nav-container"> 
+        <section id="footer" class="site-footer-bottom">
+            <div class="footer-bottom-content-container" style="color: var(--color-footer-bottom-text);">
+                <div class="footer-legal-nav-container">
                     <a href="index.html" class="footer-logo-link" aria-label="Back to a³zsoft homepage">
                         <img src="assets/images/logo.svg" alt="a³zsoft logo" class="footer-logo-image">
                     </a>
-                    <p class="footer-copyright-text"> <span class="logo-text">a³zsoft</span> &copy; <span id="current-year"></span> - All rights
+                    <p class="footer-copyright-text"> <span class="logo-text">a³zsoft</span> &copy; <span
+                            id="current-year"></span> - All rights
                         reserved.</p>
                     <p class="footer-contact-text">For queries and support, contact us at <a
                             href="mailto:a3zsoft@gmail.com" class="footer-contact-link">a3zsoft@gmail.com</a></p>
                 </div>
-                <div class="footer-contact-details"> 
-                    <nav class="footer-legal-nav"> 
+                <div class="footer-contact-details">
+                    <nav class="footer-legal-nav">
                         <a href="privacy-policy.html?from=gro" class="footer-legal-link">Privacy Policy</a>
                         <a href="terms-of-service.html?from=gro" class="footer-legal-link">Terms of Service</a>
                     </nav>
@@ -556,6 +621,8 @@
     </footer>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/js/faq.js"></script> <!-- Include the new FAQ script -->
+
     <script>
         // Wait for DOM to be fully loaded before initializing
         document.addEventListener('DOMContentLoaded', () => {
@@ -569,13 +636,27 @@
                 moonIcon: document.getElementById('moon-icon'),
                 html: document.documentElement
             };
+
+            // Links to update with theme parameter
+            const privacyLinkFooter = document.querySelector('footer a[href^="privacy-policy.html"]');
+            const termsLinkFooter = document.querySelector('footer a[href^="terms-of-service.html"]');
+            // faqViewAllLink will be handled dynamically as it's created later
+
+            // --- Screenshot Gallery Elements (queried early as they are used by theme logic) ---
+            const galleryThemeLightBtn = document.getElementById('gallery-theme-light');
+            const galleryThemeDarkBtn = document.getElementById('gallery-theme-dark');
+            const lightSwiperContainer = document.querySelector('.screenshots-swiper-light');
+            const darkSwiperContainer = document.querySelector('.screenshots-swiper-dark');
+            const lightSwiperPagination = document.querySelector('.light-swiper-pagination');
+            const darkSwiperPagination = document.querySelector('.dark-swiper-pagination');
+
             // Mobile menu logic
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileMenuLinks = mobileMenu.querySelectorAll('.mobile-menu-link');
 
             const mainContentForBlur = document.querySelector('main'); // Used for blur effect
-            
+
             mobileMenuButton.addEventListener('click', () => {
                 const isMenuOpen = mobileMenu.classList.contains('menu-open');
                 if (isMenuOpen) {
@@ -598,21 +679,7 @@
             const htmlElement = document.documentElement;
             const sunIcon = document.getElementById('sun-icon');
             const moonIcon = document.getElementById('moon-icon');
-            const setTheme = (theme) => {
-                htmlElement.setAttribute('data-theme', theme);
-                localStorage.setItem('theme', theme);
-                sunIcon.classList.toggle('hidden', theme === 'dark');
-                moonIcon.classList.toggle('hidden', theme === 'light');
-            };
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (savedTheme) { setTheme(savedTheme); }
-            else if (prefersDark) { setTheme('dark'); }
-            else { setTheme('light'); }
-            themeToggle.addEventListener('click', () => {
-                const newTheme = htmlElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-                setTheme(newTheme);
-            });            // Header scroll effect
+            // Header scroll effect
             const header = document.getElementById('main-header');
             const updateHeaderStyle = () => {
                 if (window.scrollY > 10) {
@@ -649,120 +716,18 @@
             const currentYear = new Date().getFullYear();
             document.getElementById('current-year').textContent = currentYear;
 
-            // Data for FAQs
-            const faqsData = [
-                // Getting Started
-                { q: 'How do I get started with Gro?', a: 'After downloading and installing Gro, go through the Setup Guide on the Money tab. You\'ll be guided step by step to set up your accounts, customize categories, and learn the basic features. The process takes about 5-10 minutes.' },
-                { q: 'How do I add my bank accounts?', a: 'Tap the account selector in the Money tab or go to the Accounts area. Choose "Add Account", select the account type (checking, savings, etc.), and enter a name and starting balance. You can also customize the color and icon to make it easily recognizable.' },
-                { q: 'How do I add a credit card?', a: 'Similar to bank accounts, go to the Accounts area, tap "Add Account", and select "Credit Card". Enter the card name, starting balance (if any), and customize it with a color and icon. Gro will help you track your credit card spending and payments.' },
-
-                // Daily Usage
-                { q: 'How do I add transactions?', a: 'Use the Floating Action Button (FAB) in the Money tab - swipe left for expenses, right for income, or tap for more options. For regular bills or income, set up recurring transactions through the grid menu to save time.' },
-                { q: 'How can I organize my spending?', a: 'Gro uses categories to organize transactions. Find pre-set categories in the grid menu, or create your own with custom names, colors, and icons. You can also set budgets for expense categories and income targets to stay on track.' },
-                { q: 'How do I transfer money between accounts?', a: 'To transfer funds, tap the FAB in the Money tab, select "Transfer", choose the source and destination accounts, enter the amount, and add a note if needed. Gro will automatically update both account balances.' },
-                { q: 'How do I view my financial insights?', a: 'The Money tab provides quick insights like net savings, expenses by category, income sources, and transfer history. For deeper analysis, go to the Analytics section for detailed reports and trends.' },
-                { q: 'How do I set up budgets?', a: 'In the Plans section, go to "Budget & Targets". Here you can set monthly or yearly budgets for expense categories and income targets. Gro will notify you if you exceed your budgets.' },
-                { q: 'How do I manage my bills?', a: 'For regular bills, set up repeat transactions in the grid menu. You can also categorize them under a specific expense category for better tracking. Gro will automatically create transactions on specified dates. ' },
-                { q: 'How do I handle cash transactions?', a: 'For cash transactions, create a "Cash" account in the Accounts section. Add cash expenses or income just like any other transaction, and Gro will keep your cash balance updated.' },
-                { q: 'What if I forget to record transactions?', a: 'No problem! You can add transactions for any date. Use the account reconciliation feature to match your recorded balance with your actual bank balance, and Gro will help identify missing transactions.' },
-
-                // Features & Capabilities
-                { q: 'How to track my net worth?', a: 'Go to Plans > Assets & Debts to see your complete financial picture. Add your assets (property, vehicles, investments) and track their values. Combined with the Debts & Liabilities section, you\'ll see your current net worth and its growth over time.' },
-                { q: 'Can I import my existing transactions?', a: 'Yes! Access the Import feature from the grid menu. You can import transactions from CSV files - perfect for bringing in history from other apps or bank exports. Check our guide for the correct CSV format.' },
-                { q: 'What reports and insights are available?', a: 'The Analytics section offers various insights: expense breakdowns by category, income source analysis, savings rate trends, and cash flow reports. You can view data weekly, monthly, or yearly, and compare periods to track your progress.' },
-
-                // Planning & Goals
-                { q: 'Can I track my investments?', a: 'Yes! Add investments as assets in the Plans section and update their values periodically. For now, you\'ll need to manually update investment values as they change. Automatic investment tracking is planned for a future update.' },
-                { q: 'How do I set financial goals?', a: 'In the Plans section, you can set financial goals like saving for a vacation or paying off debt. Use the Budget & Targets feature to create specific savings targets and track your progress over time.' },
-                { q: 'Can I track my savings progress?', a: 'Absolutely! The Plans section allows you to set savings goals and track your progress. You can create specific savings targets, like building an emergency fund or saving for a major purchase, and monitor how close you are to achieving them.' },
-                { q: 'How do I manage my debts?', a: 'In the Plans section, go to Debts & Liabilities. Here you can add loans, credit cards, or any other debts. Track balances, payment schedules, and view detailed amortization schedules to manage your repayments effectively.' },
-                { q: 'How do I categorize my transactions?', a: 'When adding or editing a transaction, you can assign it to a category. Gro comes with pre-set categories, but you can also create custom ones in the Categories section. This helps you track spending and income sources effectively.' },
-                { q: 'How do I manage my cash flow?', a: 'The Money tab provides a quick overview of your cash flow, showing net savings (Income - Expenses) for the selected period. For detailed cash flow reports, go to the Analytics section.' },
-
-                // FIRE Planning
-                { q: 'What is FIRE planning?', a: 'FIRE (Financial Independence, Retire Early) is a financial strategy to save and invest aggressively so you can retire earlier than traditional retirement age. Gro\'s FIRE calculator helps you plan this journey by calculating how much you need to save and how long it will take.' },
-                { q: 'How do I use the FIRE calculator?', a: 'Go to Plans > FIRE Planning, then enter three key numbers: your current savings, expected annual investment returns (typically 6-8%), and desired retirement income. Gro will calculate your FIRE number (total savings needed) and show a timeline to reach it.' },
-                { q: 'What is the 4% rule in FIRE planning?', a: 'The 4% rule suggests you can withdraw 4% of your retirement savings annually without running out of money. For example, if you need $40,000/year in retirement, you\'d need to save $1 million (your FIRE number). Gro uses this rule to help calculate your savings target.' },
-                { q: 'How can I track my FIRE progress?', a: 'The FIRE Planning section shows your progress toward your FIRE number through an interactive timeline. As you update your savings and investments in Gro, you\'ll see your projected retirement date adjust automatically. You can also adjust your retirement income goals anytime to see how they affect your timeline.' },
-
-                // Investment & Passive Income tracking
-                { q: 'How do I track my investments?', a: 'Currently, Gro allows you to add investments as assets in the Plans section. You can manually update their values over time. We plan to introduce automatic investment tracking in a future update.' },
-                { q: 'Can I track passive income?', a: 'Yes! You can categorize income sources as "Passive" in the Income section. This helps you see how much of your income comes from passive sources like dividends, interest, or rental income.' },
-
-                // Analytics & Reports
-                { q: 'What kind of analytics does Gro provide?', a: 'Gro offers detailed analytics on your finances, including income and expense breakdowns by category, savings trends, net worth tracking, and cash flow reports. You can view data weekly, monthly, or yearly to identify patterns and make informed decisions.' },
-                { q: 'Can I compare different time periods?', a: 'Yes! In the Analytics section, you can compare financial data across different periods (e.g., this month vs. last month) to see how your spending and income change over time.' },
-                { q: 'Can I track my spending habits?', a: 'Yes! The Analytics section provides insights into your spending habits, including expense breakdowns by category, trends over time, and comparisons against budgets. You can also see how much you spend on needs vs. wants.' },
-                { q: 'How do I view my income sources?', a: 'In the Money tab, you can see your income sources by category. The Analytics section also provides detailed insights into your income trends, including active vs. passive income sources.' },
-                { q: 'Can I set financial targets?', a: 'Yes! In the Plans section, you can set income targets and expense budgets. Gro will notify you if you exceed your budgets or fall short of your income targets, helping you stay on track.' },
-
-                // Settings & Preferences
-                { q: 'Can I use Gro in my language and currency?', a: 'Yes! During setup or in Settings, choose your preferred language and set your primary currency. All transactions and calculations will use this currency for consistency.' },
-                { q: 'How do I change the app\'s theme?', a: 'Gro supports both light and dark themes. You can switch between them in Settings > Appearance. The app will remember your choice for future sessions.' },
-                { q: 'Can I customize the app\'s categories?', a: 'Absolutely! Go to the Categories section in the grid menu to create, edit, or delete categories. You can customize names, colors, and icons to fit your financial needs.' },
-                { q: 'Does Gro work offline?', a: 'Yes, Gro works completely offline. All your data is stored locally on your device, so you can manage your finances anywhere, anytime, without needing an internet connection.' },
-                { q: 'How do I customize the app\'s appearance?', a: 'Gro offers both light and dark themes - switch between them in Settings. You can also customize account colors, category icons, and other visual elements to make the app truly yours.' },
-
-                // Data & Security
-                { q: 'How secure is my financial data?', a: 'Very secure! Gro uses bank-grade encryption for all data, supports fingerprint/face authentication, and offers PIN/pattern locks. Your data is encrypted both on your device and in your Google Drive backups.' },
-                { q: 'How do I back up my data?', a: 'Gro automatically backs up your encrypted data to your Google Drive. You can also manually trigger a backup from Settings > Backup & Restore. Your data is protected with your account password and device authentication.' },
-                { q: 'How do I restore my data from a backup?', a: 'To restore your data, go to Settings > Backup & Restore and select "Restore from Google Drive". Make sure you have an existing backup available. The app will prompt you to confirm the restoration process.' },
-                { q: 'Can I delete my data?', a: 'Yes, you can delete all your data from Settings > Data & Security. This will remove all accounts, transactions, and settings from the app. Use this option with caution, as it cannot be undone.' },
-                { q: 'How do I reset Gro to start fresh?', a: 'If you want to reset Gro, go to Settings > Data Management and select "Delete and Start Fresh". This will remove all your data and settings, allowing you to set up the app as if it were new. Use this option with caution.' },
-
-                // Future Plans
-                { q: 'Is there a way to collaborate with family?', a: 'Currently, Gro is designed for individual use with data stored locally on your device. We\'re actively working on a family sharing feature that will allow secure data sharing between family members. Stay tuned for this update!' },
-                { q: 'Can I track business expenses separately?', a: 'While you can currently use categories to organize different types of expenses, dedicated business expense tracking is coming in a future update. This will include features like receipt scanning, tax category tagging, and business-specific reports. For now, we recommend using categories and tags to separate personal and business transactions.' },
-
-
-                // Tips & Tricks
-                { q: 'How can I make the most of the budgeting features?', a: 'Start with realistic category budgets based on your past spending (visible in Analytics). Use the "Need vs Want" tags for better insights, set up budget notifications, and regularly review your progress in the Analytics section. The app can help identify areas where you\'re consistently over or under budget.' },
-                { q: 'What are some tips for effective financial planning with Gro?', a: 'Regularly review your financial health in the Analytics section. Set clear financial goals (like saving for a vacation or paying off debt) and use the Plans section to track progress. Automate savings by setting up recurring transfers to your savings account. Finally, keep your categories organized and up-to-date for accurate tracking.' }
-            ];
-
             const faqsContainer = document.querySelector('#faqs .space-y-4');
             if (faqsContainer) {
                 const ITEMS_TO_SHOW_INITIALLY = 8;
+                const viewAllButtonConfig = {
+                    id: 'show-more-faqs',
+                    className: 'faq-show-more-button',
+                    text: 'View All FAQs',
+                    url: 'faq.html',
+                    from: 'gro'
+                };
+                renderLimitedFAQs('#faqs .space-y-4', ITEMS_TO_SHOW_INITIALLY, viewAllButtonConfig);
 
-                function renderFAQs() {
-                    // Clear existing content
-                    faqsContainer.innerHTML = '';
-
-                    // Render initial FAQs
-                    faqsData.slice(0, ITEMS_TO_SHOW_INITIALLY).forEach(faq => {
-                        const faqItem = document.createElement('div');
-                        faqItem.classList.add('p-6', 'rounded-xl', 'shadow-lg', 'hover:shadow-xl', 'transition-shadow', 'duration-300');
-                        faqItem.style.backgroundColor = 'var(--color-secondary-bg)';
-                        // Add a new class for better targeting, e.g., 'faq-item-container'
-                        faqItem.classList.add('faq-item-container');                        faqItem.innerHTML = `                            <details class="group faq-group">
-                                <summary class="flex justify-between items-center font-semibold text-lg cursor-pointer faq-summary list-none" style="color: var(--color-text-primary);">
-                                    ${faq.q}
-                                </summary>
-                                <p class="mt-4" style="color: var(--color-text-secondary);">${faq.a}</p>
-                            </details>
-                        `;
-                        faqsContainer.appendChild(faqItem);
-                    });
-
-                    // Add "View All FAQs" button if there are more items than initially shown
-                    let showMoreBtn = document.querySelector('#show-more-faqs');
-                    if (faqsData.length > ITEMS_TO_SHOW_INITIALLY) {
-                        if (!showMoreBtn) {
-                            showMoreBtn = document.createElement('button');
-                            showMoreBtn.id = 'show-more-faqs';
-                            showMoreBtn.classList.add('faq-show-more-button'); // New semantic class
-                            showMoreBtn.textContent = 'View All FAQs'; // Updated text
-                            faqsContainer.parentNode.insertBefore(showMoreBtn, faqsContainer.nextSibling);
-
-                            showMoreBtn.addEventListener('click', () => {
-                                window.location.href = 'faq.html?from=gro'; // Navigate to faq.html with param
-                            });
-                        }
-                    }
-                }
-
-                // Initial render
-                renderFAQs();
             }
 
             // Screenshot Gallery Logic
@@ -809,9 +774,6 @@
                 ]
             };
             let currentGalleryTheme = 'light';
-            let lightThemeSwiper = null;
-            let darkThemeSwiper = null;
-            let currentActiveSwiperInstance = null;
 
             function createSwiperInstance(containerSelector, paginationSelector, nextElSelector, prevElSelector, slidesData) {
                 const swiperWrapper = document.querySelector(`${containerSelector} .swiper-wrapper`);
@@ -834,7 +796,7 @@
                     slidesPerView: 1,
                     spaceBetween: 20,
                     grabCursor: true,
-                    loop: true,
+                    loop: false, // Initialize with loop: false
                     pagination: {
                         el: paginationSelector,
                         clickable: true,
@@ -861,11 +823,11 @@
                 });
             }
 
-            // Theme switcher functionality
-            const galleryThemeLightBtn = document.getElementById('gallery-theme-light');
-            const galleryThemeDarkBtn = document.getElementById('gallery-theme-dark');
-            const lightSwiperContainer = document.querySelector('.screenshots-swiper-light');
-            const darkSwiperContainer = document.querySelector('.screenshots-swiper-dark');
+            // Swiper instances
+            let lightThemeSwiper = null;
+            let darkThemeSwiper = null;
+            let currentActiveSwiperInstance = null; // Tracks the currently *active and visible* Swiper instance
+
 
             // Initialize both Swipers
             lightThemeSwiper = createSwiperInstance(
@@ -875,8 +837,6 @@
                 '.light-swiper-button-prev', // Use unique class
                 galleryImages.light
             );
-            currentActiveSwiperInstance = lightThemeSwiper; // Light theme is active by default
-            // lightSwiperContainer is visible by default from HTML
 
             darkThemeSwiper = createSwiperInstance(
                 '.screenshots-swiper-dark',
@@ -885,71 +845,128 @@
                 '.dark-swiper-button-prev',  // Use unique class
                 galleryImages.dark
             );
-            // darkSwiperContainer is hidden by default from HTML (style="display: none;")
 
 
             function switchToGalleryTheme(themeName) {
                 let previousActiveIndex = 0;
+                // These DOM element variables are now guaranteed to be valid due to earlier querying
                 const newlyVisibleSwiperContainer = themeName === 'light' ? lightSwiperContainer : darkSwiperContainer;
                 const newlyHiddenSwiperContainer = themeName === 'light' ? darkSwiperContainer : lightSwiperContainer;
                 const newlyVisibleSwiperInstance = themeName === 'light' ? lightThemeSwiper : darkThemeSwiper;
-                const newlyVisiblePagination = themeName === 'light' ? document.querySelector('.light-swiper-pagination') : document.querySelector('.dark-swiper-pagination');
-                const newlyHiddenPagination = themeName === 'light' ? document.querySelector('.dark-swiper-pagination') : document.querySelector('.light-swiper-pagination');
-
                 const newlyHiddenSwiperInstance = themeName === 'light' ? darkThemeSwiper : lightThemeSwiper;
-
+                const newlyVisiblePagination = themeName === 'light' ? lightSwiperPagination : darkSwiperPagination;
+                const newlyHiddenPagination = themeName === 'light' ? darkSwiperPagination : lightSwiperPagination;
                 currentGalleryTheme = themeName;
 
-                // Get the active index from the currently visible swiper (before hiding it)
-                if (currentActiveSwiperInstance && currentActiveSwiperInstance.slides && currentActiveSwiperInstance.slides.length > 0) {
-                    previousActiveIndex = currentActiveSwiperInstance.realIndex;
+                // Get the active index from the swiper that was active before this switch
+                const swiperToGetIndexFrom = newlyHiddenSwiperInstance || currentActiveSwiperInstance;
+                if (swiperToGetIndexFrom && swiperToGetIndexFrom.slides && swiperToGetIndexFrom.slides.length > 0) {
+                    previousActiveIndex = swiperToGetIndexFrom.realIndex;
+                }
+
+                // Handle the swiper that is becoming hidden
+                if (newlyHiddenSwiperInstance) {
+                    if (newlyHiddenSwiperInstance.params.loop && newlyHiddenSwiperInstance.loop && typeof newlyHiddenSwiperInstance.loopDestroy === 'function') {
+                        // Check if loop module is initialized before destroying
+                        if (newlyHiddenSwiperInstance.loop.slides && newlyHiddenSwiperInstance.loop.slides.length > 0) {
+                            newlyHiddenSwiperInstance.loopDestroy();
+                        }
+                    }
+                    newlyHiddenSwiperInstance.params.loop = false; // Ensure loop param is false
+                    if (newlyHiddenSwiperContainer) newlyHiddenSwiperContainer.style.display = 'none';
+                    if (newlyHiddenPagination) newlyHiddenPagination.style.display = 'none';
                 }
 
                 // Hide the currently active swiper and show the new one
-                newlyHiddenSwiperContainer.style.display = 'none';
-                newlyVisibleSwiperContainer.style.display = 'block';
+                if (newlyHiddenSwiperContainer) newlyHiddenSwiperContainer.style.display = 'none';
+                if (newlyVisibleSwiperContainer) newlyVisibleSwiperContainer.style.display = 'block';
                 if (newlyHiddenPagination) newlyHiddenPagination.style.display = 'none';
-                if (newlyVisiblePagination) newlyVisiblePagination.style.display = 'block'; // Or 'flex' if Swiper styles it that way
+                if (newlyVisiblePagination) newlyVisiblePagination.style.display = (newlyVisiblePagination.classList.contains('swiper-pagination-bullets') ? 'flex' : 'block');
 
+                // Handle the swiper that is becoming visible
                 currentActiveSwiperInstance = newlyVisibleSwiperInstance;
 
                 if (currentActiveSwiperInstance) {
-                    // Force a reflow to ensure the browser acknowledges the display change
-                    currentActiveSwiperInstance.el.offsetHeight; 
+                    // Ensure the swiper element is rendered (offsetHeight > 0) before trying to update it
+                    if (currentActiveSwiperInstance.el && currentActiveSwiperInstance.el.offsetHeight > 0) {
+                        currentActiveSwiperInstance.params.loop = true; // Set loop to true for the visible swiper
+                        currentActiveSwiperInstance.update(); // Update dimensions and layout
 
-                    currentActiveSwiperInstance.update(); // Update dimensions and layout
+                        // Destroy and recreate loop to ensure it's correctly set up for visible state
+                        if (currentActiveSwiperInstance.loop && typeof currentActiveSwiperInstance.loopDestroy === 'function' && currentActiveSwiperInstance.loop.slides && currentActiveSwiperInstance.loop.slides.length > 0) {
+                            currentActiveSwiperInstance.loopDestroy();
+                        }
+                        if (typeof currentActiveSwiperInstance.loopCreate === 'function') {
+                            currentActiveSwiperInstance.loopCreate();
+                        }
 
-                    // Use requestAnimationFrame to ensure updates are processed before sliding
-                    requestAnimationFrame(() => {
-                        if (currentActiveSwiperInstance.slides && currentActiveSwiperInstance.slides.length > 0) {
-                            currentActiveSwiperInstance.slideToLoop(previousActiveIndex, 0); // Sync position, 0ms transition
-                        }
-                        if (currentActiveSwiperInstance.pagination && currentActiveSwiperInstance.pagination.el) {
-                            currentActiveSwiperInstance.pagination.update(); // Ensure pagination is also updated
-                        }
-                    });
+                        requestAnimationFrame(() => {
+                            if (currentActiveSwiperInstance.slides && currentActiveSwiperInstance.slides.length > 0) {
+                                currentActiveSwiperInstance.slideToLoop(previousActiveIndex, 0); // Sync position, 0ms transition
+                            }
+                            if (currentActiveSwiperInstance.pagination && currentActiveSwiperInstance.pagination.el) {
+                                currentActiveSwiperInstance.pagination.update(); // Ensure pagination is also updated
+                            }
+                        });
+                    }
                 }
 
                 // Update button states
-                galleryThemeLightBtn.classList.toggle('screenshot-btn-active', themeName === 'light');
-                galleryThemeLightBtn.classList.toggle('screenshot-btn-inactive', themeName !== 'light');
-                galleryThemeDarkBtn.classList.toggle('screenshot-btn-active', themeName === 'dark');
-                galleryThemeDarkBtn.classList.toggle('screenshot-btn-inactive', themeName !== 'dark');
+                if (galleryThemeLightBtn && galleryThemeDarkBtn) {
+                    galleryThemeLightBtn.classList.toggle('screenshot-btn-active', themeName === 'light');
+                    galleryThemeLightBtn.classList.toggle('screenshot-btn-inactive', themeName !== 'light');
+                    galleryThemeDarkBtn.classList.toggle('screenshot-btn-active', themeName === 'dark');
+                    galleryThemeDarkBtn.classList.toggle('screenshot-btn-inactive', themeName !== 'dark');
+                }
             }
 
-            // Initialize gallery based on current website theme
+            // Define setTheme function now that switchToGalleryTheme and Swiper instances are ready
+            const setTheme = (theme) => {
+                htmlElement.setAttribute('data-theme', theme);
+                if (sunIcon && moonIcon) { // Ensure icons exist
+                    sunIcon.classList.toggle('hidden', theme === 'dark');
+                    moonIcon.classList.toggle('hidden', theme === 'light');
+                }
+                // Sync screenshot gallery theme with the website theme
+                // switchToGalleryTheme is defined, and Swiper instances/containers are also defined.
+                if (typeof switchToGalleryTheme === 'function' &&
+                    lightSwiperContainer && darkSwiperContainer &&
+                    lightThemeSwiper && darkThemeSwiper) {
+                    switchToGalleryTheme(theme);
+                }
+
+                // Update links with the new theme parameter
+                const updateLinkTheme = (linkElement, baseHref) => {
+                    if (linkElement) {
+                        const url = new URL(baseHref, window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1));
+                        url.searchParams.set('from', 'gro'); // Ensure 'from=gro' is present
+                        url.searchParams.set('theme', theme);
+                        linkElement.href = url.toString();
+                    }
+                };
+
+                updateLinkTheme(privacyLinkFooter, 'privacy-policy.html');
+                updateLinkTheme(termsLinkFooter, 'terms-of-service.html');
+                
+                // FAQ link is created dynamically, try to update it if it exists
+                const faqViewAllLink = document.getElementById('show-more-faqs');
+                updateLinkTheme(faqViewAllLink, 'faq.html');
+
+            };
+
+            // Initial theme setup for the main page (calls setTheme, which calls switchToGalleryTheme)
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            setTheme(prefersDark ? 'dark' : 'light');
+
+            if (themeToggle) themeToggle.addEventListener('click', () => { // Ensure themeToggle exists
+                const newTheme = htmlElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                setTheme(newTheme);
+            });
+            // Event listeners for gallery theme buttons
             if (galleryThemeLightBtn && galleryThemeDarkBtn) {
                 galleryThemeLightBtn.addEventListener('click', () => switchToGalleryTheme('light'));
                 galleryThemeDarkBtn.addEventListener('click', () => switchToGalleryTheme('dark'));
-                // Set initial gallery theme based on website theme
-                const websiteTheme = htmlElement.getAttribute('data-theme') || 'light';
-                switchToGalleryTheme(websiteTheme);
             }
-
-            // Listen for theme switcher button clicks
-            // Event listeners are already set up in the "if (galleryThemeLightBtn && galleryThemeDarkBtn)" block
-            // switchToGalleryTheme calls initScreenshotsSwiper, which rebuilds the swiper.
-            // No need for separate updateSwiperSlides calls here.
 
         });
     </script>
