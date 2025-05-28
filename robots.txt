@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://a3zsoft.com/sitemap.xml
