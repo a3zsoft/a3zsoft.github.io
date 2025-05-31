@@ -118,7 +118,7 @@ nav a:hover {
     color: var(--color-white);
     margin-bottom: 2rem;
     text-transform: uppercase;
-    text-shadow: var(--shadow-default);
+    text-shadow: 1px 1px 1px #000;
 }
 
 /* App Grid and Cards */
@@ -132,7 +132,7 @@ nav a:hover {
 .app-card {
     position: relative;
     background: var(--color-overlay-light);
-    border: 1px solid var(--color-text-primary);
+    border: 1px solid var(--color-text-secondary);
     border-radius: 12px;
     padding: 1.5rem;
     width: min(280px, calc(100vw - 3rem));
@@ -170,7 +170,7 @@ nav a:hover {
     color: var(--color-midwhite);
     margin-top: 0.1rem;
     margin-bottom: 0.2rem;
-    text-shadow: var(--shadow-default);
+    text-shadow: 1px 1px 1px #000;
 }
 
 .app-description {
@@ -178,7 +178,7 @@ nav a:hover {
     color: var(--color-midwhite);
     margin-bottom: 1.5rem;
     line-height: 1.6;
-    text-shadow: var(--shadow-default);
+    text-shadow: 1px 1px 1px #000;
 }
 
 .app-link {
@@ -286,7 +286,7 @@ nav a:hover {
     }
 
     .app-card {
-        width: calc(100vw - 2rem);
+        width: calc(70vw - 2rem);
         min-height: 200px;
     }
 
