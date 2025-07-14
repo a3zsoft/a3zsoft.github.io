@@ -60,6 +60,19 @@ header {
     padding-bottom: 1.5rem;
 }
 
+.main-logo-image {
+    height: 2rem; /* h-8 (32px) */
+    width: 6rem; /* w-24 (96px) */
+    object-fit: contain; /* object-contain */
+    filter: none; /* Default: original color for light theme */
+}
+html[data-theme='dark'] .main-logo-image {
+    filter: brightness(0) invert(1); /* Makes the logo white on dark theme */
+}
+html[data-theme='light'] .main-logo-image {
+    filter: brightness(0) invert(0.15); /* Makes the logo white on light theme */
+}
+
 /* Style for the "Back to Home" link, if used via class */
 .back-link {
     display: inline-block;
