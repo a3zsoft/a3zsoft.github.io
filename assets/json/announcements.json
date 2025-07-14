@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "versionCode": 1,
+    "title": "Welcome to Gro!",
+    "description": "We're thrilled to have you on board. Check out our setup guide to get the most out of the app.",
+    "date": "2025-05-14",
+    "category": "welcome",
+    "actionText": "Quick Start Guide",
+    "actionUrl": "app://quick-start-guide"
+  },
+  {
+    "id": "2",
+    "versionCode": 1,
+    "title": "Did you know?",
+    "description": "You can customize your transaction categories to better suit your lifestyle. Go to the categories page to get started.",
+    "date": "2025-06-14",
+    "category": "information",
+    "actionText": "Manage Categories",
+    "actionUrl": "app://categories"
+  }
+]
