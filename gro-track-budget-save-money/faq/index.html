@@ -142,6 +142,14 @@
 
             // Initialize search functionality using the function from faq.js
             initializeFAQSearch('faq-search-input', '#all-faqs-container', '.faq-item', '.faq-question', '.faq-answer');
+
+            // Handle search query from URL
+            const searchInput = document.getElementById('faq-search-input');
+            const searchQuery = urlParams.get('search');
+            if (searchInput && searchQuery) {
+                searchInput.value = searchQuery;
+                searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+            }
         });
     </script>
 </body>
